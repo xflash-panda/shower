@@ -68,6 +68,13 @@
 - 日志消息和错误信息不需要国际化，统一使用英文
 - 所有用户界面文本必须使用 t() 函数包装
 
+### Git 提交规范
+
+- 禁止在提交消息中包含 AI 助手相关信息
+- 禁止包含 "🤖 Generated with [Claude Code]" 等标识
+- 禁止包含 "Co-Authored-By: Claude" 等署名
+- 提交消息应简洁专业，只描述实际改动内容
+
 ## IMPORTANT RULES (重要规范)
 
 ### 文档策略
@@ -189,6 +196,7 @@ console.error('Failed to update user profile:', error);
 - 日志消息使用中文
 - 跨页面共享翻译 namespace (除 common 外)
 - 在 console.log/error 中使用 t() 函数
+- Git 提交中包含 AI 助手相关信息和署名
 
 ## 样式类参考
 
