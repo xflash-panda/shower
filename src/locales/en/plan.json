@@ -1,0 +1,133 @@
+{
+  "title": "Purchase Subscription",
+  "selector": {
+    "title": "Subscription Plan",
+    "soldOut": "Sold Out",
+    "nearingSoldOut": "Nearly Sold Out",
+    "trafficQuota": "Traffic Quota"
+  },
+  "overview": {
+    "title": "Subscription Specifications",
+    "currentPlan": "Currently Selected Plan",
+    "features": "Features"
+  },
+  "cycle": {
+    "title": "Subscription Cycle"
+  },
+  "order": {
+    "title": "Order Details",
+    "createSuccess": "Order created successfully, redirecting to payment page",
+    "cancelSuccess": "Order cancelled successfully, you can now create a new order",
+    "cancelError": "Failed to cancel order",
+    "planType": "Plan Type",
+    "trafficQuota": "Traffic Quota",
+    "coupon": "Coupon",
+    "useCoupon": "Use Coupon",
+    "originalPrice": "Original Price",
+    "discount": "Discount",
+    "finalAmount": "Final Amount",
+    "amount": "Amount",
+    "processing": "Processing...",
+    "placeOrder": "Place Order Now",
+    "orderNote": "Click to place order and redirect to payment page"
+  },
+  "coupon": {
+    "modal": {
+      "title": "Use Coupon",
+      "label": "Coupon Code",
+      "placeholder": "Please enter coupon code",
+      "close": "Close",
+      "validate": "Validate",
+      "validating": "Validating...",
+      "invalid": "Coupon code is invalid or expired, please try again",
+      "enterCode": "Please enter a coupon code"
+    },
+    "success": "Coupon applied successfully!",
+    "discount": {
+      "fixed": "Save",
+      "percentage": "discount",
+      "currency": "yuan"
+    },
+    "error": {
+      "networkError": "Network error, please try again later"
+    },
+    "actions": {
+      "removeCoupon": "Remove Coupon"
+    }
+  },
+  "basicInfo": {
+    "labels": {
+      "trafficQuota": "Traffic Quota",
+      "nodeRegions": "Node Regions",
+      "renewable": "Renewable",
+      "nodeExitIPs": "Node Exit IPs",
+      "totalNodes": "Total Nodes",
+      "nodeProtocols": "Node Protocols",
+      "planFeatures": "Plan Features"
+    },
+    "values": {
+      "supported": "Supported",
+      "notSupported": "Not Supported",
+      "countries": "countries/regions",
+      "ips": "IPs",
+      "nodes": "nodes",
+      "directNodes": "Direct",
+      "relayNodes": "Relay",
+      "noFeatures": "No feature description"
+    }
+  },
+  "nodeOverview": {
+    "headers": {
+      "region": "Region",
+      "nodeCount": "Node Count",
+      "nodeCountShort": "Nodes",
+      "exitIPCount": "Exit IP Count",
+      "exitIPCountShort": "IPs",
+      "routeType": "Route Type",
+      "routeTypeShort": "Type"
+    },
+    "routeTypes": {
+      "direct": "Direct",
+      "relay": "Relay",
+      "hybrid": "Hybrid"
+    },
+    "units": {
+      "nodes": "nodes",
+      "exitIPs": "exit IPs"
+    }
+  },
+  "subscriptionChange": {
+    "title": "Subscription Change Confirmation",
+    "detected": "Detected",
+    "warning": ", changing subscription will replace current subscription completely, remaining traffic and time will not be preserved.",
+    "changeTypes": {
+      "plan": "Plan Change",
+      "type": "Subscription Type Change",
+      "both": "Plan Change + Subscription Type Change"
+    },
+    "subscriptionTypes": {
+      "oneTime": "One-time Subscription",
+      "recurring": "Recurring Subscription"
+    },
+    "actions": {
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    }
+  },
+  "trafficDepleted": {
+    "title": "Traffic Depleted Alert",
+    "message": "Your traffic has been depleted",
+    "warning": "Please note that purchasing this plan will only extend your subscription period but will not reset the used traffic quota. Are you sure you want to continue placing the order?",
+    "actions": {
+      "cancel": "Cancel",
+      "confirm": "Confirm Order"
+    }
+  },
+  "specification": {
+    "basicInfo": "Basic Information",
+    "nodeOverview": "Node Overview",
+    "loading": "Loading...",
+    "noData": "No data",
+    "loadFailed": "Failed to load node data"
+  }
+}

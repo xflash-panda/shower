@@ -1,0 +1,42 @@
+{
+  "success": "注册成功！",
+  "form": {
+    "email": "邮箱",
+    "emailPrefixPlaceholder": "请输入邮箱前缀",
+    "emailPlaceholder": "请输入邮箱地址",
+    "emailCode": "邮箱验证码",
+    "password": "密码",
+    "passwordPlaceholder": "请输入密码",
+    "confirmPassword": "确认密码",
+    "confirmPasswordPlaceholder": "请确认密码",
+    "inviteCode": "邀请码",
+    "inviteCodePlaceholder": "请输入邀请码",
+    "inviteCodeOptionalPlaceholder": "请输入邀请码（可选）",
+    "register": "注册",
+    "registering": "注册中...",
+    "processing": "处理验证中...",
+    "hasAccount": "已有账号？",
+    "loginNow": "立即登录",
+    "terms": "用户协议"
+  },
+  "validation": {
+    "emailPrefixRequired": "请输入邮箱前缀",
+    "emailPrefixInvalid": "邮箱前缀包含无效字符",
+    "emailPrefixTooLong": "邮箱前缀过长",
+    "emailRequired": "请输入邮箱地址",
+    "emailInvalid": "邮箱格式不正确",
+    "emailTooLong": "邮箱地址过长",
+    "passwordRequired": "请输入密码",
+    "passwordTooShort": "密码至少需要8个字符",
+    "confirmPasswordRequired": "请确认密码",
+    "passwordMismatch": "两次密码输入不一致",
+    "inviteCodeRequired": "请输入邀请码",
+    "emailCodeRequired": "请输入邮箱验证码",
+    "emailCodeInvalid": "验证码格式不正确，请输入6位数字",
+    "emailExists": "该邮箱已被注册，请使用其他邮箱"
+  },
+  "error": {
+    "emailCheckFailed": "邮箱检查失败，请稍后重试",
+    "registerFailed": "注册失败"
+  }
+}

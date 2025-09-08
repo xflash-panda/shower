@@ -1,0 +1,42 @@
+{
+  "success": "Registration successful!",
+  "form": {
+    "email": "Email",
+    "emailPrefixPlaceholder": "Please enter email prefix",
+    "emailPlaceholder": "Please enter email address",
+    "emailCode": "Email verification code",
+    "password": "Password",
+    "passwordPlaceholder": "Please enter password",
+    "confirmPassword": "Confirm password",
+    "confirmPasswordPlaceholder": "Please confirm password",
+    "inviteCode": "Invite code",
+    "inviteCodePlaceholder": "Please enter invite code",
+    "inviteCodeOptionalPlaceholder": "Please enter invite code (optional)",
+    "register": "Register",
+    "registering": "Registering...",
+    "processing": "Processing verification...",
+    "hasAccount": "Already have an account?",
+    "loginNow": "Login now",
+    "terms": "Terms of Service"
+  },
+  "validation": {
+    "emailPrefixRequired": "Please enter email prefix",
+    "emailPrefixInvalid": "Email prefix contains invalid characters",
+    "emailPrefixTooLong": "Email prefix is too long",
+    "emailRequired": "Please enter email address",
+    "emailInvalid": "Email format is incorrect",
+    "emailTooLong": "Email address is too long",
+    "passwordRequired": "Please enter password",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "confirmPasswordRequired": "Please confirm password",
+    "passwordMismatch": "Passwords do not match",
+    "inviteCodeRequired": "Please enter invite code",
+    "emailCodeRequired": "Please enter email verification code",
+    "emailCodeInvalid": "Verification code format is incorrect, please enter 6 digits",
+    "emailExists": "This email is already registered, please use another email"
+  },
+  "error": {
+    "emailCheckFailed": "Email check failed, please try again later",
+    "registerFailed": "Registration failed"
+  }
+}

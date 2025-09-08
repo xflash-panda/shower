@@ -1,0 +1,112 @@
+{
+  "loading": "Loading...",
+  "noData": "No data",
+  "close": "Close",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "save": "Save",
+  "submit": "Submit",
+  "optional": "(Optional)",
+  "expand": "Expand",
+  "collapse": "Collapse",
+  "validation": {
+    "fixErrors": "Please fix all validation errors before submitting",
+    "required": "This field is required",
+    "emailRequired": "Please enter email address",
+    "emailInvalid": "Email format is incorrect",
+    "passwordRequired": "Please enter password",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "confirmPasswordRequired": "Please confirm password",
+    "passwordMismatch": "Passwords do not match",
+    "emailCodeRequired": "Please enter email verification code",
+    "emailCodeInvalid": "Verification code format is incorrect, please enter 6 digits",
+    "currentPasswordRequired": "Please enter current password",
+    "newPasswordRequired": "Please enter new password",
+    "newPasswordTooShort": "Password must be at least 8 characters",
+    "newPasswordSameAsCurrent": "New password cannot be the same as current password",
+    "confirmPasswordRequired": "Please enter confirm password",
+    "confirmPasswordMismatch": "The two passwords entered do not match"
+  },
+  "toast": {
+    "success": {
+      "passwordChanged": "Password changed successfully",
+      "accountDeleted": "Account deleted successfully",
+      "subscriptionReset": "Subscription information reset successfully",
+      "couponApplied": "Coupon applied successfully",
+      "loginSuccess": "Login successful",
+      "registerSuccess": "Registration successful",
+      "passwordResetSuccess": "Password reset successful"
+    },
+    "error": {
+      "passwordUpdateFailed": "Password update failed",
+      "accountDeleteFailed": "Account deletion failed",
+      "subscriptionResetFailed": "Subscription reset failed",
+      "loginFailed": "Login failed, please try again",
+      "registerFailed": "Registration failed",
+      "passwordResetFailed": "Password reset failed",
+      "emailCheckFailed": "Email check failed, please try again later",
+      "couponValidationFailed": "Coupon validation failed",
+      "enterCouponCode": "Please enter a coupon code"
+    }
+  },
+  "emptyState": {
+    "noData": "No Data Available"
+  },
+  "emailCode": {
+    "placeholder": "Please enter verification code",
+    "buttonText": "Get Code",
+    "countdown": "Retry in {{seconds}}s",
+    "sending": {
+      "validatingEmail": "Validating email...",
+      "processingCaptcha": "Processing verification...",
+      "sending": "Sending..."
+    },
+    "success": "Verification code sent successfully",
+    "error": {
+      "sendFailed": "Failed to send verification code",
+      "verificationFailed": "Verification failed, please try again"
+    }
+  },
+  "qrCode": {
+    "error": {
+      "generateFailed": "Failed to generate QR code",
+      "notAvailable": "QR code not available",
+      "downloadFailed": "Failed to download QR code",
+      "noUrlProvided": "No URL provided for QR code generation"
+    },
+    "success": {
+      "downloaded": "QR code downloaded"
+    },
+    "download": "Download QR Code",
+    "generating": "Generating QR code...",
+    "retry": "Retry"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {{page}}"
+  },
+  "unpaidOrder": {
+    "title": "Unpaid Order Detected",
+    "message": "You have an unpaid order of {{amount}}. Please complete payment or cancel the order before proceeding with new operations.",
+    "cancelOrder": "Cancel Order",
+    "goToPayment": "Go to Payment",
+    "cancelling": "Cancelling..."
+  },
+  "knowledgeModal": {
+    "loading": "Loading content...",
+    "loadFailed": "Failed to Load Content",
+    "loadError": "An error occurred while loading the content. Please try again.",
+    "noContent": "No Content Available",
+    "noContentMessage": "This document does not have any content to display.",
+    "freeContent": "Free Content",
+    "premiumContent": "Premium Content",
+    "close": "Close"
+  },
+  "markdown": {
+    "renderingFailed": "Markdown rendering failed",
+    "renderingError": "Unable to render markdown content. Please check the content format.",
+    "noContent": "No content available",
+    "contentTruncated": "Content truncated due to length limit"
+  }
+}

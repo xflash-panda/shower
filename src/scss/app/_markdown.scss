@@ -1,0 +1,169 @@
+// >>-- Markdown 渲染器样式 --<<
+
+.markdown-content {
+  // 按钮样式链接优化
+  a.btn {
+    display: inline-flex !important;
+    align-items: center;
+    text-decoration: none !important;
+    border-radius: 6px;
+    font-weight: 500;
+    padding: 0.625rem 0.9375rem;
+    transition: all 0.2s ease;
+    border: none;
+    box-shadow: 0 2px 4px rgba(var(--primary), 0.2);
+    background-color: rgba(var(--primary), 1) !important;
+    border-color: rgba(var(--primary), 1) !important;
+    color: rgba(var(--white), 1) !important;
+
+    &:hover {
+      background-color: rgba(var(--primary), 0.9) !important;
+      border-color: rgba(var(--primary), 0.9) !important;
+      color: rgba(var(--white), 1) !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 8px rgba(var(--primary), 0.3) !important;
+      text-decoration: none !important;
+    }
+
+    &:active {
+      transform: translateY(0) !important;
+      box-shadow: 0 2px 4px rgba(var(--primary), 0.2) !important;
+    }
+
+    &:focus {
+      background-color: rgba(var(--primary), 1) !important;
+      border-color: rgba(var(--primary), 1) !important;
+      color: rgba(var(--white), 1) !important;
+      box-shadow: 0 0 0 0.2rem rgba(var(--primary), 0.25) !important;
+      outline: none !important;
+    }
+
+    // 按钮内图标优化
+    i {
+      margin-right: 0.5rem;
+      font-size: 1em;
+    }
+
+    .fa {
+      margin-right: 0.5rem;
+    }
+
+    // 确保按钮类型的特殊样式
+    &.btn-primary {
+      background-color: rgba(var(--primary), 1) !important;
+      border-color: rgba(var(--primary), 1) !important;
+      color: rgba(var(--white), 1) !important;
+
+      &:hover {
+        background-color: rgba(var(--primary), 0.9) !important;
+        border-color: rgba(var(--primary), 0.9) !important;
+        color: rgba(var(--white), 1) !important;
+      }
+
+      &:focus {
+        background-color: rgba(var(--primary), 1) !important;
+        border-color: rgba(var(--primary), 1) !important;
+        color: rgba(var(--white), 1) !important;
+      }
+
+      &:active {
+        background-color: rgba(var(--primary), 0.9) !important;
+        border-color: rgba(var(--primary), 0.9) !important;
+        color: rgba(var(--white), 1) !important;
+      }
+    }
+  }
+
+  // 链接优化
+  a {
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: rgba(var(--primary), 1) !important;
+      transform: translateY(-1px);
+    }
+
+    // 确保普通链接不受按钮样式影响
+    &:not(.btn) {
+      &:hover {
+        color: rgba(var(--primary), 1) !important;
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  // 引用块样式优化
+  blockquote {
+    position: relative;
+    border-left: 3px solid rgba(var(--primary), 1);
+    background-color: rgba(var(--light), 0.5);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    // notice 变体样式
+    &.blockquote-notice {
+      border-left: 4px solid rgba(var(--primary), 1);
+      padding: 1.25rem;
+      border-radius: 8px;
+
+      .quote-mark-start {
+        position: absolute;
+        left: -2px;
+        top: -8px;
+        font-size: 2.5rem;
+        color: rgba(var(--primary), 0.3);
+        font-family: Georgia, serif;
+      }
+
+      .quote-mark-end {
+        position: absolute;
+        right: 15px;
+        bottom: 5px;
+        font-size: 1.5rem;
+        color: rgba(var(--primary), 0.3);
+        font-family: Georgia, serif;
+      }
+    }
+
+    // knowledge 变体样式
+    &.blockquote-knowledge {
+      border-left: 4px solid rgba(var(--primary), 1);
+      background: linear-gradient(
+        135deg,
+        rgba(var(--primary), 0.05) 0%,
+        rgba(var(--primary), 0.02) 100%
+      );
+      padding: 1.125rem;
+      border-radius: 6px;
+
+      .quote-icon {
+        color: rgba(var(--primary), 0.7);
+      }
+    }
+
+    // compact 变体样式
+    &.blockquote-compact {
+      border-left: 2px solid rgba(var(--primary), 1);
+      padding: 0.75rem;
+      border-radius: 4px;
+      margin: 0.75rem 0;
+    }
+
+    // default 变体样式
+    &.blockquote-default {
+      .quote-mark {
+        position: absolute;
+        left: -1px;
+        top: -5px;
+        font-size: 2rem;
+        color: rgba(var(--primary), 0.4);
+        font-family: Georgia, serif;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+// >>-- Markdown 渲染器样式结束 --<<

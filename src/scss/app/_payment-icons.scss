@@ -1,0 +1,82 @@
+// >>-- Payment Icons css start --<<
+
+// 基础支付图标样式
+.payment-icon {
+  width: 46px;
+  height: 46px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: transform 0.2s ease-in-out;
+  display: inline-block;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  // 添加加载状态
+  &.loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  // 添加禁用状态
+  &.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+// 支付图标映射
+$payment-icons: (
+  alipay: '/assets/images/payment/alipay.png',
+  wechat: '/assets/images/payment/wechat.png',
+  credit-card: '/assets/images/payment/credit-card.png',
+  stripe: '/assets/images/payment/stripe.png',
+  wallet: '/assets/images/payment/wallet.png',
+);
+
+// 生成各个支付图标样式
+@each $name, $image-path in $payment-icons {
+  .pay-#{$name} {
+    @extend .payment-icon;
+    background-image: url(#{$image-path});
+  }
+}
+
+// 尺寸变体
+.payment-icon {
+  &.size-sm {
+    width: 32px;
+    height: 32px;
+  }
+
+  &.size-md {
+    width: 42px;
+    height: 42px;
+  }
+
+  &.size-lg {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+// 响应式支持
+@media (max-width: 768px) {
+  .payment-icon {
+    width: 38px;
+    height: 38px;
+
+    &.size-lg {
+      width: 46px;
+      height: 46px;
+    }
+  }
+}

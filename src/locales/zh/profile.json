@@ -1,0 +1,233 @@
+{
+  "title": "账户管理",
+  "settings": {
+    "title": "设置选项",
+    "features": "功能设置",
+    "security": "安全设置",
+    "connections": "第三方绑定"
+  },
+  "telegram": {
+    "bindModal": {
+      "title": "Telegram机器人绑定步骤",
+      "steps": {
+        "step1": {
+          "title": "第一步：打开Telegram",
+          "description": "在您的手机或电脑上打开Telegram应用，确保您已经登录账户"
+        },
+        "step2": {
+          "title": "第二步：搜索机器人",
+          "description": "在Telegram中搜索机器人用户名，或者",
+          "openDirectly": "直接打开",
+          "chatDescription": "机器人聊天：",
+          "copyUsernameTooltip": "复制用户名"
+        },
+        "step3": {
+          "title": "第三步：发送绑定命令",
+          "description": "向机器人发送以下绑定命令，完成账户绑定",
+          "copyCommandTooltip": "复制命令"
+        }
+      },
+      "navigation": {
+        "previousStep": "上一步",
+        "nextStep": "下一步",
+        "completeBinding": "完成绑定",
+        "updating": "更新中...",
+        "loading": "Loading..."
+      }
+    },
+    "success": {
+      "usernameCopierd": "机器人用户名已复制到剪贴板",
+      "commandCopied": "绑定命令已复制到剪贴板"
+    },
+    "error": {
+      "copyUsernameFailed": "机器人复制用户名失败",
+      "copyCommandFailed": "绑定命令复制失败"
+    }
+  },
+  "security": {
+    "labels": {
+      "currentPassword": "当前密码",
+      "newPassword": "新密码",
+      "confirmPassword": "确认密码",
+      "basicInfo": "基础信息",
+      "amountDetails": "金额详情",
+      "orderRemarks": "订单备注"
+    },
+    "validation": {
+      "currentPasswordRequired": "请输入当前密码",
+      "newPasswordRequired": "请输入新密码",
+      "passwordTooShort": "密码长度至少为8个字符",
+      "passwordsSame": "新密码不能与当前密码相同",
+      "confirmPasswordRequired": "请输入确认密码",
+      "passwordsNotMatch": "两次输入的密码不一致"
+    },
+    "buttons": {
+      "saving": "保存中...",
+      "save": "保存"
+    },
+    "changePassword": {
+      "title": "修改密码",
+      "currentPassword": "当前密码",
+      "currentPasswordPlaceholder": "请输入当前密码",
+      "newPassword": "新密码",
+      "newPasswordPlaceholder": "请输入新密码（至少8个字符）",
+      "confirmPassword": "确认密码",
+      "confirmPasswordPlaceholder": "请再次输入新密码",
+      "saving": "保存中...",
+      "save": "保存",
+      "success": "密码修改成功",
+      "error": "密码更新失败"
+    },
+    "resetSubscription": {
+      "title": "重置订阅信息",
+      "description": "重置您的订阅信息将清除所有订阅相关的设置和数据，但不会影响您的账号。",
+      "button": "重置订阅信息",
+      "success": "订阅信息重置成功",
+      "error": "订阅信息重置失败"
+    },
+    "changeEmail": {
+      "title": "变更邮箱",
+      "description": "变更账号邮箱后，旧邮箱将无法登录，请使用新邮箱登录。",
+      "currentEmail": "当前邮箱",
+      "newEmail": "新邮箱",
+      "newEmailPrefixPlaceholder": "请输入邮箱前缀",
+      "newEmailPlaceholder": "请输入新邮箱地址",
+      "emailCode": "邮箱验证码",
+      "currentPassword": "当前密码",
+      "currentPasswordPlaceholder": "请输入当前密码",
+      "changing": "变更中...",
+      "changeEmail": "变更邮箱",
+      "cancelChange": "取消变更？",
+      "returnToSecurity": "返回安全设置",
+      "loading": "加载中...",
+      "validation": {
+        "emailPrefixRequired": "请输入邮箱前缀",
+        "emailPrefixInvalidChars": "邮箱前缀包含无效字符",
+        "emailPrefixTooLong": "邮箱前缀过长",
+        "emailRequired": "请输入邮箱地址",
+        "emailInvalidFormat": "邮箱格式不正确",
+        "emailTooLong": "邮箱地址过长",
+        "passwordRequired": "请输入当前密码",
+        "passwordTooShort": "密码至少需要8个字符",
+        "emailCodeRequired": "请输入邮箱验证码",
+        "emailCodeInvalidFormat": "验证码格式不正确，请输入6位数字",
+        "emailAlreadyRegistered": "该邮箱已被注册，请使用其他邮箱"
+      },
+      "error": {
+        "emailCheckFailed": "邮箱检查失败，请稍后重试",
+        "fixErrors": "请修复所有验证错误后再提交",
+        "sameEmail": "新邮箱不能与当前邮箱相同",
+        "changeFailed": "邮箱修改失败"
+      },
+      "success": {
+        "changeSuccess": "邮箱修改成功！"
+      }
+    },
+    "deleteAccount": {
+      "title": "注销账号",
+      "description": "此操作将永久删除您的账号和所有相关数据，无法恢复。",
+      "button": "注销账号",
+      "modal": {
+        "title": "确认注销账号",
+        "warning": {
+          "title": "⚠️ 危险操作警告",
+          "description": "此操作将永久删除您的账号和所有相关数据，<strong>无法恢复</strong>。请输入您的邮箱地址以确认注销。"
+        },
+        "emailLabel": "邮箱地址",
+        "emailPlaceholder": "请输入您的邮箱地址",
+        "emailError": "邮箱地址不正确，请输入 {{email}} 以确认注销",
+        "cancel": "取消",
+        "confirm": "确认注销",
+        "deleting": "注销中..."
+      },
+      "success": "账号注销成功",
+      "error": "账号注销失败"
+    }
+  },
+  "connection": {
+    "title": "应用链接",
+    "telegramGroup": {
+      "title": "Telegram讨论组",
+      "badge": "社区交流",
+      "description": "加入我们的 Telegram 讨论组，与其他用户交流使用经验和分享技巧",
+      "joinButton": "加入讨论组"
+    },
+    "telegramBot": {
+      "title": "Telegram机器人",
+      "status": {
+        "bound": "已绑定",
+        "unbound": "未绑定"
+      },
+      "description": {
+        "bound": "绑定账号: {{telegramId}}，可接收服务通知和重要消息",
+        "unbound": "绑定 Telegram 机器人，及时接收账户通知、服务状态和重要消息"
+      },
+      "actions": {
+        "bind": "绑定机器人",
+        "unbind": "解除绑定",
+        "unbinding": "解绑中...",
+        "serviceUnavailable": "服务不可用"
+      }
+    }
+  },
+  "features": {
+    "autoRenewal": {
+      "title": "自动续订设置",
+      "autoRenewal": {
+        "title": "自动续费",
+        "description": "订阅到期时自动续费，确保服务不中断，费用从钱包余额扣除"
+      },
+      "autoResetTraffic": {
+        "title": "自动重置流量",
+        "description": "订阅未到期时流量使用完毕时自动重置流量，确保服务不中断，费用从钱包余额扣除"
+      }
+    },
+    "notifications": {
+      "title": "通知设置",
+      "emailSubscriptionReminder": {
+        "title": "订阅到期提醒",
+        "description": "在订阅即将到期时发送邮件提醒"
+      },
+      "trafficUsageReminder": {
+        "title": "流量使用提醒",
+        "description": "当流量使用达到阈值时发送邮件提醒通知"
+      }
+    }
+  },
+  "modals": {
+    "changeEmailConfirm": {
+      "title": "确认更换邮箱",
+      "warning": {
+        "title": "确认更换邮箱？",
+        "description": "此操作将要求您重新验证身份并使用新邮箱登录"
+      },
+      "cancel": "取消",
+      "confirm": "确认更换"
+    },
+    "resetSubscriptionConfirm": {
+      "title": "确认重置订阅信息",
+      "warning": "重置订阅信息后，客户端需要重新更新订阅。此操作将清除所有订阅相关的设置和数据。",
+      "confirmTitle": "确认执行此操作？",
+      "confirmDescription": "重置后您需要重新配置所有订阅相关的设置",
+      "cancel": "取消",
+      "confirm": "确认重置",
+      "resetting": "重置中..."
+    },
+    "telegramUnbindConfirm": {
+      "title": "Telegram机器人解绑",
+      "warning": "确定要解绑Telegram机器人吗？",
+      "description": "解绑后您将无法接收Telegram通知。您可以随时重新绑定。",
+      "cancel": "取消",
+      "confirm": "确认解绑",
+      "unbinding": "解绑中..."
+    }
+  },
+  "toast": {
+    "success": {
+      "unbound": "Telegram 解绑成功"
+    },
+    "error": {
+      "unbindFailed": "Telegram 解绑失败，请重试"
+    }
+  }
+}

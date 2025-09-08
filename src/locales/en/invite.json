@@ -1,0 +1,53 @@
+{
+  "title": "Affiliate Program",
+  "stats": {
+    "registeredUsers": "Registered Users",
+    "validCommission": "Valid Commission",
+    "pendingCommission": "Pending Commission",
+    "currentCommissionRate": "Current Commission Rate"
+  },
+  "code": {
+    "limitReached": "Invite code generation limit reached",
+    "generateSuccess": "Invite code generated successfully",
+    "generateError": "Failed to generate invite code",
+    "generateErrorRetry": "Failed to generate invite code, please try again",
+    "copySuccess": "Invite code copied"
+  },
+  "link": {
+    "copySuccess": "Registration link copied"
+  },
+  "codeManagement": {
+    "title": "Invite Code Management"
+  },
+  "commissionDetail": {
+    "title": "Commission Details"
+  },
+  "table": {
+    "inviteCode": "Invite Code",
+    "createdAt": "Created At",
+    "actions": "Actions"
+  },
+  "actions": {
+    "copyCode": "Copy Code",
+    "copyLink": "Copy Link"
+  },
+  "commission": {
+    "status": {
+      "paid": "Paid",
+      "pending": "Pending",
+      "invalid": "Invalid"
+    },
+    "table": {
+      "completedAt": "Completed At",
+      "orderAmount": "Order Amount",
+      "commissionRate": "Commission Rate",
+      "commission": "Commission",
+      "status": "Status"
+    }
+  },
+  "header": {
+    "generatedCount": "Generated <b>{{current}}</b> / {{total}} codes",
+    "generating": "Generating...",
+    "generateCode": "Generate Code"
+  }
+}

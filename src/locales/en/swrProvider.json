@@ -1,0 +1,10 @@
+{
+  "toast": {
+    "error": {
+      "networkError": "Network error, please try again later"
+    },
+    "auth": {
+      "expired": "Authentication expired, redirecting to login page"
+    }
+  }
+}

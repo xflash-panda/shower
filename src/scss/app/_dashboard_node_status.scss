@@ -1,0 +1,117 @@
+/* ===============================
+   Server Node Card Styles
+   =============================== */
+
+/* Custom Protocol Colors */
+.protocol-trojan {
+  color: #fff !important;
+  background-color: #dc3545 !important; /* Red */
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.protocol-hysteria2 {
+  color: #fff !important;
+  background-color: #fd7e14 !important; /* Orange */
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.protocol-vmess {
+  color: #fff !important;
+  background-color: #0d6efd !important; /* Blue */
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.protocol-shadowsocks {
+  color: #fff !important;
+  background-color: #212529 !important; /* Dark */
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.protocol-vless {
+  color: #fff !important;
+  background-color: #198754 !important; /* Green */
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.protocol-wireguard {
+  color: #fff !important;
+  background-color: #0dcaf0 !important; /* Cyan */
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.protocol-hysteria {
+  color: #000 !important;
+  background-color: #ffc107 !important; /* Yellow */
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.protocol-tuic {
+  color: #fff !important;
+  background-color: #6f42c1 !important; /* Purple */
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.protocol-reality {
+  color: #fff !important;
+  background-color: #e83e8c !important; /* Pink */
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.protocol-naive {
+  color: #fff !important;
+  background-color: #20c997 !important; /* Teal */
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Server Node Card Specific Styles */
+.server-node-card {
+  .protocol-badge {
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .server-status {
+    &.online {
+      color: #198754;
+    }
+
+    &.offline {
+      color: #dc3545;
+    }
+  }
+}

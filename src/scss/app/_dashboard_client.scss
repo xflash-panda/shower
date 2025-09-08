@@ -1,0 +1,127 @@
+/* Client Module Component Styles */
+
+// Dropdown item base styles
+.client-dropdown-item {
+  background-color: transparent !important;
+  border: none !important;
+  color: inherit !important;
+  transition: background-color 0.2s ease;
+
+  // Hover state
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: inherit !important;
+  }
+
+  // Focus state for accessibility
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: inherit !important;
+    outline: none;
+  }
+
+  // Active state
+  &:active {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+// Dark theme support
+nav.dark-sidebar .client-dropdown-item,
+body[class='ltr dark'] .client-dropdown-item {
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  &:active {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+  }
+}
+
+// Platform button responsive styles
+.client-platform-button {
+  // Mobile specific styles
+  @media (max-width: 767px) {
+    min-width: 40px;
+    min-height: 40px;
+
+    .platform-text {
+      display: none;
+    }
+  }
+
+  // Desktop specific styles
+  @media (min-width: 768px) {
+    min-width: 120px;
+
+    .platform-text {
+      display: inline;
+    }
+  }
+}
+
+// Client card hover effects
+.client-card {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Search box improvements
+.client-search-box {
+  .form-control {
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:focus {
+      border-color: rgba(var(--primary), 1);
+      box-shadow: 0 0 0 0.2rem rgba(var(--primary), 0.25);
+    }
+  }
+}
+
+// Mobile optimizations
+@media (max-width: 767px) {
+  .client-module-mobile {
+    .client-icon-large {
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+    }
+
+    .client-button-group {
+      .btn {
+        padding: 12px;
+        font-size: 15px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// Desktop optimizations
+@media (min-width: 768px) {
+  .client-module-desktop {
+    .client-icon-small {
+      width: 40px;
+      height: 40px;
+    }
+
+    .client-button-group {
+      .btn {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+    }
+  }
+}

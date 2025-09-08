@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/images/logo/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/assets/images/logo/favicon.png" type="image/x-icon" />
+
+    <!-- Preload LCP image for better performance -->
+    <link
+      rel="preload"
+      href="/assets/images/logo/logo.webp"
+      as="image"
+      type="image/webp"
+      fetchpriority="high"
+    />
+    <!-- Critical CSS inline for first paint -->
+    <style>
+      /* Critical CSS for first paint */
+      :root {
+        --font-color: #15264b;
+        --font-title-color: #1c3264;
+        --body-color: #f9f9f9;
+        --bodybg-color: #f6f6f6;
+        --primary: 140, 118, 240;
+        --white: 255, 255, 255;
+        --black: 0, 0, 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        line-height: 1.5;
+        background-color: var(--bodybg-color);
+        color: var(--font-color);
+      }
+
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ltr {
+        direction: ltr;
+      }
+      .rtl {
+        direction: rtl;
+      }
+
+      /* Loading states */
+      .loader,
+      .spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(var(--primary), 0.3);
+        border-radius: 50%;
+        border-top-color: rgba(var(--primary), 1);
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Critical layout utilities */
+      .d-flex {
+        display: flex;
+      }
+      .justify-content-center {
+        justify-content: center;
+      }
+      .align-items-center {
+        align-items: center;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .w-100 {
+        width: 100%;
+      }
+      .h-100 {
+        height: 100%;
+      }
+    </style>
+
+    <!-- Non-critical CSS - Bootstrap and main styles load asynchronously -->
+    <link
+      rel="preload"
+      href="/assets/vendor/bootstrap/bootstrap.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="/assets/css/style.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+
+    <!-- Fallback for browsers without JS -->
+    <noscript>
+      <link rel="stylesheet" href="/assets/vendor/bootstrap/bootstrap.min.css" />
+      <link rel="stylesheet" href="/assets/css/style.min.css" />
+    </noscript>
+    <title>Shower Panel</title>
+
+    <!-- Non-critical CSS - load asynchronously -->
+    <link
+      rel="preload"
+      href="/assets/vendor/fontawesome/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+
+    <!-- Fonts - 使用字节跳动镜像，优化加载 -->
+    <link href="https://fonts.font.im" rel="preconnect" />
+    <link crossorigin href="https://fonts.font.im" rel="preconnect" />
+    <link
+      href="https://fonts.font.im/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="preload"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.font.im/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <link
+      rel="preload"
+      href="/assets/vendor/tabler-icons/tabler-icons.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="/assets/vendor/toastify/toastify.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+
+    <!-- Optional icon libraries - load on demand -->
+    <link
+      rel="preload"
+      href="/assets/vendor/flag-icons-master/flag-icon.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="/assets/vendor/ionio-icon/css/iconoir.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="/assets/vendor/phosphor/photoshoper.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="/assets/vendor/phosphor/phosphor-duotone.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+
+    <!-- Fallback for browsers without JS -->
+    <noscript>
+      <link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css" />
+      <link rel="stylesheet" href="/assets/vendor/tabler-icons/tabler-icons.min.css" />
+      <link rel="stylesheet" href="/assets/vendor/toastify/toastify.min.css" />
+      <link rel="stylesheet" href="/assets/vendor/flag-icons-master/flag-icon.min.css" />
+      <link rel="stylesheet" href="/assets/vendor/ionio-icon/css/iconoir.min.css" />
+      <link rel="stylesheet" href="/assets/vendor/phosphor/photoshoper.min.css" />
+      <link rel="stylesheet" href="/assets/vendor/phosphor/phosphor-duotone.min.css" />
+    </noscript>
+  </head>
+
+  <body class="ltr">
+    <div id="root"></div>
+
+    <!-- Critical scripts -->
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Essential scripts loaded with defer -->
+    <script defer src="/assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script defer src="/assets/vendor/toastify/toastify.min.js"></script>
+
+    <!-- Optional icon scripts can be loaded on-demand when needed -->
+  </body>
+</html>

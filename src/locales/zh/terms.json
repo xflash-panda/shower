@@ -1,0 +1,135 @@
+{
+  "title": "用户协议",
+  "subtitle": "请仔细阅读以下条款和条件",
+  "lastUpdated": "最后更新: 2024年1月1日",
+  "importantNotice": "重要提示：",
+  "importantNoticeText": "通过访问或使用我们的服务，您同意遵守本协议的所有条款和条件。",
+  "finalReminder": "最终提醒",
+  "finalReminderText": "在您点击购买按钮并完成付款之前，请务必仔细阅读本退款政策。付款完成后，即表示您完全理解并接受我们的不退款政策，不得以任何理由要求退款。",
+  "sections": {
+    "introduction": {
+      "title": "1. 介绍",
+      "content": "欢迎使用我们的网站代理访问服务。本服务条款（\"条款\"）规范您对我们服务的使用。通过访问或使用我们的服务，您同意受这些条款的约束。"
+    },
+    "serviceDescription": {
+      "title": "2. 服务描述",
+      "content": "我们提供网站代理访问服务，帮助用户访问受限网站并改善网络性能。我们的服务包括：",
+      "services": [
+        "网站代理访问服务",
+        "网络加速和优化",
+        "用户账户管理",
+        "技术支持服务",
+        "其他相关代理服务"
+      ]
+    },
+    "refundPolicy": {
+      "title": "3. 退款政策",
+      "importantStatement": "重要声明：",
+      "noRefund": "所有购买的服务均不支持退款。",
+      "noRefundTitle": "不支持退款",
+      "noRefundText": "一旦付款完成，无论任何原因，我们均不提供退款服务。",
+      "immediateEffect": "即时生效",
+      "immediateEffectText": "付款成功后，服务立即生效，无法撤销或退款。",
+      "purchaseConfirmation": "购买确认",
+      "purchaseConfirmationText": "付款即表示您已确认购买并同意不退款政策。",
+      "detailedExplanation": "退款政策详细说明：",
+      "serviceNature": "服务性质：",
+      "serviceNatureText": "由于我们的网站代理访问服务具有即时性和不可逆性，一旦服务开始，无法撤销。",
+      "technicalLimitations": "技术限制：",
+      "technicalLimitationsText": "服务资源在购买后立即分配，无法回收或转移。",
+      "usageStatus": "使用情况：",
+      "usageStatusText": "无论您是否实际使用服务，均不提供退款。",
+      "serviceQuality": "服务质量：",
+      "serviceQualityText": "如遇服务质量问题，我们将提供技术支持，但不提供退款。",
+      "specialCircumstances": "特殊情况：",
+      "specialCircumstancesText": "包括但不限于账户被封、服务中断等情况，均不构成退款理由。",
+      "refundExceptions": "退款例外：",
+      "refundExceptionsText": "在任何情况下，我们均不提供退款服务。请在购买前仔细考虑。",
+      "noRefundReasons": [
+        "服务已激活",
+        "用户已使用服务",
+        "个人原因取消",
+        "技术问题已解决",
+        "其他情况"
+      ]
+    },
+    "userResponsibilities": {
+      "title": "4. 用户责任",
+      "content": "用户有责任：",
+      "responsibilities": [
+        "遵守当地法律法规",
+        "不将服务用于非法活动",
+        "保护账户安全",
+        "合理使用服务资源",
+        "及时报告任何服务问题"
+      ]
+    },
+    "serviceLimitations": {
+      "title": "5. 服务限制",
+      "content": "我们保留以下权利：",
+      "limitations": [
+        "因违规行为暂停或终止服务",
+        "随时修改服务条款",
+        "必要时限制服务使用",
+        "维护服务质量标准",
+        "更新服务功能和能力"
+      ]
+    },
+    "userAccount": {
+      "title": "4. 用户账户",
+      "registrationRequirements": "注册要求",
+      "registrationRequirementsText": "您必须提供真实、准确、完整的信息来创建账户。",
+      "accountSecurity": "账户安全",
+      "accountSecurityText": "您有责任保护您的账户信息，包括用户名和密码。",
+      "accountUsage": "账户使用",
+      "accountUsageText": "您不得将账户转让给他人，也不得允许他人使用您的账户。"
+    },
+    "userBehavior": {
+      "title": "5. 用户行为规范",
+      "prohibitedActions": [
+        "发布违法、有害、威胁、辱骂、骚扰、诽谤、粗俗、淫秽的内容",
+        "侵犯他人的知识产权或其他权利",
+        "传播病毒、恶意代码或其他有害技术",
+        "干扰或破坏服务的正常运行",
+        "进行任何形式的商业活动，除非获得我们的明确许可"
+      ]
+    },
+    "intellectualProperty": {
+      "title": "6. 知识产权",
+      "ourRights": "我们的权利：",
+      "ourRightsText": "服务中的所有内容，包括但不限于文本、图形、徽标、图标、图像、音频剪辑、数字下载和软件，均受版权、商标和其他知识产权法保护。",
+      "userContent": "用户内容：",
+      "userContentText": "您保留对您上传内容的权利，但授予我们使用、复制、修改、分发和公开展示该内容的许可。"
+    },
+    "privacyProtection": {
+      "title": "7. 隐私保护",
+      "content": "我们重视您的隐私。我们收集、使用和保护您的个人信息的方式在我们的隐私政策中有详细说明。通过使用我们的服务，您同意我们按照隐私政策处理您的信息。"
+    },
+    "serviceChanges": {
+      "title": "8. 服务变更和终止",
+      "serviceModifications": "服务变更：",
+      "serviceModificationsText": "我们保留随时修改、暂停或终止服务的权利，恕不另行通知。",
+      "accountTermination": "账户终止：",
+      "accountTerminationText": "我们可能因违反本协议而终止您的账户，恕不另行通知。"
+    },
+    "disclaimer": {
+      "title": "9. 免责声明",
+      "asIs": "服务按\"现状\"提供：",
+      "asIsText": "我们不保证服务将无中断、及时、安全或无错误。",
+      "liabilityLimitation": "责任限制：",
+      "liabilityLimitationText": "我们不对因使用服务而产生的任何直接、间接、偶然、特殊或后果性损害承担责任。"
+    },
+    "indemnification": {
+      "title": "10. 赔偿",
+      "content": "您同意赔偿我们因您违反本协议或任何适用法律而产生的任何损失、损害、费用和开支。"
+    },
+    "agreementModification": {
+      "title": "11. 协议修改",
+      "content": "我们保留随时修改本协议的权利。重大变更将通过电子邮件或网站公告通知您。继续使用服务即表示您接受修改后的协议。"
+    },
+    "governingLaw": {
+      "title": "12. 适用法律",
+      "content": "本协议受中华人民共和国法律管辖。任何争议应通过友好协商解决，协商不成的，应向有管辖权的人民法院提起诉讼。"
+    }
+  }
+}

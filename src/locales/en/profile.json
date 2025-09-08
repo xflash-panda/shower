@@ -1,0 +1,225 @@
+{
+  "title": "Account Management",
+  "settings": {
+    "title": "Settings Options",
+    "features": "Feature Settings",
+    "security": "Security Settings",
+    "connections": "Third-party Connections"
+  },
+  "telegram": {
+    "bindModal": {
+      "title": "Telegram Bot Binding Steps",
+      "steps": {
+        "step1": {
+          "title": "Step 1: Open Telegram",
+          "description": "Open the Telegram app on your phone or computer and make sure you are logged into your account"
+        },
+        "step2": {
+          "title": "Step 2: Search for Bot",
+          "description": "Search for the bot username in Telegram, or",
+          "openDirectly": "open directly",
+          "chatDescription": "bot chat:",
+          "copyUsernameTooltip": "Copy username"
+        },
+        "step3": {
+          "title": "Step 3: Send Binding Command",
+          "description": "Send the following binding command to the bot to complete account binding",
+          "copyCommandTooltip": "Copy command"
+        }
+      },
+      "navigation": {
+        "previousStep": "Previous",
+        "nextStep": "Next",
+        "completeBinding": "Complete Binding",
+        "updating": "Updating...",
+        "loading": "Loading..."
+      }
+    },
+    "success": {
+      "usernameCopierd": "Bot username copied to clipboard",
+      "commandCopied": "Binding command copied to clipboard"
+    },
+    "error": {
+      "copyUsernameFailed": "Failed to copy bot username",
+      "copyCommandFailed": "Failed to copy binding command"
+    }
+  },
+  "security": {
+    "labels": {
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "basicInfo": "Basic Information",
+      "amountDetails": "Amount Details",
+      "orderRemarks": "Order Remarks"
+    },
+    "validation": {
+      "currentPasswordRequired": "Please enter current password",
+      "newPasswordRequired": "Please enter new password",
+      "passwordTooShort": "Password must be at least 8 characters",
+      "passwordsSame": "New password cannot be the same as current password",
+      "confirmPasswordRequired": "Please enter confirm password",
+      "passwordsNotMatch": "The two passwords entered are inconsistent"
+    },
+    "buttons": {
+      "saving": "Saving...",
+      "save": "Save"
+    },
+    "changePassword": {
+      "title": "Change Password",
+      "currentPassword": "Current Password",
+      "currentPasswordPlaceholder": "Please enter current password",
+      "newPassword": "New Password",
+      "newPasswordPlaceholder": "Please enter new password (at least 8 characters)",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Please enter new password again",
+      "saving": "Saving...",
+      "save": "Save",
+      "success": "Password changed successfully",
+      "error": "Password update failed"
+    },
+    "resetSubscription": {
+      "title": "Reset Subscription Information",
+      "description": "Resetting your subscription information will clear all subscription-related settings and data, but will not affect your account.",
+      "button": "Reset Subscription Information",
+      "success": "Subscription information reset successfully",
+      "error": "Subscription reset failed"
+    },
+    "changeEmail": {
+      "title": "Change Email",
+      "description": "After changing your account email, the old email will no longer be able to log in. Please use the new email to log in.",
+      "currentEmail": "Current Email",
+      "newEmail": "New Email",
+      "newEmailPrefixPlaceholder": "Please enter email prefix",
+      "newEmailPlaceholder": "Please enter new email address",
+      "emailCode": "Email Verification Code",
+      "currentPassword": "Current Password",
+      "currentPasswordPlaceholder": "Please enter current password",
+      "changing": "Changing...",
+      "changeEmail": "Change Email",
+      "cancelChange": "Cancel change?",
+      "returnToSecurity": "Return to Security Settings",
+      "loading": "Loading...",
+      "validation": {
+        "emailPrefixRequired": "Please enter email prefix",
+        "emailPrefixInvalidChars": "Email prefix contains invalid characters",
+        "emailPrefixTooLong": "Email prefix is too long",
+        "emailRequired": "Please enter email address",
+        "emailInvalidFormat": "Email format is incorrect",
+        "emailTooLong": "Email address is too long",
+        "passwordRequired": "Please enter current password",
+        "passwordTooShort": "Password must be at least 8 characters",
+        "emailCodeRequired": "Please enter email verification code",
+        "emailCodeInvalidFormat": "Verification code format is incorrect, please enter 6 digits",
+        "emailAlreadyRegistered": "This email is already registered, please use another email"
+      },
+      "error": {
+        "emailCheckFailed": "Email check failed, please try again later",
+        "fixErrors": "Please fix all validation errors before submitting",
+        "sameEmail": "New email cannot be the same as current email",
+        "changeFailed": "Failed to change email"
+      },
+      "success": {
+        "changeSuccess": "Email changed successfully!"
+      }
+    },
+    "deleteAccount": {
+      "title": "Delete Account",
+      "description": "This operation will permanently delete your account and all related data, and cannot be recovered.",
+      "button": "Delete Account",
+      "modal": {
+        "title": "Confirm Account Deletion",
+        "warning": {
+          "title": "⚠️ Danger Operation Warning",
+          "description": "This operation will permanently delete your account and all related data, <strong>cannot be recovered</strong>. Please enter your email address to confirm deletion."
+        },
+        "emailLabel": "Email Address",
+        "emailPlaceholder": "Please enter your email address",
+        "emailError": "Email address is incorrect, please enter {{email}} to confirm deletion",
+        "cancel": "Cancel",
+        "confirm": "Confirm Deletion",
+        "deleting": "Deleting..."
+      },
+      "success": "Account deleted successfully",
+      "error": "Account deletion failed"
+    }
+  },
+  "connection": {
+    "title": "App Connections",
+    "telegramGroup": {
+      "title": "Telegram Discussion Group",
+      "badge": "Community Chat",
+      "description": "Join our Telegram discussion group to exchange experiences and share tips with other users",
+      "joinButton": "Join Discussion Group"
+    },
+    "telegramBot": {
+      "title": "Telegram Bot",
+      "status": {
+        "bound": "Bound",
+        "unbound": "Unbound"
+      },
+      "description": {
+        "bound": "Bound account: {{telegramId}}, receive service notifications and important messages",
+        "unbound": "Bind Telegram bot to receive account notifications, service status and important messages"
+      },
+      "actions": {
+        "bind": "Bind Bot",
+        "unbind": "Unbind",
+        "unbinding": "Unbinding...",
+        "serviceUnavailable": "Service Unavailable"
+      }
+    }
+  },
+  "features": {
+    "autoRenewal": {
+      "title": "Auto Renewal Settings",
+      "autoRenewal": {
+        "title": "Auto Renewal",
+        "description": "Automatically renew subscription when it expires to ensure uninterrupted service, deducted from wallet balance"
+      },
+      "autoResetTraffic": {
+        "title": "Auto Reset Traffic",
+        "description": "Automatically reset traffic when subscription is not expired but traffic is depleted, ensuring uninterrupted service, deducted from wallet balance"
+      }
+    },
+    "notifications": {
+      "title": "Notification Settings",
+      "emailSubscriptionReminder": {
+        "title": "Subscription Expiry Reminder",
+        "description": "Send email reminders when subscription is about to expire"
+      },
+      "trafficUsageReminder": {
+        "title": "Traffic Usage Reminder",
+        "description": "Send email notifications when traffic usage reaches threshold"
+      }
+    }
+  },
+  "modals": {
+    "changeEmailConfirm": {
+      "title": "Confirm Email Change",
+      "warning": {
+        "title": "Confirm email change?",
+        "description": "This operation will require you to re-verify your identity and log in with the new email"
+      },
+      "cancel": "Cancel",
+      "confirm": "Confirm Change"
+    },
+    "resetSubscriptionConfirm": {
+      "title": "Confirm Reset Subscription Information",
+      "warning": "After resetting subscription information, clients need to update subscription again. This operation will clear all subscription-related settings and data.",
+      "confirmTitle": "Confirm this operation?",
+      "confirmDescription": "After reset, you need to reconfigure all subscription-related settings",
+      "cancel": "Cancel",
+      "confirm": "Confirm Reset",
+      "resetting": "Resetting..."
+    },
+    "telegramUnbindConfirm": {
+      "title": "Telegram Bot Unbind",
+      "warning": "Are you sure you want to unbind the Telegram bot?",
+      "description": "After unbinding, you will not receive Telegram notifications. You can rebind at any time.",
+      "cancel": "Cancel",
+      "confirm": "Confirm Unbind",
+      "unbinding": "Unbinding..."
+    }
+  }
+}

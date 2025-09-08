@@ -1,0 +1,121 @@
+{
+  "title": "Support Tickets",
+  "createSuccess": "Ticket created successfully",
+  "createError": "Failed to create ticket",
+  "create": {
+    "button": "New Ticket",
+    "modal": {
+      "title": "Create New Ticket"
+    },
+    "form": {
+      "title": "Subject",
+      "titlePlaceholder": "Please enter ticket subject",
+      "priority": "Priority",
+      "priorityPlaceholder": "Please select priority",
+      "priorityLow": "Low",
+      "priorityMedium": "Medium",
+      "priorityHigh": "High",
+      "content": "Content",
+      "contentPlaceholder": "Please describe your issue or request in detail",
+      "characterCount": "{{current}} / 2000 characters entered",
+      "submitting": "Submitting...",
+      "submit": "Submit"
+    },
+    "validation": {
+      "titleRequired": "Subject cannot be empty",
+      "titleTooLong": "Subject cannot exceed 20 characters",
+      "titleTooLong100": "Subject cannot exceed 100 characters",
+      "priorityRequired": "Priority cannot be empty",
+      "contentRequired": "Content cannot be empty",
+      "contentTooLong": "Content cannot exceed 2000 characters"
+    }
+  },
+  "list": {
+    "title": "Ticket List",
+    "total": "Total {{total}} tickets"
+  },
+  "success": {
+    "created": "Ticket created successfully",
+    "closed": "Ticket closed successfully",
+    "replySubmitted": "Reply submitted successfully"
+  },
+  "error": {
+    "infoMissing": "Ticket information is missing",
+    "closeFailed": "Failed to close ticket",
+    "replyFailed": "Failed to submit reply. Please try again.",
+    "closeFailedRetry": "Failed to close ticket. Please try again."
+  },
+  "detail": {
+    "title": "Support Ticket",
+    "backToList": "Back to List",
+    "ticketInfo": "Ticket Information",
+    "ticketNumber": "Ticket Number",
+    "status": "Status",
+    "priority": "Priority",
+    "createdAt": "Created At",
+    "updatedAt": "Updated At",
+    "replyCount": "Reply Count",
+    "replies": "replies",
+    "todayConversation": "Today's Conversation",
+    "noConversation": "No conversation records",
+    "noConversationDesc": "Start a conversation, we will reply to you as soon as possible",
+    "ticketClosed": "Ticket Closed",
+    "ticketClosedDesc": "This ticket has been closed, but you can still continue the conversation",
+    "continueConversation": "Continue Conversation",
+    "replyTicket": "Reply Ticket",
+    "reopenAndReply": "Reopen and Reply",
+    "closeTicket": "Close Ticket",
+    "loading": "Loading...",
+    "statusOpen": "Open",
+    "statusClosed": "Closed",
+    "statusUnknown": "Unknown",
+    "priorityLow": "Low",
+    "priorityMedium": "Medium",
+    "priorityHigh": "High",
+    "priorityUnknown": "Unknown"
+  },
+  "closeModal": {
+    "title": "Confirm Close Ticket",
+    "confirmMessage": "Are you sure you want to close this ticket?",
+    "description": "The ticket status will be changed to \"Closed\".",
+    "ticketSubject": "Ticket Subject:",
+    "cancel": "Cancel",
+    "confirm": "Confirm Close",
+    "closing": "Closing..."
+  },
+  "reply": {
+    "modal": {
+      "title": "Reply Ticket"
+    },
+    "form": {
+      "content": "Reply Content",
+      "contentPlaceholder": "Please enter reply content",
+      "cancel": "Cancel",
+      "submit": "Submit Reply",
+      "submitting": "Submitting..."
+    },
+    "validation": {
+      "contentRequired": "Reply content cannot be empty"
+    }
+  },
+  "table": {
+    "number": "Number",
+    "subject": "Subject",
+    "priority": "Priority",
+    "status": "Status",
+    "createdAt": "Created At",
+    "updatedAt": "Updated At",
+    "actions": "Actions",
+    "view": "View",
+    "close": "Close",
+    "viewTitle": "View ticket details",
+    "closeTitle": "Close ticket",
+    "statusOpen": "Open",
+    "statusClosed": "Closed",
+    "statusUnknown": "Unknown",
+    "priorityLow": "Low",
+    "priorityMedium": "Medium",
+    "priorityHigh": "High",
+    "priorityUnknown": "Unknown"
+  }
+}

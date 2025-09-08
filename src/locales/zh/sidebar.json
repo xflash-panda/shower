@@ -1,0 +1,15 @@
+{
+  "menu": {
+    "dashboard": "仪表盘",
+    "knowledge": "使用文档", 
+    "plan": "购买订阅",
+    "order": "我的订单",
+    "invite": "推广返利",
+    "traffic": "流量统计"
+  },
+  "title": {
+    "subscription": "订阅",
+    "finance": "财务",
+    "statistics": "统计"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "title": "Dashboard",
+  "subscription": {
+    "title": "My Subscription",
+    "currentPlan": "Current Plan",
+    "trafficUsage": "Traffic Usage",
+    "expiryDate": "Expiry Date",
+    "trafficReset": "Traffic Reset",
+    "status": {
+      "normal": "Normal",
+      "abnormal": "Abnormal",
+      "expired": "Expired",
+      "longTermValid": "Long-term Valid",
+      "neverExpires": "Never Expires"
+    },
+    "trafficRemaining": "Remaining",
+    "daysToExpiry": "days to expire",
+    "daysToReset": "days to reset",
+    "serviceStatus": "Service Status",
+    "serviceExpired": "Service expired",
+    "packageNoExpiry": "Package has no expiry limit",
+    "expiredCannotReset": "Expired, cannot reset",
+    "noSubscription": {
+      "title": "Start Your Exclusive Experience",
+      "subtitle": "Choose the right subscription plan to unlock all features",
+      "startButton": "Get Started"
+    },
+    "actions": {
+      "renew": "Renew",
+      "renewExpired": "Resubscribe",
+      "resetTraffic": "Reset Traffic",
+      "buyTraffic": "Buy Traffic",
+      "quickImport": "Quick Import",
+      "copySubscriptionLink": "Copy Universal Subscription Link",
+      "importToClient": "Import to",
+      "oneClickImport": "One-click Import",
+      "oneClickImportDesc": "Import directly to client",
+      "copyLinkDesc": "Get configuration link",
+      "qrCodeDesc": "Quick import configuration",
+      "scanQrCode": "Scan QR Code",
+      "noPlatformClients": "No clients available for current platform"
+    },
+    "success": {
+      "linkCopied": "Subscription link copied to clipboard",
+      "linkClicked": "Copy subscription link clicked"
+    },
+    "error": {
+      "copyLinkFailed": "Failed to copy subscription link",
+      "copyToClipboardFailed": "Copy to clipboard failed",
+      "importConfigFailed": "Failed to import configuration. Please try again."
+    }
+  },
+  "client": {
+    "title": "Clients",
+    "searchPlaceholder": "Search clients...",
+    "platformSelection": "Platform Selection",
+    "download": "Download",
+    "downloadClient": "Download Client",
+    "documentation": "Documentation",
+    "viewDocumentation": "View Documentation",
+    "configImport": "Config Import",
+    "oneClickImport": "One-click Import",
+    "oneClickImportDesc": "Import directly to client",
+    "copySubscriptionLink": "Copy Subscription Link",
+    "copyLinkDesc": "Get configuration link",
+    "scanQrCode": "Scan QR Code",
+    "qrCodeDesc": "Quick import configuration",
+    "qrCodeTitle": "Subscription QR Code",
+    "qrCodeDescription": "Scan this QR code to import the subscription configuration into your client"
+  },
+  "nodes": {
+    "title": "Node Status"
+  },
+  "nodeMap": {
+    "title": "Node Map",
+    "clickMarkerForDetails": "Click markers on the map to view node details",
+    "activeNodes": "active nodes",
+    "nodeCount": "Node Count",
+    "loadInfo": "Load"
+  },
+  "notice": {
+    "published": "Published",
+    "confirm": "OK"
+  },
+  "serverNode": {
+    "status": {
+      "online": "Online",
+      "offline": "Offline"
+    },
+    "noTags": "No tags"
+  }
+}

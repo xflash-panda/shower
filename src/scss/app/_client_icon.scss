@@ -1,0 +1,116 @@
+// >>-- Client Icon Styles Start --<<
+
+// 基础客户端图标样式
+.client-icon {
+  width: 52px;
+  height: 52px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: transform 0.2s ease-in-out;
+  display: inline-block;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  // 添加加载状态
+  &.loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  // 添加禁用状态
+  &.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+// 客户端图标映射
+$client-icons: (
+  clash-for-windows: '/assets/images/client/clash_for_windows.png',
+  clash-verge-rev: '/assets/images/client/clash_verge_rev.png',
+  v2rayn: '/assets/images/client/v2rayn.png',
+  karing: '/assets/images/client/karing.png',
+  clashx-pro: '/assets/images/client/clashx_pro.png',
+  sfm: '/assets/images/client/sfm.png',
+  mihomo-party: '/assets/images/client/mihomo_party.png',
+  v2rayng: '/assets/images/client/v2rayng.png',
+  surfboard: '/assets/images/client/surfboard.png',
+  surge: '/assets/images/client/surge.png',
+  shadowrocket: '/assets/images/client/shadowrocket.png',
+  quantumult: '/assets/images/client/quantumult.png',
+  stash: '/assets/images/client/stash.png',
+  loon: '/assets/images/client/loon.png',
+);
+
+// 生成各个客户端图标样式
+@each $name, $image-path in $client-icons {
+  .#{$name}-icon {
+    @extend .client-icon;
+    background-image: url(#{$image-path});
+  }
+}
+
+// 尺寸变体
+.client-icon {
+  &.size-sm {
+    width: 32px;
+    height: 32px;
+  }
+
+  &.size-md {
+    width: 42px;
+    height: 42px;
+  }
+
+  &.size-lg {
+    width: 62px;
+    height: 62px;
+  }
+
+  &.size-xl {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+// 使用项目辅助类的方案
+.client-icon-base {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// 响应式支持
+@media (max-width: 768px) {
+  .client-icon {
+    width: 42px;
+    height: 42px;
+
+    &.size-lg {
+      width: 52px;
+      height: 52px;
+    }
+
+    &.size-xl {
+      width: 62px;
+      height: 62px;
+    }
+  }
+}
+
+// >>-- Client Icon Styles End --<<

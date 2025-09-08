@@ -1,0 +1,22 @@
+{
+  "notFound": {
+    "description": "页面不存在",
+    "backToHome": "返回首页"
+  },
+  "badRequest": {
+    "description": "400 请求错误",
+    "backToHome": "返回首页"
+  },
+  "forbidden": {
+    "description": "403 禁止访问",
+    "backToHome": "返回首页"
+  },
+  "internalServer": {
+    "description": "500 服务器错误",
+    "backToHome": "返回首页"
+  },
+  "serviceUnavailable": {
+    "description": "503 服务不可用",
+    "backToHome": "返回首页"
+  }
+}

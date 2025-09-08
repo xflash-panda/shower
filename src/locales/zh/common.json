@@ -1,0 +1,89 @@
+{
+  "loading": "加载中...",
+  "noData": "暂无数据",
+  "close": "关闭",
+  "cancel": "取消",
+  "confirm": "确认",
+  "save": "保存",
+  "submit": "提交",
+  "optional": "（可选）",
+  "expand": "展开",
+  "collapse": "收起",
+  "validation": {
+    "fixErrors": "请修复所有验证错误后再提交",
+    "required": "此字段为必填项",
+    "emailRequired": "请输入邮箱地址",
+    "emailInvalid": "邮箱格式不正确",
+    "passwordRequired": "请输入密码",
+    "passwordTooShort": "密码至少需要8个字符",
+    "confirmPasswordRequired": "请确认密码",
+    "passwordMismatch": "两次密码输入不一致",
+    "emailCodeRequired": "请输入邮箱验证码",
+    "emailCodeInvalid": "验证码格式不正确，请输入6位数字",
+    "currentPasswordRequired": "请输入当前密码",
+    "newPasswordRequired": "请输入新密码",
+    "newPasswordTooShort": "密码长度至少为8个字符",
+    "newPasswordSameAsCurrent": "新密码不能与当前密码相同",
+    "confirmPasswordMismatch": "两次输入的密码不一致"
+  },
+  "emptyState": {
+    "noData": "暂无可用数据"
+  },
+  "emailCode": {
+    "placeholder": "请输入验证码",
+    "buttonText": "获取验证码",
+    "countdown": "{{seconds}}秒后重试",
+    "sending": {
+      "validatingEmail": "验证邮箱中...",
+      "processingCaptcha": "处理验证中...",
+      "sending": "发送中..."
+    },
+    "success": "验证码发送成功",
+    "error": {
+      "sendFailed": "验证码发送失败",
+      "verificationFailed": "验证失败，请重试"
+    }
+  },
+  "qrCode": {
+    "error": {
+      "generateFailed": "二维码生成失败",
+      "notAvailable": "二维码不可用",
+      "downloadFailed": "二维码下载失败",
+      "noUrlProvided": "未提供二维码生成链接"
+    },
+    "success": {
+      "downloaded": "二维码下载成功"
+    },
+    "download": "下载二维码",
+    "generating": "生成二维码中...",
+    "retry": "重试"
+  },
+  "pagination": {
+    "previous": "上一页",
+    "next": "下一页",
+    "page": "第 {{page}} 页"
+  },
+  "unpaidOrder": {
+    "title": "检测到未支付订单",
+    "message": "您有一个金额为 {{amount}} 的未支付订单，请先完成支付或取消该订单后再进行新的操作。",
+    "cancelOrder": "取消订单",
+    "goToPayment": "去支付",
+    "cancelling": "取消中..."
+  },
+  "knowledgeModal": {
+    "loading": "加载内容中...",
+    "loadFailed": "内容加载失败",
+    "loadError": "加载内容时发生错误，请重试。",
+    "noContent": "暂无内容",
+    "noContentMessage": "此文档没有任何可显示的内容。",
+    "freeContent": "免费内容",
+    "premiumContent": "付费内容",
+    "close": "关闭"
+  },
+  "markdown": {
+    "renderingFailed": "Markdown 渲染失败",
+    "renderingError": "无法渲染 Markdown 内容，请检查内容格式。",
+    "noContent": "暂无内容",
+    "contentTruncated": "内容因长度限制被截断"
+  }
+}

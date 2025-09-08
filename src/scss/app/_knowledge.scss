@@ -1,0 +1,197 @@
+// >>-- Knowledge Page css start --<<
+
+// 知识库页面 DropdownToggle 样式 - 优雅交互效果
+.knowledge-dropdown-toggle.btn {
+  // 与 form-control 保持完全一致的基础样式
+  border: 1px solid rgba(var(--secondary), 0.4) !important;
+  background-color: rgba(var(--white), 1) !important;
+  transition: var(--app-transition) !important;
+  color: rgba(var(--secondary), 1) !important;
+  font-size: 14px !important;
+  padding: 0.8rem 0.75rem !important;
+  text-overflow: ellipsis !important;
+  border-radius: var(--app-border-radius) !important;
+
+  &:hover:not(:focus):not(.show) {
+    background-color: #f8f9fa !important;
+    border-color: rgba(var(--primary), 0.6) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(var(--primary), 0.1) !important;
+    color: rgba(var(--dark), 1) !important;
+  }
+
+  &:focus {
+    // 与 form-control:focus 完全一致
+    color: rgba(var(--dark), 1) !important;
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary), 0.3) !important;
+    border: 1px solid rgba(var(--primary), 0.8) !important;
+    background-color: rgba(var(--white), 1) !important;
+    transform: translateY(0) !important;
+  }
+
+  &:active,
+  &.show {
+    // 激活状态使用与 form-control:focus 完全相同的样式
+    color: rgba(var(--dark), 1) !important;
+    background-color: rgba(var(--white), 1) !important;
+    border: 1px solid rgba(var(--primary), 0.8) !important;
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary), 0.3) !important;
+    transform: translateY(0) !important;
+  }
+
+  // 移除默认的 focus outline
+  &:focus-visible {
+    outline: none !important;
+  }
+
+  // 确保 caret 箭头颜色协调
+  &::after {
+    color: rgba(var(--primary), 1) !important;
+    transition: color 0.2s ease-in-out !important;
+  }
+
+  &:hover::after,
+  &:focus::after,
+  &.show::after {
+    color: rgba(var(--primary), 1) !important;
+  }
+}
+
+// 深夜模式下的 DropdownToggle 优化
+nav.dark-sidebar .knowledge-dropdown-toggle.btn,
+body[class='ltr dark'] .knowledge-dropdown-toggle.btn {
+  background-color: var(--bs-form-control-bg) !important;
+  color: var(--bs-body-color) !important;
+  border: 1px solid var(--bs-border-color) !important;
+
+  &:hover:not(:focus):not(.show) {
+    background-color: var(--bs-tertiary-bg) !important;
+    border-color: rgba(var(--primary), 0.6) !important;
+    color: var(--bs-body-color) !important;
+  }
+
+  &:focus {
+    color: var(--bs-body-color) !important;
+    background-color: var(--bs-form-control-bg) !important;
+    border: 1px solid rgba(var(--primary), 0.8) !important;
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary), 0.3) !important;
+  }
+
+  &:active,
+  &.show {
+    color: var(--bs-body-color) !important;
+    background-color: var(--bs-form-control-bg) !important;
+    border: 1px solid rgba(var(--primary), 0.8) !important;
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary), 0.3) !important;
+  }
+}
+
+// 知识库页面搜索框样式 - 与 DropdownToggle 保持一致
+.knowledge-search-input.form-control {
+  // 基础样式与 form-control 保持一致
+  border: 1px solid rgba(var(--secondary), 0.4) !important;
+  background-color: rgba(var(--white), 1) !important;
+  color: rgba(var(--secondary), 1) !important;
+
+  // Placeholder 样式 - 浅色模式
+  &::placeholder {
+    color: rgba(var(--dark), 0.6) !important;
+    opacity: 1 !important;
+  }
+
+  &:focus {
+    // 与 DropdownToggle 的 focus 样式保持一致
+    color: rgba(var(--dark), 1) !important;
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary), 0.3) !important;
+    border: 1px solid rgba(var(--primary), 0.8) !important;
+    background-color: rgba(var(--white), 1) !important;
+    padding-left: 2.5rem !important; // 保持搜索图标的空间
+  }
+}
+
+// 深夜模式下的搜索框 placeholder 优化
+nav.dark-sidebar .knowledge-search-input.form-control,
+body[class='ltr dark'] .knowledge-search-input.form-control {
+  background-color: var(--bs-form-control-bg) !important;
+  color: var(--bs-body-color) !important;
+  border-color: var(--bs-border-color) !important;
+
+  &::placeholder {
+    color: #9e9fa6 !important;
+    opacity: 1 !important;
+  }
+
+  &:focus {
+    color: var(--bs-body-color) !important;
+    background-color: var(--bs-form-control-bg) !important;
+    border-color: rgba(var(--primary), 0.8) !important;
+
+    &::placeholder {
+      color: #9e9fa6 !important;
+    }
+  }
+}
+
+// 移除 DropdownItem 默认的难看蓝色选中样式
+.knowledge-dropdown-toggle + .dropdown-menu {
+  .dropdown-item {
+    transition: all 0.2s ease-in-out !important;
+
+    &:hover {
+      background-color: rgba(var(--primary), 0.1) !important;
+      color: rgba(var(--dark), 1) !important;
+    }
+
+    &:focus {
+      background-color: rgba(var(--primary), 0.1) !important;
+      color: rgba(var(--dark), 1) !important;
+      outline: none !important;
+    }
+
+    &:active {
+      background-color: rgba(var(--primary), 0.15) !important;
+      color: rgba(var(--dark), 1) !important;
+    }
+
+    // 移除默认的蓝色选中背景
+    &.active {
+      background-color: rgba(var(--primary), 0.2) !important;
+      color: rgba(var(--dark), 1) !important;
+    }
+  }
+}
+
+// 深夜模式下的 DropdownMenu 和 DropdownItem 优化
+nav.dark-sidebar .knowledge-dropdown-toggle + .dropdown-menu,
+body[class='ltr dark'] .knowledge-dropdown-toggle + .dropdown-menu {
+  background-color: var(--bs-form-control-bg) !important;
+  border-color: var(--bs-border-color) !important;
+  color: var(--bs-body-color) !important;
+}
+
+nav.dark-sidebar .knowledge-dropdown-toggle + .dropdown-menu .dropdown-item,
+body[class='ltr dark'] .knowledge-dropdown-toggle + .dropdown-menu .dropdown-item {
+  color: var(--bs-body-color) !important;
+
+  &:hover {
+    background-color: rgba(var(--primary), 0.15) !important;
+    color: var(--bs-body-color) !important;
+  }
+
+  &:focus {
+    background-color: rgba(var(--primary), 0.15) !important;
+    color: var(--bs-body-color) !important;
+  }
+
+  &:active {
+    background-color: rgba(var(--primary), 0.2) !important;
+    color: var(--bs-body-color) !important;
+  }
+
+  &.active {
+    background-color: rgba(var(--primary), 0.25) !important;
+    color: var(--bs-body-color) !important;
+  }
+}
+
+// >>-- Knowledge Page css end --<<

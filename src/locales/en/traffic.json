@@ -1,0 +1,39 @@
+{
+  "title": "Traffic Statistics",
+  "stats": {
+    "totalUpload": "Total Upload Traffic",
+    "totalDownload": "Total Download Traffic",
+    "totalTraffic": "Total Traffic",
+    "totalRequests": "Total Requests",
+    "avgDailyTraffic": "Avg Daily Traffic",
+    "statisticsDays": "Statistics Days"
+  },
+  "heatMap": {
+    "title": "Traffic Heat Map",
+    "tooltip": {
+      "totalTraffic": "Total Traffic",
+      "uploadTraffic": "Upload Traffic",
+      "downloadTraffic": "Download Traffic",
+      "requestCount": "Request Count"
+    },
+    "weekDays": {
+      "monday": "Mon",
+      "tuesday": "Tue",
+      "wednesday": "Wed",
+      "thursday": "Thu",
+      "friday": "Fri",
+      "saturday": "Sat",
+      "sunday": "Sun"
+    }
+  },
+  "log": {
+    "title": "Traffic Log",
+    "table": {
+      "date": "Date",
+      "requestCount": "Request Count",
+      "uploadTraffic": "Upload Traffic",
+      "downloadTraffic": "Download Traffic",
+      "totalTraffic": "Total Traffic"
+    }
+  }
+}

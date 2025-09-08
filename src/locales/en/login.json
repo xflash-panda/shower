@@ -1,0 +1,30 @@
+{
+  "success": "Login successful",
+  "form": {
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "login": "Login",
+    "loggingIn": "Logging in...",
+    "noAccount": "Don't have an account?",
+    "registerNow": "Sign up now",
+    "otherMethods": "Other login methods",
+    "appleLogin": "Apple Login",
+    "googleLogin": "Google Login"
+  },
+  "validation": {
+    "emailRequired": "Email cannot be empty",
+    "emailInvalid": "Please enter a valid email address",
+    "passwordRequired": "Password cannot be empty",
+    "passwordTooShort": "Password must be at least 8 characters"
+  },
+  "error": {
+    "loginFailed": "Login failed, please try again",
+    "networkError": "Network error, please check your connection and try again",
+    "googleNotAuthorized": "Google account not authorized, please try another account or contact support",
+    "googleLoginFailed": "Google login failed, please try again",
+    "appleNotAuthorized": "Apple account not authorized, please try another account or contact support",
+    "appleLoginFailed": "Apple login failed, please try again"
+  }
+}

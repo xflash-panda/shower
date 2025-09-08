@@ -1,0 +1,28 @@
+{
+  "title": "使用文档",
+  "search": {
+    "placeholder": "输入关键词, 搜索文档标题...",
+    "loading": "加载中..."
+  },
+  "filter": {
+    "allCategories": "全部分类",
+    "reset": "重置筛选"
+  },
+  "stats": {
+    "filteredResults": "筛选结果：",
+    "allDocuments": "全部文档：",
+    "documentsCount": "个文档",
+    "categoryCount": "个"
+  },
+  "document": {
+    "free": "免费阅读",
+    "subscription": "需要订阅",
+    "view": "查看",
+    "subscribe": "订阅"
+  },
+  "empty": {
+    "noData": "No data",
+    "noSearchResults": "没有找到包含 \"{{searchTerm}}\" 的文档",
+    "noCategoryDocuments": "当前分类下暂无文档"
+  }
+}

@@ -1,0 +1,55 @@
+// *** Core Foundation ***
+@import 'app/variables';
+@import 'app/reboot';
+@import 'app/helper_classes';
+
+// *** Layout Components ***
+@import 'app/header';
+@import 'app/nav';
+@import 'app/main';
+@import 'app/footer';
+@import 'app/app';
+
+// *** UI Components ***
+@import 'app/button';
+@import 'app/badges';
+@import 'app/tabs';
+@import 'app/card';
+@import 'app/icon';
+@import 'app/loaders';
+@import 'app/modals';
+@import 'app/tables';
+@import 'app/form';
+@import 'app/dropdown';
+@import 'app/alert';
+@import 'app/select';
+@import 'app/notifications';
+@import 'app/scrollbar';
+@import 'app/animation';
+
+// *** Feature Pages ***
+@import 'app/login';
+@import 'app/error';
+@import 'app/profile';
+@import 'app/plan';
+@import 'app/orders';
+@import 'app/ticket';
+@import 'app/ticket_details';
+@import 'app/knowledge';
+@import 'app/setting';
+
+// *** Third-party Components ***
+@import 'app/slick_theme';
+@import 'app/slick_slider';
+
+// *** Project Specific ***
+@import 'app/client_icon'; // 客户端图标样式
+@import 'app/dashboard_client'; // 仪表盘客户端
+@import 'app/markdown'; // Markdown 渲染器样式
+@import 'app/dashboard_node_status'; // 仪表盘节点状态
+@import 'app/payment-icons'; // 支付图标
+@import 'app/order_class'; // 订单相关样式
+
+// *** Optional/Conditional ***
+@import 'app/pricing'; // 如果使用定价表格
+@import 'app/rtl'; // RTL 支持（如果需要）

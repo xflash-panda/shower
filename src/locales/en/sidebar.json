@@ -1,0 +1,15 @@
+{
+  "menu": {
+    "dashboard": "Dashboard",
+    "knowledge": "Documentation",
+    "plan": "Subscription",
+    "order": "My Orders", 
+    "invite": "Referral Program",
+    "traffic": "Traffic Statistics"
+  },
+  "title": {
+    "subscription": "Subscription",
+    "finance": "Finance",
+    "statistics": "Statistics"
+  }
+}

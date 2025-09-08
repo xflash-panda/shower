@@ -1,0 +1,121 @@
+{
+  "title": "工单反馈",
+  "createSuccess": "工单创建成功",
+  "createError": "工单创建失败",
+  "create": {
+    "button": "新建工单",
+    "modal": {
+      "title": "新建工单"
+    },
+    "form": {
+      "title": "主题",
+      "titlePlaceholder": "请输入工单主题",
+      "priority": "优先级",
+      "priorityPlaceholder": "请选择优先级",
+      "priorityLow": "低",
+      "priorityMedium": "中",
+      "priorityHigh": "高",
+      "content": "内容",
+      "contentPlaceholder": "请详细描述您的问题或需求",
+      "characterCount": "已输入 {{current}} / 2000 字符",
+      "submitting": "提交中...",
+      "submit": "提交"
+    },
+    "validation": {
+      "titleRequired": "主题不能为空",
+      "titleTooLong": "主题不能超过20个字符",
+      "titleTooLong100": "主题不能超过100个字符",
+      "priorityRequired": "优先级不能为空",
+      "contentRequired": "内容不能为空",
+      "contentTooLong": "内容不能超过2000个字符"
+    }
+  },
+  "list": {
+    "title": "工单列表",
+    "total": "共 {{total}} 条工单"
+  },
+  "success": {
+    "created": "工单创建成功",
+    "closed": "工单关闭成功",
+    "replySubmitted": "回复提交成功"
+  },
+  "error": {
+    "infoMissing": "工单信息缺失",
+    "closeFailed": "工单关闭失败",
+    "replyFailed": "回复提交失败，请重试",
+    "closeFailedRetry": "工单关闭失败，请重试"
+  },
+  "detail": {
+    "title": "工单反馈",
+    "backToList": "返回列表",
+    "ticketInfo": "工单信息",
+    "ticketNumber": "工单编号",
+    "status": "状态",
+    "priority": "优先级",
+    "createdAt": "创建时间",
+    "updatedAt": "更新时间",
+    "replyCount": "回复数量",
+    "replies": "条",
+    "todayConversation": "今日对话",
+    "noConversation": "暂无对话记录",
+    "noConversationDesc": "开始对话，我们会尽快回复您",
+    "ticketClosed": "工单已关闭",
+    "ticketClosedDesc": "此工单已被关闭，但您仍可以继续对话",
+    "continueConversation": "继续对话",
+    "replyTicket": "回复工单",
+    "reopenAndReply": "重新打开并回复",
+    "closeTicket": "关闭工单",
+    "loading": "加载中...",
+    "statusOpen": "打开",
+    "statusClosed": "关闭",
+    "statusUnknown": "未知",
+    "priorityLow": "低",
+    "priorityMedium": "中",
+    "priorityHigh": "高",
+    "priorityUnknown": "未知"
+  },
+  "closeModal": {
+    "title": "确认关闭工单",
+    "confirmMessage": "确定要关闭这个工单吗？",
+    "description": "工单状态将变为\"已关闭\"。",
+    "ticketSubject": "工单主题:",
+    "cancel": "取消",
+    "confirm": "确认关闭",
+    "closing": "关闭中..."
+  },
+  "reply": {
+    "modal": {
+      "title": "回复工单"
+    },
+    "form": {
+      "content": "回复内容",
+      "contentPlaceholder": "请输入回复内容",
+      "cancel": "取消",
+      "submit": "提交回复",
+      "submitting": "提交中..."
+    },
+    "validation": {
+      "contentRequired": "回复内容不能为空"
+    }
+  },
+  "table": {
+    "number": "编号",
+    "subject": "主题",
+    "priority": "优先级",
+    "status": "状态",
+    "createdAt": "新建时间",
+    "updatedAt": "更新时间",
+    "actions": "操作",
+    "view": "查看",
+    "close": "关闭",
+    "viewTitle": "查看工单详情",
+    "closeTitle": "关闭工单",
+    "statusOpen": "打开",
+    "statusClosed": "关闭",
+    "statusUnknown": "未知",
+    "priorityLow": "低",
+    "priorityMedium": "中",
+    "priorityHigh": "高",
+    "priorityUnknown": "未知"
+  }
+}

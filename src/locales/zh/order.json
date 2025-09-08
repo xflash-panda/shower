@@ -1,0 +1,129 @@
+{
+  "title": "我的订单",
+  "list": {
+    "title": "订单列表",
+    "total": "共 {{total}} 条订单"
+  },
+  "detail": {
+    "title": "订单",
+    "labels": {
+      "orderStatus": "订单状态",
+      "orderNumber": "订单号",
+      "createTime": "创建时间",
+      "paymentTime": "支付时间",
+      "discountAmount": "优惠金额",
+      "balancePayment": "余额支付",
+      "handlingFee": "手续费",
+      "orderAmount": "订单金额",
+      "basicInfo": "基础信息",
+      "amountDetails": "金额详情",
+      "orderRemarks": "订单备注"
+    },
+    "status": {
+      "pending": "待支付",
+      "processing": "开通中",
+      "cancelled": "已取消",
+      "completed": "已完成",
+      "credited": "已折抵",
+      "unknown": "未知状态"
+    },
+    "actions": {
+      "copyOrderNumber": "复制订单号",
+      "viewOrderDetails": "查看订单详情",
+      "closeOrder": "关闭订单"
+    },
+    "backToList": "返回列表",
+    "orderInfo": "订单信息",
+    "subscriptionInfo": "订阅信息",
+    "rechargeInfo": "充值信息",
+    "paymentMethod": "支付方式",
+    "paymentInfo": "支付信息",
+    "closeOrder": "关闭订单",
+    "sslSecurity": "256位SSL加密保护您的支付安全",
+    "testCelebration": "🎉 测试庆祝效果"
+  },
+  "modal": {
+    "closeOrder": {
+      "title": "确认关闭订单",
+      "confirmMessage": "确定要关闭这个订单吗？",
+      "warningMessage": "订单关闭后将无法继续支付，请谨慎操作。",
+      "orderNumber": "订单号",
+      "cancel": "取消",
+      "confirm": "确认关闭",
+      "closing": "关闭中..."
+    }
+  },
+  "table": {
+    "headers": {
+      "orderNumber": "订单号",
+      "amount": "金额",
+      "status": "状态",
+      "createTime": "创建时间",
+      "actions": "操作"
+    },
+    "status": {
+      "pending": "待支付",
+      "processing": "待确认",
+      "cancelled": "已关闭",
+      "completed": "已完成",
+      "credited": "已销毁"
+    },
+    "actions": {
+      "view": "查看",
+      "close": "关闭"
+    }
+  },
+  "celebration": {
+    "title": "🎉 支付成功！",
+    "message": "您的订单已完成支付，金额为 {{amount}}",
+    "countdown": "{{seconds}} 秒后自动返回",
+    "actions": {
+      "viewOrders": "查看订单",
+      "backToDashboard": "返回首页"
+    },
+    "notification": {
+      "title": "🎉 支付成功！",
+      "body": "您的订单已完成支付，金额：{{amount}}"
+    }
+  },
+  "payment": {
+    "orderAmount": "订单金额",
+    "handlingFee": "支付手续费",
+    "finalAmount": "实付金额",
+    "processing": "处理中...",
+    "payNow": "立即支付 {{amount}}",
+    "updating": "更新中...",
+    "recalculating": "正在重新计算支付金额...",
+    "updatingMethod": "正在更新支付方式...",
+    "handlingFeeFixed": "手续费 ¥{{amount}}",
+    "handlingFeePercentage": "手续费 {{percentage}}%",
+    "error": {
+      "selectMethod": "请选择支付方式",
+      "responseFormat": "支付响应格式异常",
+      "initiateFailed": "支付发起失败",
+      "initiateFailedRetry": "支付发起失败，请重试",
+      "updateMethodFailed": "更新支付方式失败"
+    },
+    "info": {
+      "redirecting": "正在跳转到支付平台..."
+    }
+  },
+  "subscription": {
+    "rechargeType": "充值类型",
+    "balanceRecharge": "账户余额充值",
+    "rechargeAmount": "充值金额",
+    "creditedAmount": "到账金额",
+    "plan": "订阅计划",
+    "cycle": "订阅周期",
+    "dataQuota": "流量配额",
+    "unlimited": "无限制"
+  },
+  "toast": {
+    "success": {
+      "copied": "订单号复制成功"
+    },
+    "error": {
+      "copyFailed": "订单号复制失败"
+    }
+  }
+}

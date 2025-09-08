@@ -1,0 +1,121 @@
+{
+  "title": "My Orders",
+  "list": {
+    "title": "Order List",
+    "total": "Total {{total}} orders"
+  },
+  "detail": {
+    "title": "Order",
+    "labels": {
+      "orderStatus": "Order Status",
+      "orderNumber": "Order Number",
+      "createTime": "Create Time",
+      "paymentTime": "Payment Time",
+      "discountAmount": "Discount Amount",
+      "balancePayment": "Balance Payment",
+      "handlingFee": "Handling Fee",
+      "orderAmount": "Order Amount",
+      "basicInfo": "Basic Information",
+      "amountDetails": "Amount Details",
+      "orderRemarks": "Order Remarks"
+    },
+    "status": {
+      "pending": "Pending Payment",
+      "processing": "Processing",
+      "cancelled": "Cancelled",
+      "completed": "Completed",
+      "credited": "Credited",
+      "unknown": "Unknown Status"
+    },
+    "actions": {
+      "copyOrderNumber": "Copy Order Number",
+      "viewOrderDetails": "View Order Details",
+      "closeOrder": "Close Order"
+    },
+    "backToList": "Back to List",
+    "orderInfo": "Order Information",
+    "subscriptionInfo": "Subscription Information",
+    "rechargeInfo": "Recharge Information",
+    "paymentMethod": "Payment Method",
+    "paymentInfo": "Payment Information",
+    "closeOrder": "Close Order",
+    "sslSecurity": "256-bit SSL encryption protects your payment security",
+    "testCelebration": "🎉 Test Celebration Effect"
+  },
+  "modal": {
+    "closeOrder": {
+      "title": "Confirm Close Order",
+      "confirmMessage": "Are you sure you want to close this order?",
+      "warningMessage": "The order cannot be paid after closing, please operate with caution.",
+      "orderNumber": "Order Number",
+      "cancel": "Cancel",
+      "confirm": "Confirm Close",
+      "closing": "Closing..."
+    }
+  },
+  "table": {
+    "headers": {
+      "orderNumber": "Order Number",
+      "amount": "Amount",
+      "status": "Status",
+      "createTime": "Create Time",
+      "actions": "Actions"
+    },
+    "status": {
+      "pending": "Pending Payment",
+      "processing": "Processing",
+      "cancelled": "Cancelled",
+      "completed": "Completed",
+      "credited": "Credited"
+    },
+    "actions": {
+      "view": "View",
+      "close": "Close"
+    }
+  },
+  "celebration": {
+    "title": "🎉 Payment Successful!",
+    "message": "Your order has been paid successfully, amount: {{amount}}",
+    "countdown": "{{seconds}} seconds before auto return",
+    "actions": {
+      "viewOrders": "View Orders",
+      "backToDashboard": "Back to Dashboard"
+    },
+    "notification": {
+      "title": "🎉 Payment Successful!",
+      "body": "Your order has been paid successfully, amount: {{amount}}"
+    }
+  },
+  "payment": {
+    "orderAmount": "Order Amount",
+    "handlingFee": "Payment Handling Fee",
+    "finalAmount": "Final Amount",
+    "processing": "Processing...",
+    "payNow": "Pay Now {{amount}}",
+    "updating": "Updating...",
+    "recalculating": "Recalculating payment amount...",
+    "updatingMethod": "Updating payment method...",
+    "handlingFeeFixed": "Handling fee ¥{{amount}}",
+    "handlingFeePercentage": "Handling fee {{percentage}}%",
+    "error": {
+      "selectMethod": "Please select a payment method",
+      "responseFormat": "Payment response format error",
+      "initiateFailed": "Payment initiation failed",
+      "initiateFailedRetry": "Payment initiation failed, please try again",
+      "updateMethodFailed": "Failed to update payment method"
+    },
+    "info": {
+      "redirecting": "Redirecting to payment platform..."
+    }
+  },
+  "subscription": {
+    "rechargeType": "Recharge Type",
+    "balanceRecharge": "Account Balance Recharge",
+    "rechargeAmount": "Recharge Amount",
+    "creditedAmount": "Credited Amount",
+    "plan": "Subscription Plan",
+    "cycle": "Subscription Cycle",
+    "dataQuota": "Data Quota",
+    "unlimited": "Unlimited"
+  }
+}

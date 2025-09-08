@@ -1,0 +1,137 @@
+{
+  "title": "购买订阅",
+  "selector": {
+    "title": "订阅计划",
+    "soldOut": "已售罄",
+    "nearingSoldOut": "即将售罄",
+    "trafficQuota": "流量配额"
+  },
+  "overview": {
+    "title": "订阅规格",
+    "currentPlan": "当前选择的套餐",
+    "features": "特性"
+  },
+  "cycle": {
+    "title": "订阅周期"
+  },
+  "order": {
+    "title": "订单详情",
+    "createSuccess": "订单已创建成功，正在跳转到支付页面",
+    "cancelSuccess": "订单已取消，您现在可以创建新订单",
+    "cancelError": "取消订单失败",
+    "planType": "套餐类型",
+    "trafficQuota": "流量额度",
+    "coupon": "优惠券",
+    "useCoupon": "使用优惠券",
+    "originalPrice": "原价",
+    "discount": "优惠减免",
+    "finalAmount": "应付金额",
+    "amount": "金额",
+    "processing": "处理中...",
+    "placeOrder": "立即下单",
+    "orderNote": "点击下单后将创建订单并跳转到支付页面"
+  },
+  "coupon": {
+    "modal": {
+      "title": "使用优惠券",
+      "label": "优惠券代码",
+      "placeholder": "请输入优惠券代码",
+      "close": "关闭",
+      "validate": "立即验证",
+      "validating": "验证中...",
+      "invalid": "优惠券代码无效或已过期，请检查后重试",
+      "enterCode": "请输入优惠券代码"
+    },
+    "success": "优惠券应用成功！",
+    "discount": {
+      "fixed": "立减",
+      "percentage": "折扣",
+      "currency": "元"
+    },
+    "error": {
+      "networkError": "网络错误，请稍后重试"
+    },
+    "actions": {
+      "removeCoupon": "移除优惠券"
+    }
+  },
+  "basicInfo": {
+    "labels": {
+      "trafficQuota": "流量额度",
+      "nodeRegions": "节点地区",
+      "renewable": "可续费",
+      "nodeExitIPs": "节点出口IP",
+      "totalNodes": "节点总数",
+      "nodeProtocols": "节点协议",
+      "planFeatures": "套餐特性"
+    },
+    "values": {
+      "supported": "支持",
+      "notSupported": "不支持",
+      "countries": "个国家/地区",
+      "ips": "个 IP",
+      "nodes": "个节点",
+      "directNodes": "直连",
+      "relayNodes": "中转",
+      "noFeatures": "暂无特性说明"
+    }
+  },
+  "nodeOverview": {
+    "headers": {
+      "region": "地区",
+      "nodeCount": "节点数量",
+      "nodeCountShort": "节点",
+      "exitIPCount": "出口IP数量",
+      "exitIPCountShort": "IP",
+      "routeType": "线路类型",
+      "routeTypeShort": "类型"
+    },
+    "routeTypes": {
+      "direct": "直连",
+      "relay": "中转",
+      "hybrid": "混合"
+    },
+    "units": {
+      "nodes": "个节点",
+      "exitIPs": "个出口IP"
+    }
+  },
+  "subscriptionChange": {
+    "title": "订阅变更确认",
+    "detected": "检测到",
+    "warning": "，变更订阅会导致当前订阅被新订阅完全替换，原订阅的剩余流量和时间将不会保留。",
+    "changeTypes": {
+      "plan": "套餐变更",
+      "type": "订阅类型变化",
+      "both": "套餐变更 + 订阅类型变化"
+    },
+    "subscriptionTypes": {
+      "oneTime": "一次性订阅",
+      "recurring": "周期性订阅"
+    },
+    "actions": {
+      "cancel": "取消",
+      "confirm": "确认"
+    }
+  },
+  "trafficDepleted": {
+    "title": "流量耗尽提醒",
+    "message": "您的流量已耗尽",
+    "warning": "请注意，购买此套餐仅会延长您的订阅期限，但不会重置已使用的流量额度。您确定要继续下单吗？",
+    "actions": {
+      "cancel": "取消",
+      "confirm": "确认下单"
+    }
+  },
+  "specification": {
+    "basicInfo": "基础信息",
+    "nodeOverview": "节点概览",
+    "loading": "加载中...",
+    "noData": "暂无数据",
+    "loadFailed": "节点数据加载失败"
+  },
+  "error": {
+    "invalidSelection": "系统错误：套餐选择无效",
+    "submissionFailed": "订单提交失败"
+  }
+}

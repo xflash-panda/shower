@@ -1,0 +1,174 @@
+// 用户协议页面样式
+.terms-content {
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  line-height: 1.6;
+  color: #495057;
+
+  h5 {
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      border-radius: 1px;
+    }
+  }
+
+  p {
+    margin-bottom: 1rem;
+    text-align: justify;
+    font-size: 0.95rem;
+  }
+
+  ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 0.5rem;
+
+      &::before {
+        content: '•';
+        color: #667eea;
+        font-weight: bold;
+        position: absolute;
+        left: -1rem;
+      }
+    }
+  }
+
+  .mb-4 {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f8f9fa;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+  }
+
+  .text-muted {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid #667eea;
+    margin-top: 2rem;
+  }
+}
+
+// 卡片样式增强
+.card {
+  border: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+
+  .card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1.5rem;
+
+    .card-title {
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+  }
+
+  .card-body {
+    padding: 2rem;
+    background: #fafbfc;
+  }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .terms-content {
+    .mb-4 {
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h5 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  .card {
+    .card-header {
+      padding: 1rem;
+
+      .card-title {
+        font-size: 1.25rem;
+      }
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+  }
+}
+
+// 滚动条样式
+.terms-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terms-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.terms-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+
+  &:hover {
+    background: #a8a8a8;
+  }
+}
+
+// 打印样式
+@media print {
+  .terms-content {
+    .mb-4 {
+      box-shadow: none;
+      border: 1px solid #ddd;
+      break-inside: avoid;
+    }
+
+    h5 {
+      color: #000;
+      border-bottom: 1px solid #000;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "success": "登录成功",
+  "form": {
+    "email": "邮箱",
+    "password": "密码",
+    "rememberMe": "记住我",
+    "forgotPassword": "忘记密码？",
+    "login": "登录",
+    "loggingIn": "登录中...",
+    "noAccount": "还没有账号？",
+    "registerNow": "立即注册",
+    "otherMethods": "其他登录方式",
+    "appleLogin": "Apple 登录",
+    "googleLogin": "Google 登录"
+  },
+  "validation": {
+    "emailRequired": "邮箱不能为空",
+    "emailInvalid": "请输入有效的邮箱地址",
+    "passwordRequired": "密码不能为空",
+    "passwordTooShort": "密码长度不能少于8位"
+  },
+  "error": {
+    "loginFailed": "登录失败，请重试",
+    "networkError": "网络错误，请检查网络连接后重试",
+    "googleNotAuthorized": "Google账号未授权，请尝试其他账号或联系支持",
+    "googleLoginFailed": "Google登录失败，请重试",
+    "appleNotAuthorized": "Apple账号未授权，请尝试其他账号或联系支持",
+    "appleLoginFailed": "Apple登录失败，请重试"
+  }
+}

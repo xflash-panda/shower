@@ -1,0 +1,22 @@
+{
+  "notFound": {
+    "description": "Page not found",
+    "backToHome": "Back to home"
+  },
+  "badRequest": {
+    "description": "400 Bad Request",
+    "backToHome": "Back to home"
+  },
+  "forbidden": {
+    "description": "403 Forbidden",
+    "backToHome": "Back to home"
+  },
+  "internalServer": {
+    "description": "500 Internal Server Error",
+    "backToHome": "Back to home"
+  },
+  "serviceUnavailable": {
+    "description": "503 Service Unavailable",
+    "backToHome": "Back to home"
+  }
+}

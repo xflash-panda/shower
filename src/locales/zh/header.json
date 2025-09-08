@@ -1,0 +1,16 @@
+{
+  "menu": {
+    "wallet": "钱包管理",
+    "totalBalance": "总额",
+    "commissionBalance": "推广佣金",
+    "accountBalance": "账户余额",
+    "profile": "账户管理",
+    "ticket": "工单反馈",
+    "logout": "登出"
+  },
+  "toast": {
+    "auth": {
+      "logoutSuccess": "登出成功"
+    }
+  }
+}

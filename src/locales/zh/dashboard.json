@@ -1,0 +1,97 @@
+{
+  "title": "仪表盘",
+  "subscription": {
+    "title": "我的订阅",
+    "currentPlan": "当前套餐",
+    "trafficUsage": "流量使用",
+    "expiryDate": "到期时间",
+    "trafficReset": "流量重置",
+    "status": {
+      "normal": "正常",
+      "abnormal": "异常",
+      "expired": "已过期",
+      "longTermValid": "长期有效",
+      "neverExpires": "永不过期"
+    },
+    "trafficRemaining": "剩余",
+    "daysToExpiry": "天到期",
+    "daysToReset": "天重置",
+    "serviceStatus": "服务状态",
+    "serviceExpired": "服务已过期",
+    "packageNoExpiry": "流量包无到期限制",
+    "expiredCannotReset": "已过期无法重置",
+    "noSubscription": {
+      "title": "开启您的专属体验",
+      "subtitle": "选择合适的订阅计划，解锁全部功能",
+      "startButton": "立即开启"
+    },
+    "actions": {
+      "renew": "续期",
+      "renewExpired": "续费",
+      "resetTraffic": "重置流量",
+      "buyTraffic": "购买流量",
+      "quickImport": "快速导入",
+      "copySubscriptionLink": "复制通用订阅链接",
+      "importToClient": "导入到",
+      "oneClickImport": "一键导入",
+      "oneClickImportDesc": "直接导入到客户端",
+      "copyLinkDesc": "获取配置链接",
+      "qrCodeDesc": "快速导入配置",
+      "scanQrCode": "扫描二维码",
+      "noPlatformClients": "当前平台暂无可用客户端"
+    },
+    "success": {
+      "linkCopied": "订阅链接已复制到剪贴板",
+      "linkClicked": "复制订阅链接成功"
+    },
+    "error": {
+      "copyLinkFailed": "复制订阅链接失败",
+      "copyToClipboardFailed": "复制到剪贴板失败",
+      "importConfigFailed": "导入配置失败，请重试"
+    }
+  },
+  "client": {
+    "title": "客户端",
+    "searchPlaceholder": "搜索客户端...",
+    "platformSelection": "平台选择",
+    "download": "下载",
+    "downloadClient": "下载客户端",
+    "documentation": "文档",
+    "viewDocumentation": "查看文档",
+    "configImport": "配置导入",
+    "oneClickImport": "一键导入",
+    "oneClickImportDesc": "直接导入到客户端",
+    "copySubscriptionLink": "复制订阅链接",
+    "copyLinkDesc": "获取配置链接",
+    "scanQrCode": "扫描二维码",
+    "qrCodeDesc": "快速导入配置",
+    "qrCodeTitle": "订阅二维码",
+    "qrCodeDescription": "扫描此二维码将订阅配置导入到您的客户端"
+  },
+  "nodes": {
+    "title": "节点状态"
+  },
+  "nodeMap": {
+    "title": "节点地图",
+    "clickMarkerForDetails": "点击地图上的标记点查看节点详情",
+    "activeNodes": "个活跃节点",
+    "nodeCount": "节点数量",
+    "loadInfo": "负载"
+  },
+  "notice": {
+    "published": "发布时间",
+    "confirm": "确定"
+  },
+  "serverNode": {
+    "status": {
+      "online": "在线",
+      "offline": "离线"
+    },
+    "noTags": "无标签"
+  },
+  "toast": {
+    "error": {
+      "importFailed": "配置导入失败"
+    }
+  }
+}

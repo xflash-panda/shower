@@ -1,0 +1,135 @@
+{
+  "title": "Terms of Service",
+  "subtitle": "Please read the following terms and conditions carefully",
+  "lastUpdated": "Last updated: January 1, 2024",
+  "importantNotice": "Important Notice:",
+  "importantNoticeText": "By accessing or using our services, you agree to comply with all terms and conditions of this agreement.",
+  "finalReminder": "Final Reminder",
+  "finalReminderText": "Before you click the purchase button and complete payment, please carefully read this refund policy. After payment is completed, it means you fully understand and accept our no-refund policy and cannot request a refund for any reason.",
+  "specialCircumstances": "Special Circumstances:",
+  "specialCircumstancesText": "Including but not limited to account suspension, service interruption, etc., none of these constitute grounds for refund.",
+  "sections": {
+    "introduction": {
+      "title": "1. Introduction",
+      "content": "Welcome to our website proxy access service. These Terms of Service (\"Terms\") govern your use of our services. By accessing or using our services, you agree to be bound by these Terms."
+    },
+    "serviceDescription": {
+      "title": "2. Service Description",
+      "content": "We provide website proxy access services to help users access restricted websites and improve network performance. Our services include:",
+      "services": [
+        "Website proxy access service",
+        "Network acceleration and optimization",
+        "User account management",
+        "Technical support service",
+        "Other related proxy services"
+      ]
+    },
+    "refundPolicy": {
+      "title": "3. Refund Policy",
+      "importantStatement": "Important Notice:",
+      "noRefund": "All purchased services do not support refunds.",
+      "noRefundTitle": "No Refunds",
+      "noRefundText": "Once payment is completed, we do not provide refund services for any reason.",
+      "immediateEffect": "Immediate Effect",
+      "immediateEffectText": "After successful payment, the service takes effect immediately and cannot be revoked or refunded.",
+      "purchaseConfirmation": "Purchase Confirmation",
+      "purchaseConfirmationText": "Payment indicates that you have confirmed the purchase and agree to the no-refund policy.",
+      "detailedExplanation": "Detailed explanation of refund policy:",
+      "serviceNature": "Service Nature:",
+      "serviceNatureText": "Due to the instant and irreversible nature of our website proxy access service, once the service starts, it cannot be revoked.",
+      "technicalLimitations": "Technical Limitations:",
+      "technicalLimitationsText": "Service resources are allocated immediately after purchase and cannot be recovered or transferred.",
+      "usageStatus": "Usage Status:",
+      "usageStatusText": "Regardless of whether you actually use the service, no refunds are provided.",
+      "serviceQuality": "Service Quality:",
+      "serviceQualityText": "If you encounter service quality issues, we will provide technical support, but no refunds.",
+      "refundExceptions": "Refund Exceptions:",
+      "refundExceptionsText": "In any case, we do not provide refund services. Please consider carefully before purchasing.",
+      "noRefundReasons": [
+        "Service has been activated",
+        "User has used the service",
+        "Personal reasons for cancellation",
+        "Technical issues resolved",
+        "Other circumstances"
+      ]
+    },
+    "userResponsibilities": {
+      "title": "4. User Responsibilities",
+      "content": "Users are responsible for:",
+      "responsibilities": [
+        "Complying with local laws and regulations",
+        "Not using the service for illegal activities",
+        "Protecting account security",
+        "Proper use of service resources",
+        "Reporting any service issues promptly"
+      ]
+    },
+    "serviceLimitations": {
+      "title": "5. Service Limitations",
+      "content": "We reserve the right to:",
+      "limitations": [
+        "Suspend or terminate services for violations",
+        "Modify service terms at any time",
+        "Limit service usage when necessary",
+        "Maintain service quality standards",
+        "Update service features and capabilities"
+      ]
+    },
+    "userAccount": {
+      "title": "4. User Account",
+      "registrationRequirements": "Registration Requirements",
+      "registrationRequirementsText": "You must provide true, accurate, and complete information to create an account.",
+      "accountSecurity": "Account Security",
+      "accountSecurityText": "You are responsible for protecting your account information, including username and password.",
+      "accountUsage": "Account Usage",
+      "accountUsageText": "You may not transfer your account to others or allow others to use your account."
+    },
+    "userBehavior": {
+      "title": "5. User Behavior Standards",
+      "prohibitedActions": [
+        "Publishing illegal, harmful, threatening, abusive, harassing, defamatory, vulgar, or obscene content",
+        "Infringing on others' intellectual property or other rights",
+        "Spreading viruses, malicious code, or other harmful technologies",
+        "Interfering with or disrupting the normal operation of services",
+        "Conducting any form of commercial activity without our explicit permission"
+      ]
+    },
+    "intellectualProperty": {
+      "title": "6. Intellectual Property",
+      "ourRights": "Our Rights:",
+      "ourRightsText": "All content in the service, including but not limited to text, graphics, logos, icons, images, audio clips, digital downloads, and software, is protected by copyright, trademark, and other intellectual property laws.",
+      "userContent": "User Content:",
+      "userContentText": "You retain rights to your uploaded content, but grant us a license to use, copy, modify, distribute, and publicly display that content."
+    },
+    "privacyProtection": {
+      "title": "7. Privacy Protection",
+      "content": "We value your privacy. How we collect, use, and protect your personal information is detailed in our privacy policy. By using our services, you agree to our processing of your information according to the privacy policy."
+    },
+    "serviceChanges": {
+      "title": "8. Service Changes and Termination",
+      "serviceModifications": "Service Modifications:",
+      "serviceModificationsText": "We reserve the right to modify, suspend, or terminate services at any time without notice.",
+      "accountTermination": "Account Termination:",
+      "accountTerminationText": "We may terminate your account for violations of this agreement without notice."
+    },
+    "disclaimer": {
+      "title": "9. Disclaimer",
+      "asIs": "Service provided 'as is':",
+      "asIsText": "We do not guarantee that the service will be uninterrupted, timely, secure, or error-free.",
+      "liabilityLimitation": "Liability Limitation:",
+      "liabilityLimitationText": "We are not liable for any direct, indirect, incidental, special, or consequential damages arising from the use of the service."
+    },
+    "indemnification": {
+      "title": "10. Indemnification",
+      "content": "You agree to indemnify us for any losses, damages, costs, and expenses arising from your violation of this agreement or any applicable law."
+    },
+    "agreementModification": {
+      "title": "11. Agreement Modification",
+      "content": "We reserve the right to modify this agreement at any time. Significant changes will be notified via email or website announcement. Continued use of the service indicates your acceptance of the modified agreement."
+    },
+    "governingLaw": {
+      "title": "12. Governing Law",
+      "content": "This agreement is governed by the laws of the People's Republic of China. Any disputes should be resolved through friendly negotiation. If negotiation fails, disputes should be brought to the competent people's court."
+    }
+  }
+}

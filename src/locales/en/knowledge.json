@@ -1,0 +1,28 @@
+{
+  "title": "Documentation",
+  "search": {
+    "placeholder": "Enter keywords to search document titles...",
+    "loading": "Loading..."
+  },
+  "filter": {
+    "allCategories": "All Categories",
+    "reset": "Reset Filter"
+  },
+  "stats": {
+    "filteredResults": "Filtered Results:",
+    "allDocuments": "All Documents:",
+    "documentsCount": "documents",
+    "categoryCount": "items"
+  },
+  "document": {
+    "free": "Free to Read",
+    "subscription": "Subscription Required",
+    "view": "View",
+    "subscribe": "Subscribe"
+  },
+  "empty": {
+    "noData": "No data",
+    "noSearchResults": "No documents found containing \"{{searchTerm}}\"",
+    "noCategoryDocuments": "No documents available in this category"
+  }
+}

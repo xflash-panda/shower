@@ -1,0 +1,169 @@
+{
+  "title": "Wallet Management",
+  "balance": {
+    "total": "Total",
+    "totalDescription": "Total = Account Balance + Commission",
+    "account": "Account Balance",
+    "commission": "Commission",
+    "viewDetails": "View Details"
+  },
+  "quickActions": {
+    "title": "Quick Actions"
+  },
+  "actions": {
+    "recharge": "Balance Recharge",
+    "rechargeDescription": "Add available balance to account",
+    "rechargeButton": "Recharge",
+    "transfer": "Balance Transfer",
+    "transferDescription": "Transfer account balance to other users",
+    "transferButton": "Transfer",
+    "commission": "Commission Transfer",
+    "commissionDescription": "Convert commission to available balance",
+    "commissionButton": "Transfer",
+    "withdraw": "Commission Withdrawal",
+    "withdrawDescription": "Apply to transfer earnings to specified account",
+    "withdrawButton": "Apply"
+  },
+  "records": {
+    "title": "Transaction Records",
+    "total": "Total {{total}} records"
+  },
+  "recharge": {
+    "success": "Recharge order created successfully",
+    "error": "Recharge failed"
+  },
+  "transfer": {
+    "success": "Transfer completed successfully",
+    "error": "Transfer failed"
+  },
+  "withdraw": {
+    "success": "Withdrawal ticket created, please wait for admin processing",
+    "error": "Withdrawal application failed"
+  },
+  "commission": {
+    "transferSuccess": "Commission transfer successful",
+    "transferError": "Commission transfer failed"
+  },
+  "order": {
+    "cancelSuccess": "Order cancelled successfully, you can now create a new order",
+    "cancelError": "Failed to cancel order"
+  },
+  "transferModal": {
+    "title": "Transfer Balance",
+    "labels": {
+      "recipientEmail": "Recipient Email",
+      "transferAmount": "Transfer Amount"
+    },
+    "placeholders": {
+      "recipientEmail": "Please enter recipient email",
+      "transferAmount": "Please enter transfer amount"
+    },
+    "validation": {
+      "emailRequired": "Please enter recipient email",
+      "emailInvalid": "Please enter a valid email address",
+      "cannotTransferToSelf": "Cannot transfer to your own account",
+      "amountRequired": "Please enter transfer amount",
+      "amountInvalid": "Please enter a valid amount",
+      "insufficientBalance": "Insufficient balance"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "transfer": "Transfer",
+      "transferring": "Transferring..."
+    }
+  },
+  "withdrawModal": {
+    "title": "Commission Withdrawal",
+    "labels": {
+      "withdrawMethod": "Withdrawal Method",
+      "withdrawAccount": "Withdrawal Account"
+    },
+    "placeholders": {
+      "withdrawAccount": "Please enter withdrawal account"
+    },
+    "validation": {
+      "methodRequired": "Please select withdrawal method",
+      "accountRequired": "Please enter withdrawal account"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "withdraw": "Apply",
+      "withdrawing": "Applying..."
+    }
+  },
+  "promoTransferModal": {
+    "title": "Commission Transfer",
+    "labels": {
+      "currentBalance": "Current Commission Balance",
+      "transferAmount": "Transfer Amount"
+    },
+    "placeholders": {
+      "transferAmount": "Please enter transfer amount (max {{maxAmount}})"
+    },
+    "validation": {
+      "amountRequired": "Transfer amount cannot be empty",
+      "amountInvalid": "Amount can only have up to 2 decimal places",
+      "amountValid": "Please enter a valid transfer amount",
+      "amountExceeded": "Transfer amount cannot exceed commission balance"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "transfer": "Transfer",
+      "transferring": "Transferring..."
+    }
+  },
+  "rechargeModal": {
+    "title": "Balance Recharge",
+    "labels": {
+      "rechargeAmount": "Recharge Amount"
+    },
+    "placeholders": {
+      "rechargeAmount": "Please enter recharge amount ({{minAmount}} - {{maxAmount}})"
+    },
+    "validation": {
+      "amountRequired": "Recharge amount cannot be empty",
+      "amountInvalid": "Amount can only have up to 2 decimal places",
+      "amountValid": "Please enter a valid recharge amount",
+      "amountMin": "Recharge amount cannot be less than {{minAmount}}",
+      "amountMax": "Recharge amount cannot exceed {{maxAmount}}"
+    },
+    "promotion": {
+      "normal": "Recharge Promotion: For every {{minAmount}} yuan recharged, automatically receive an additional {{rate}}% bonus.",
+      "full": "Recharge Promotion: Single recharge of {{threshold}} yuan or more, automatically receive an additional {{value}} yuan bonus."
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "recharge": "Recharge",
+      "recharging": "Recharging..."
+    }
+  },
+  "records": {
+    "types": {
+      "commissionTransfer": "Commission Transfer",
+      "balanceRecharge": "Balance Recharge",
+      "balanceTransfer": "Balance Transfer",
+      "commissionWithdraw": "Commission Withdrawal",
+      "balanceConsumption": "Balance Consumption",
+      "all": "All"
+    },
+    "details": {
+      "consumptionAmount": "Consumption Amount",
+      "rechargeAmount": "Recharge Amount",
+      "orderNumber": "Order Number",
+      "transferOut": "Transfer Out",
+      "transferIn": "Transfer In",
+      "toUser": "To {{user}}",
+      "fromUser": "From {{user}}",
+      "withdrawAmount": "Withdrawal Amount",
+      "toAccount": "To {{method}}: {{account}}",
+      "amount": "Amount"
+    },
+    "empty": {
+      "title": "No matching records",
+      "description": "No records found for the selected filter"
+    }
+  },
+  "paymentMethods": {
+    "alipay": "Alipay"
+  }
+}

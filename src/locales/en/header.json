@@ -1,0 +1,11 @@
+{
+  "menu": {
+    "wallet": "Wallet Management",
+    "totalBalance": "Total",
+    "commissionBalance": "Commission",
+    "accountBalance": "Account Balance",
+    "profile": "Account Management",
+    "ticket": "Support Tickets",
+    "logout": "Logout"
+  }
+}

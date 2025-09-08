@@ -1,0 +1,1242 @@
+// Plan Page Styles
+// 专门为 Plan 页面的样式
+
+// 订单摘要固定位置
+.plan-order-summary-sticky {
+  position: sticky;
+  top: 20px;
+}
+
+// 提示信息背景
+.plan-tip-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(var(--info), 0.03), rgba(var(--info), 0.08));
+}
+
+// 响应式调整
+@media (max-width: 991.98px) {
+  .plan-decorative-bg-large {
+    width: 200px;
+    height: 200px;
+    transform: translate(50px, -50px);
+  }
+
+  .plan-decorative-bg-medium {
+    width: 100px;
+    height: 100px;
+    transform: translate(30px, -30px);
+  }
+
+  .plan-decorative-bg-small {
+    width: 80px;
+    height: 80px;
+    transform: translate(20px, -20px);
+  }
+
+  .plan-features-container,
+  .plan-nodes-container {
+    // 移除中等屏幕的高度限制，允许内容自适应
+  }
+}
+
+@media (max-width: 767.98px) {
+  .plan-decorative-bg-large {
+    width: 150px;
+    height: 150px;
+    transform: translate(30px, -30px);
+  }
+
+  // 小屏移除高度限制，让内容自然展开
+  .plan-features-container,
+  .plan-nodes-container {
+    height: auto;
+    max-height: none;
+  }
+
+  .plan-nodes-scroll-container {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .plan-order-summary-sticky {
+    position: static;
+    top: auto;
+  }
+
+  // 移动端价格表格调整 (保留兼容性)
+  .plan-price-name-section {
+    min-width: 80px; // 移动端减少最小宽度
+  }
+
+  .plan-price-discount-section {
+    flex: 0 0 70px; // 移动端减少优惠区域宽度
+  }
+
+  .plan-price-value-section {
+    flex: 0 0 80px; // 移动端减少价格区域宽度
+  }
+
+  // 移动端优惠标签调整 (保留兼容性)
+  .plan-discount-tag {
+    min-width: 60px; // 移动端进一步减少最小宽度
+    height: 20px; // 移动端降低高度
+    font-size: 0.6rem; // 移动端减小字体
+    padding: 0 8px; // 移动端减少内边距
+  }
+
+  // 移动端价格卡片调整
+  .plan-price-card {
+    .pa-16.pa-md-20 {
+      padding: 12px !important; // 移动端减少内边距
+    }
+
+    h6 {
+      font-size: 0.9rem; // 移动端减小标题字体
+    }
+
+    .h5 {
+      font-size: 1.1rem; // 移动端减小价格字体
+    }
+  }
+
+  // 移动端对勾图标优化
+  i.ph-fill.ph-check-circle.text-primary {
+    font-size: 1rem !important;
+    filter: drop-shadow(0 1px 2px rgba(var(--primary), 0.4));
+  }
+}
+
+// 套餐特性和节点列表内容顶部对齐
+.plan-features-list,
+.nodes-by-country {
+  // 确保 Row 组件的默认间距一致
+  .row:first-child {
+    margin-top: 0;
+  }
+}
+
+// 自定义Tab样式
+.plan-custom-tabs .plan-tab-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 120px;
+  justify-content: center;
+  text-align: center;
+
+  &.plan-tab-active {
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  &.plan-tab-inactive {
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.8) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // Badge样式优化
+  .badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+// 简洁Tab样式 - 无边框设计，用阴影和背景表达边界
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.bg-transparent {
+  &:hover {
+    background-color: rgba(248, 249, 250, 0.6) !important;
+    transform: translateY(-1px);
+  }
+}
+
+// 新的套餐详情组件样式
+.plan-detail-section {
+  // 间距辅助类
+  .space-y-3 > * + * {
+    margin-top: 0.75rem;
+  }
+
+  .space-y-2 > * + * {
+    margin-top: 0.5rem;
+  }
+
+  // 渐变背景卡片样式
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, var(--bs-primary), rgba(var(--bs-primary-rgb), 0.8));
+    border: none;
+  }
+
+  .bg-gradient-success {
+    background: linear-gradient(135deg, var(--bs-success), rgba(var(--bs-success-rgb), 0.8));
+    border: none;
+  }
+
+  // 特性项目悬停效果
+  .plan-feature-item {
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: var(--bs-primary);
+    }
+  }
+
+  // 区域节点卡片悬停效果
+  .plan-region-item {
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      border-color: var(--bs-success);
+    }
+  }
+
+  // 旗帜图标样式
+  .plan-flag-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  // 协议Badge样式
+  .plan-protocol-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 8px;
+  }
+
+  // 信息卡片样式
+  .plan-info-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // 数据项样式
+  .plan-data-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .plan-data-label {
+      color: rgba(108, 117, 125, 0.8);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .plan-data-value {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  }
+
+  // 技术规格卡片
+  .plan-tech-spec-card {
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(145deg, #ffffff, #f8f9fa);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // 响应式调整
+  @media (max-width: 768px) {
+    .plan-data-item {
+      padding: 0.5rem 0;
+    }
+
+    .plan-flag-icon {
+      font-size: 1.25rem;
+    }
+
+    .plan-protocol-badge {
+      font-size: 0.6rem;
+      padding: 0.15rem 0.4rem;
+    }
+  }
+}
+
+// 价格表格布局 - 三栏对齐布局
+.plan-price-name-section {
+  flex: 1; // 左侧自适应宽度
+  min-width: 100px; // 最小宽度确保不会太挤
+  display: flex;
+  align-items: center;
+}
+
+.plan-price-discount-section {
+  flex: 0 0 120px; // 固定120px宽度，右对齐显示优惠标签
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.plan-price-value-section {
+  flex: 0 0 100px; // 固定100px宽度，右对齐显示价格
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+// 优惠标签样式
+.plan-discount-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px; // 减少最小宽度，让标签更紧凑
+  height: 22px; // 稍微降低高度
+  padding: 0 10px; // 减少内边距
+  font-size: 0.65rem; // 稍微减小字体
+  font-weight: 600; // 降低字重，不那么突兀
+  color: white;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  border-radius: 11px; // 保持圆角比例
+  box-shadow: 0 1px 4px rgba(40, 167, 69, 0.2); // 减少阴影强度
+  text-align: center;
+  letter-spacing: 0.1px; // 减少字间距
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+
+  // 内部高光效果
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease-in-out;
+  }
+
+  // 悬停效果
+  &:hover {
+    transform: scale(1.02); // 减少缩放幅度
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3); // 温和的阴影增强
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  // 脉冲动画效果
+  &.plan-discount-tag-pulse {
+    animation: discountPulse 2s infinite;
+  }
+}
+
+@keyframes discountPulse {
+  0% {
+    box-shadow: 0 1px 4px rgba(40, 167, 69, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 1px 4px rgba(40, 167, 69, 0.3),
+      0 0 0 2px rgba(40, 167, 69, 0.08);
+  }
+  100% {
+    box-shadow: 0 1px 4px rgba(40, 167, 69, 0.2);
+  }
+}
+
+// 现代化套餐卡片设计
+.plan-card-modern {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  &.plan-card-selected {
+    border-color: rgba(var(--primary), 1);
+    background: linear-gradient(
+      135deg,
+      rgba(var(--primary), 0.05) 0%,
+      rgba(var(--primary), 0.1) 100%
+    );
+    transform: translateY(-2px);
+    box-shadow:
+      0 20px 25px -5px rgba(var(--primary), 0.3),
+      0 10px 10px -5px rgba(var(--primary), 0.1);
+
+    .plan-card-decoration {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .plan-card-bottom-line {
+      width: 100%;
+      background: linear-gradient(
+        90deg,
+        rgba(var(--primary), 1) 0%,
+        rgba(var(--primary), 0.6) 100%
+      );
+    }
+  }
+
+  &.plan-card-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: none;
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .plan-icon.disabled {
+      opacity: 0.5;
+
+      &.active {
+        background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+
+        i {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+// 背景装饰元素
+.plan-card-decoration {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary), 0.1) 0%,
+    rgba(var(--primary), 0.05) 100%
+  );
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: scale(0.8);
+  z-index: 1;
+}
+
+// 推荐标签
+.plan-recommended-badge {
+  position: absolute;
+  top: -8px;
+  right: 16px;
+  z-index: 10;
+  animation: pulse 2s infinite;
+}
+
+// 选中状态指示器
+.plan-selection-indicator {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+
+  .selection-ring {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #e5e7eb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    transition: all 0.3s ease;
+
+    .selection-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+
+      i {
+        font-size: 8px;
+        color: transparent;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+
+  &.active {
+    .selection-ring {
+      border-color: rgba(var(--primary), 1);
+      box-shadow: 0 0 0 3px rgba(var(--primary), 0.1);
+
+      .selection-dot {
+        background: rgba(var(--primary), 1);
+
+        i {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+// 套餐内容区域
+.plan-card-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  height: 100%;
+}
+
+// 套餐卡片上半部分
+.plan-card-top {
+  flex: 0 0 auto;
+}
+
+// 套餐卡片下半部分
+.plan-card-bottom {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+// 套餐图标
+.plan-icon-wrapper {
+  display: flex;
+  justify-content: center;
+
+  .plan-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+
+    i {
+      font-size: 24px;
+      color: #6b7280;
+      transition: all 0.3s ease;
+    }
+
+    &.active {
+      background: linear-gradient(
+        135deg,
+        rgba(var(--primary), 1) 0%,
+        rgba(var(--primary), 0.8) 100%
+      );
+      transform: scale(1.1);
+
+      i {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+// 套餐标题
+.plan-title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #1f2937;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+  min-height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.3;
+}
+
+// 流量信息
+.plan-traffic-info {
+  .traffic-amount {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin-bottom: 8px;
+
+    .traffic-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1f2937;
+      line-height: 1;
+    }
+
+    .traffic-unit {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #6b7280;
+      margin-left: 4px;
+    }
+  }
+
+  .traffic-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 500;
+
+    i {
+      font-size: 0.875rem;
+      color: #9ca3af;
+    }
+  }
+}
+
+// 底部装饰线
+.plan-card-bottom-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: #e5e7eb;
+  transition: all 0.4s ease;
+  border-radius: 0 0 18px 18px;
+}
+
+// 付费周期选择器样式
+.pricing-selector-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  background: #ffffff;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(var(--primary), 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+.pricing-selector-item-active {
+  border-color: rgba(var(--primary), 1) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary), 0.08) 0%,
+    rgba(var(--primary), 0.05) 100%
+  ) !important;
+  box-shadow:
+    0 8px 25px rgba(var(--primary), 0.15),
+    0 0 0 1px rgba(var(--primary), 0.1) !important;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(
+      135deg,
+      rgba(var(--primary), 0.12) 0%,
+      rgba(var(--primary), 0.08) 100%
+    ) !important;
+    box-shadow:
+      0 12px 35px rgba(var(--primary), 0.2),
+      0 0 0 1px rgba(var(--primary), 0.15) !important;
+  }
+}
+
+.pricing-selector-item-inactive {
+  border-color: rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+
+  &:hover {
+    border-color: rgba(var(--primary), 0.2);
+    background: rgba(var(--primary), 0.02);
+  }
+}
+
+// 紧凑布局样式
+.pricing-selector-item {
+  min-height: auto;
+
+  // 确保内容区域不会太大
+  .pa-15 {
+    padding: 12px 15px !important;
+  }
+
+  .pa-md-20 {
+    @media (min-width: 768px) {
+      padding: 16px 20px !important;
+    }
+  }
+}
+
+// 徽章样式优化
+.badge-xs {
+  font-size: 0.65rem;
+  padding: 0.2em 0.4em;
+}
+
+// 新设计的 OFF 折扣标签 - 主题色 outline 设计
+.pricing-off-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  padding: 0 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: rgba(var(--primary), 1);
+  background: rgba(var(--primary), 0.05);
+  border: 1px solid rgba(var(--primary), 0.8);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(var(--primary), 0.15);
+  text-transform: none;
+  line-height: 1;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+
+  // 内部光泽效果
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(var(--primary), 0.1), transparent);
+    transition: left 0.6s ease;
+  }
+
+  // 悬停效果 - outline 状态
+  &:hover {
+    transform: scale(1.05);
+    background: rgba(var(--primary), 0.05);
+    box-shadow: 0 2px 6px rgba(var(--primary), 0.3);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  // 选中状态下变为实心主题色
+  .pricing-selector-item-active & {
+    background: linear-gradient(135deg, rgba(var(--primary), 1) 0%, rgba(var(--primary), 0.9) 100%);
+    color: white;
+    border-color: rgba(var(--primary), 1);
+    box-shadow: 0 1px 3px rgba(var(--primary), 0.4);
+
+    &::before {
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    }
+
+    &:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(var(--primary), 1.1) 0%,
+        rgba(var(--primary), 1) 100%
+      );
+      box-shadow: 0 2px 6px rgba(var(--primary), 0.5);
+      transform: scale(1.05);
+    }
+  }
+}
+
+// 响应式适配
+@media (max-width: 767.98px) {
+  .pricing-selector-item {
+    // 移动端更紧凑的内边距
+    .pa-15 {
+      padding: 10px 12px !important;
+    }
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  .pricing-selector-item-active {
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  // 移动端徽章更小
+  .badge-xs {
+    font-size: 0.6rem;
+    padding: 0.15em 0.3em;
+  }
+
+  // 移动端 OFF 标签优化
+  .pricing-off-badge {
+    height: 18px;
+    padding: 0 6px;
+    font-size: 0.6rem;
+    border-width: 1px; // 移动端边框更细
+    letter-spacing: 0.2px;
+  }
+}
+
+// 暗色主题适配
+nav.dark-sidebar,
+body[class='ltr dark'] {
+  .pricing-selector-item {
+    background: var(--bs-form-control-bg) !important;
+    border-color: var(--bs-border-color) !important;
+    color: var(--bs-body-color) !important;
+
+    &:hover {
+      border-color: rgba(var(--primary), 0.6) !important;
+      background: rgba(var(--primary), 0.08) !important;
+    }
+  }
+
+  .pricing-selector-item-active {
+    background: linear-gradient(
+      135deg,
+      rgba(var(--primary), 0.25) 0%,
+      rgba(var(--primary), 0.15) 100%
+    ) !important;
+    border-color: rgba(var(--primary), 1) !important;
+    color: var(--bs-body-color) !important;
+
+    &:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(var(--primary), 0.3) 0%,
+        rgba(var(--primary), 0.2) 100%
+      ) !important;
+    }
+  }
+
+  .pricing-selector-item-inactive {
+    background: var(--bs-form-control-bg) !important;
+    border-color: var(--bs-border-color) !important;
+    color: var(--bs-body-color) !important;
+
+    &:hover {
+      border-color: rgba(var(--primary), 0.5) !important;
+      background: rgba(var(--primary), 0.08) !important;
+    }
+  }
+
+  // 确保文字颜色在暗色主题下正确显示
+  .pricing-selector-item {
+    // 价格名称和价格文字
+    span.f-fw-600 {
+      color: var(--bs-body-color) !important;
+
+      &.text-primary {
+        color: rgba(var(--primary), 1) !important;
+      }
+    }
+
+    // 提示图标
+    i.text-primary {
+      color: rgba(var(--primary), 1) !important;
+    }
+
+    i.text-muted {
+      color: var(--bs-secondary-color) !important;
+    }
+
+    // 选中状态的勾选图标 - 增强视觉效果
+    i.ph-fill.ph-check-circle.text-primary {
+      color: rgba(var(--primary), 1) !important;
+      font-size: 1.1rem !important;
+      filter: drop-shadow(0 1px 3px rgba(var(--primary), 0.4));
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      // 悬停效果
+      &:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(0 2px 6px rgba(var(--primary), 0.6));
+      }
+    }
+  }
+
+  // 暗色主题下的对勾图标 - 增强视觉效果
+  i.ph-fill.ph-check-circle.text-primary {
+    color: rgba(var(--primary), 1) !important;
+    font-size: 1.1rem !important;
+    filter: drop-shadow(0 1px 3px rgba(var(--primary), 0.5));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    // 悬停效果
+    &:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 2px 8px rgba(var(--primary), 0.7));
+    }
+  }
+
+  // 暗色主题下的 OFF 标签 - 大幅提升对比度
+  .pricing-off-badge {
+    color: #ffffff !important;
+    background: linear-gradient(
+      135deg,
+      rgba(var(--primary), 1) 0%,
+      rgba(var(--primary), 0.85) 100%
+    ) !important;
+    border-color: rgba(var(--primary), 1) !important;
+    border-width: 2px !important;
+    box-shadow:
+      0 0 0 1px rgba(var(--primary), 0.3),
+      0 2px 8px rgba(var(--primary), 0.4) !important;
+    font-weight: 700 !important;
+
+    &::before {
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      ) !important;
+    }
+
+    &:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(var(--primary), 1.1) 0%,
+        rgba(var(--primary), 0.95) 100%
+      ) !important;
+      border-color: rgba(var(--primary), 1) !important;
+      box-shadow:
+        0 0 0 1px rgba(var(--primary), 0.5),
+        0 4px 12px rgba(var(--primary), 0.6) !important;
+      transform: translateY(-1px) scale(1.02);
+    }
+
+    // 选中状态在暗色主题下的效果 - 保持高对比度
+    .pricing-selector-item-active & {
+      background: linear-gradient(
+        135deg,
+        rgba(var(--primary), 1) 0%,
+        rgba(var(--primary), 0.9) 100%
+      ) !important;
+      color: #ffffff !important;
+      border-color: rgba(var(--primary), 1) !important;
+      box-shadow:
+        0 0 0 1px rgba(var(--primary), 0.4),
+        0 2px 8px rgba(var(--primary), 0.5) !important;
+
+      &::before {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        ) !important;
+      }
+
+      &:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(var(--primary), 1.1) 0%,
+          rgba(var(--primary), 1) 100%
+        ) !important;
+        box-shadow:
+          0 0 0 1px rgba(var(--primary), 0.6),
+          0 5px 15px rgba(var(--primary), 0.8) !important;
+        transform: translateY(-1px) scale(1.02);
+      }
+    }
+  }
+
+  // 移动端暗色模式下的 OFF 标签适配
+  @media (max-width: 767.98px) {
+    .pricing-off-badge {
+      height: 18px !important;
+      padding: 0 6px !important;
+      font-size: 0.6rem !important;
+      border-width: 2px !important;
+      letter-spacing: 0.2px !important;
+      font-weight: 700 !important;
+      color: #ffffff !important;
+      background: linear-gradient(
+        135deg,
+        rgba(var(--primary), 1) 0%,
+        rgba(var(--primary), 0.85) 100%
+      ) !important;
+      border-color: rgba(var(--primary), 1) !important;
+      box-shadow:
+        0 0 0 1px rgba(var(--primary), 0.3),
+        0 1px 4px rgba(var(--primary), 0.4) !important;
+    }
+
+    // 移动端对勾图标优化
+    i.ph-fill.ph-check-circle.text-primary {
+      font-size: 1rem !important;
+      filter: drop-shadow(0 1px 2px rgba(var(--primary), 0.4));
+    }
+  }
+}
+
+// 黑夜模式样式优化
+nav.dark-sidebar .plan-card-modern,
+body[class='ltr dark'] .plan-card-modern {
+  background: var(--bs-form-control-bg);
+  border-color: var(--bs-border-color);
+
+  // 套餐标题在黑夜模式下的样式
+  .plan-title {
+    color: var(--bs-body-color);
+  }
+
+  // 流量信息在黑夜模式下的样式
+  .plan-traffic-info {
+    .traffic-amount {
+      .traffic-number {
+        color: var(--bs-body-color);
+      }
+
+      .traffic-unit {
+        color: var(--bs-secondary-color);
+      }
+    }
+
+    .traffic-label {
+      color: var(--bs-secondary-color);
+
+      i {
+        color: var(--bs-secondary-color);
+      }
+    }
+  }
+
+  // 选中状态在黑夜模式下的优化
+  &.plan-card-selected {
+    background: linear-gradient(
+      135deg,
+      rgba(var(--primary), 0.15) 0%,
+      rgba(var(--primary), 0.25) 100%
+    );
+    border-color: rgba(var(--primary), 1);
+
+    // 确保选中状态下文字仍然可见
+    .plan-title {
+      color: var(--bs-body-color);
+      font-weight: 700; // 增加字重提高可读性
+    }
+
+    .plan-traffic-info {
+      .traffic-amount {
+        .traffic-number {
+          color: var(--bs-body-color);
+          font-weight: 800; // 增加字重
+        }
+
+        .traffic-unit {
+          color: var(--bs-body-color);
+          opacity: 0.9;
+        }
+      }
+
+      .traffic-label {
+        color: var(--bs-body-color);
+        opacity: 0.8;
+
+        i {
+          color: var(--bs-body-color);
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  // 悬停状态在黑夜模式下的优化
+  &:hover:not(.plan-card-selected) {
+    background: rgba(var(--primary), 0.05);
+    border-color: rgba(var(--primary), 0.3);
+  }
+}
+
+// 响应式优化
+@media screen and (max-width: 768px) {
+  .plan-card-modern {
+    padding: 20px;
+
+    .plan-icon-wrapper .plan-icon {
+      width: 40px;
+      height: 40px;
+
+      i {
+        font-size: 20px;
+      }
+    }
+
+    .plan-title {
+      font-size: 1rem;
+    }
+
+    .traffic-amount .traffic-number {
+      font-size: 1.75rem;
+    }
+
+    .traffic-label {
+      font-size: 0.8rem;
+    }
+  }
+
+  .plan-selection-indicator {
+    top: 12px;
+    right: 12px;
+
+    .selection-ring {
+      width: 20px;
+      height: 20px;
+
+      .selection-dot {
+        width: 10px;
+        height: 10px;
+
+        i {
+          font-size: 6px;
+        }
+      }
+    }
+  }
+
+  .plan-recommended-badge {
+    right: 12px;
+    top: -6px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .plan-card-modern {
+    padding: 16px;
+    border-radius: 16px;
+
+    .plan-icon-wrapper .plan-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+
+      i {
+        font-size: 18px;
+      }
+    }
+
+    .plan-title {
+      font-size: 0.9375rem;
+      margin-bottom: 10px;
+    }
+
+    .traffic-amount .traffic-number {
+      font-size: 1.5rem;
+    }
+
+    .traffic-label {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+// ============================= 售罄状态样式 ============================= //
+
+// 即将售罄状态标识 - 移到左上角，不影响其他内容
+.plan-status-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(135deg, #ffc107, #ff8c00);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(255, 193, 7, 0.25);
+  z-index: 5;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.plan-status-badge.badge-warning {
+  background: linear-gradient(135deg, #ffc107, #ff8c00);
+  animation: pulse-warning 3s infinite;
+}
+
+.plan-status-badge.badge-danger {
+  background: linear-gradient(135deg, #343a40, #212529);
+  box-shadow: 0 2px 6px rgba(52, 58, 64, 0.25);
+}
+
+// 警告脉冲动画 - 更温和的效果
+@keyframes pulse-warning {
+  0% {
+    box-shadow: 0 2px 6px rgba(255, 193, 7, 0.25);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 2px 10px rgba(255, 193, 7, 0.4);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 2px 6px rgba(255, 193, 7, 0.25);
+    transform: scale(1);
+  }
+}
+
+// 已售罄卡片禁用状态 - 禁止交互但保持样式
+.plan-card-modern.plan-card-disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+// 确保即将售罄状态不影响卡片边框和悬停效果
+.plan-card-modern:has(.plan-status-badge.badge-warning) {
+  &:hover {
+    border-color: rgba(var(--primary), 1); // 保持原来的悬停边框颜色
+  }
+
+  &.plan-card-selected {
+    border-color: rgba(var(--primary), 1) !important; // 保持原来的选中边框颜色
+  }
+}
+
+// 响应式调整
+@media (max-width: 768px) {
+  .plan-status-badge {
+    font-size: 0.6rem;
+    padding: 2px 5px;
+    top: 8px;
+    left: 8px;
+  }
+}
