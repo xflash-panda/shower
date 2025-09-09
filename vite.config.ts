@@ -5,6 +5,7 @@ import i18nextLoader from 'vite-plugin-i18next-loader';
 import { asyncifyCSSPlugin } from './scripts/vite-plugin-asyncify-css';
 import { purgeCSSPlugin } from './scripts/vite-plugin-purgecss';
 import { criticalCSSPlugin } from './scripts/vite-plugin-critical-css';
+import { versionInjectPlugin } from './scripts/vite-plugin-version-inject';
 // import analyze from 'rollup-plugin-analyzer';
 import { resolve } from 'path';
 import autoprefixer from 'autoprefixer';
@@ -19,6 +20,8 @@ const getProductionPlugins = () => {
   if (!isProduction) return [];
   
   return [
+    // 版本注入插件 - 必须在最前面执行
+    versionInjectPlugin(),
     // 关键CSS内联 - 必须在最前面执行，避免白屏
     criticalCSSPlugin(),
     htmlMinifier({

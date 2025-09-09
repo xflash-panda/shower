@@ -13,6 +13,7 @@
     "scripts/vite-plugin-critical-css.ts",
     "scripts/vite-plugin-asyncify-css.ts",
     "scripts/vite-plugin-purgecss.ts",
+    "scripts/vite-plugin-version-inject.ts",
     "scripts/postinstall.ts"
   ]
 }
