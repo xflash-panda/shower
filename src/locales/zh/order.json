@@ -22,7 +22,7 @@
     "status": {
       "pending": "待支付",
       "processing": "开通中",
-      "cancelled": "已取消",
+      "cancelled": "已关闭",
       "completed": "已完成",
       "credited": "已折抵",
       "unknown": "未知状态"

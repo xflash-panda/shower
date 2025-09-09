@@ -22,7 +22,7 @@
     "status": {
       "pending": "Pending Payment",
       "processing": "Processing",
-      "cancelled": "Cancelled",
+      "cancelled": "Closed",
       "completed": "Completed",
       "credited": "Credited",
       "unknown": "Unknown Status"
