@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import { Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { getErrorImagePath } from '@helpers/assets';
 
 const InternalServer = (): ReactElement => {
   const { t } = useTranslation('error');
@@ -11,11 +12,7 @@ const InternalServer = (): ReactElement => {
       <Container>
         <div>
           <div>
-            <img
-              src="assets/images/background/error-500.png"
-              className="img-fluid"
-              alt="500 Error"
-            />
+            <img src={getErrorImagePath('500')} className="img-fluid" alt="500 Error" />
           </div>
           <div className="mb-3">
             <div className="row">

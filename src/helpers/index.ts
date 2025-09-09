@@ -1,3 +1,4 @@
+export * from './assets';
 export * from './avatar';
 export * from './bytes';
 export * from './chart';

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import MenuItem from '@layout/Sidebar/MenuItem';
 import { sidebarConfig } from '@data/Sidebar/index';
 import type { SidebarMenuItem } from '@layout/Sidebar/MenuItem';
+import { getLogoPath } from '@helpers/assets';
 
 export interface SidebarProps {
   sidebarOpen: boolean;
@@ -15,9 +16,9 @@ const Sidebar: React.FC<SidebarProps> = ({ sidebarOpen, setIsSidebarOpen }) => {
       <div className="app-logo">
         <Link className="logo d-inline-block" to="/dashboard">
           <picture>
-            <source srcSet="assets/images/logo/logo.webp" type="image/webp" />
+            <source srcSet={getLogoPath('logo', 'webp')} type="image/webp" />
             <img
-              src="assets/images/logo/logo.png"
+              src={getLogoPath('logo', 'png')}
               alt="Logo"
               className="dark-logo"
               width="40"

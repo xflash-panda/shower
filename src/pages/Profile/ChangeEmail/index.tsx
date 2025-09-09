@@ -12,6 +12,7 @@ import { EmailCodeInput } from '@/components/Common/EmailCodeInput';
 import { getEmailCodeSentAddress, clearEmailCodeSentAddress } from '@/hooks/useEmailCodeCountdown';
 import toast from '@/helpers/toast';
 import { turnstile } from '@/helpers/turnstile';
+import { getLogoPath } from '@/helpers/assets';
 import {
   isValidPassword,
   isValidVerificationCode,
@@ -391,7 +392,7 @@ const ChangeEmail = () => {
             <div className="login-form-container">
               <div className="mb-4">
                 <Link className="logo d-inline-block" to="/dashboard">
-                  <img src="assets/images/logo/logo.webp" width="250" />
+                  <img src={getLogoPath('logo', 'webp')} width="250" />
                 </Link>
               </div>
               <div className="form_container w-400">

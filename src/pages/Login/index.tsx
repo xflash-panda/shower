@@ -22,6 +22,7 @@ import { encryptPassword, decryptPassword } from '../../helpers/crypto';
 import { matchesEmailRegex, isValidPassword } from '@/helpers/validation';
 import HeaderLanguage from '@layout/Header/HeaderLanguage';
 import { useCommonConfig } from '@/hooks/useGuest';
+import { getLogoPath } from '@/helpers/assets';
 
 interface FormData {
   email: string;
@@ -289,7 +290,7 @@ const LoginPage = () => {
               <div className="mb-4">
                 <div className="logo d-inline-block">
                   <img
-                    src="assets/images/logo/logo.webp"
+                    src={getLogoPath('logo', 'webp')}
                     alt="Shower Panel Logo"
                     width="250"
                     height="auto"
