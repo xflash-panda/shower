@@ -35,11 +35,11 @@
 
 // 支付图标映射
 $payment-icons: (
-  alipay: 'assets/images/payment/alipay.png',
-  wechat: 'assets/images/payment/wechat.png',
-  credit-card: 'assets/images/payment/credit-card.png',
-  stripe: 'assets/images/payment/stripe.png',
-  wallet: 'assets/images/payment/wallet.png',
+  alipay: '../images/payment/alipay.png',
+  wechat: '../images/payment/wechat.png',
+  credit-card: '../images/payment/credit-card.png',
+  stripe: '../images/payment/stripe.png',
+  wallet: '../images/payment/wallet.png',
 );
 
 // 生成各个支付图标样式
