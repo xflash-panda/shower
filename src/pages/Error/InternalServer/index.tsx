@@ -12,7 +12,7 @@ const InternalServer = (): ReactElement => {
         <div>
           <div>
             <img
-              src="/assets/images/background/error-500.png"
+              src="assets/images/background/error-500.png"
               className="img-fluid"
               alt="500 Error"
             />

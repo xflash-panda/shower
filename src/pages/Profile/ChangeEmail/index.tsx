@@ -391,7 +391,7 @@ const ChangeEmail = () => {
             <div className="login-form-container">
               <div className="mb-4">
                 <Link className="logo d-inline-block" to="/dashboard">
-                  <img src="/assets/images/logo/logo.webp" width="250" />
+                  <img src="assets/images/logo/logo.webp" width="250" />
                 </Link>
               </div>
               <div className="form_container w-400">

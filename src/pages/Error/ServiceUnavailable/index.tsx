@@ -12,7 +12,7 @@ const ServiceUnavailable = (): ReactElement => {
         <div>
           <div>
             <img
-              src="/assets/images/background/error-503.png"
+              src="assets/images/background/error-503.png"
               className="img-fluid"
               alt="503 Error"
             />

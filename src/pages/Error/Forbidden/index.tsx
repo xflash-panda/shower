@@ -11,7 +11,7 @@ const Forbidden = (): ReactElement => {
       <Container>
         <div>
           <div>
-            <img src="/assets/images/background/error-403.png" className="img-fluid" alt="" />
+            <img src="assets/images/background/error-403.png" className="img-fluid" alt="" />
           </div>
           <div className="mb-3">
             <div className="row">

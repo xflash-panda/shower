@@ -10,7 +10,7 @@ const BadRequest = (): ReactElement => {
       <Container>
         <div>
           <div>
-            <img src="/assets/images/background/error-400.png" className="img-fluid" alt="" />
+            <img src="assets/images/background/error-400.png" className="img-fluid" alt="" />
           </div>
 
           <div className="mb-3">

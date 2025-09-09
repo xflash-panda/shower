@@ -490,7 +490,7 @@ const SignUp = () => {
             <div className="login-form-container">
               <div className="mb-4">
                 <div className="logo d-inline-block">
-                  <img src="/assets/images/logo/logo.webp" width="250" alt="Logo" />
+                  <img src="assets/images/logo/logo.webp" width="250" alt="Logo" />
                 </div>
               </div>
               <div className="form_container w-400">

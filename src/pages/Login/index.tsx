@@ -289,7 +289,7 @@ const LoginPage = () => {
               <div className="mb-4">
                 <div className="logo d-inline-block">
                   <img
-                    src="/assets/images/logo/logo.webp"
+                    src="assets/images/logo/logo.webp"
                     alt="Shower Panel Logo"
                     width="250"
                     height="auto"

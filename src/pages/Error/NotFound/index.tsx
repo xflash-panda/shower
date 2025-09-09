@@ -12,7 +12,7 @@ const NotFound = (): ReactElement => {
         <div>
           <div>
             <img
-              src="/assets/images/background/error-404.png"
+              src="assets/images/background/error-404.png"
               className="img-fluid"
               alt="404 Error"
             />
