@@ -1,4 +1,4 @@
-import { defineConfig, type Plugin } from 'vite';
+import { defineConfig, type Plugin, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import htmlMinifier from 'vite-plugin-html-minifier';
 import i18nextLoader from 'vite-plugin-i18next-loader';
@@ -11,12 +11,9 @@ import { resolve } from 'path';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 
-// 提取生产环境判断
-const isProduction = process.env.NODE_ENV === 'production';
-
 
 // 生产环境插件配置
-const getProductionPlugins = () => {
+const getProductionPlugins = (isProduction: boolean) => {
   if (!isProduction) return [];
   
   return [
@@ -52,15 +49,20 @@ const getProductionPlugins = () => {
 };
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: '/', // 修改为绝对路径，确保资源链接正确
+export default defineConfig(({ mode }) => {
+  // 加载环境变量
+  const env = loadEnv(mode, process.cwd(), '');
+  const isProduction = mode === 'production';
+  
+  return {
+  base: env.SHOWER_ASSET_PREFIX ? `/${env.SHOWER_ASSET_PREFIX}/` : '/',
   plugins: [
     react(),
     i18nextLoader({
       paths: ['./src/locales'],
       namespaceResolution: 'basename',
     }),
-    ...getProductionPlugins(),
+    ...getProductionPlugins(isProduction),
   ],
   css: {
     preprocessorOptions: {
@@ -263,4 +265,5 @@ export default defineConfig({
   },
   logLevel: isProduction ? 'error' : 'info',
   envPrefix: ['VITE_', 'SHOWER']
+  };
 });

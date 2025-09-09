@@ -2,8 +2,6 @@ import type { ReactElement } from 'react';
 import { Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { getImagePath } from '@/helpers/assets';
-
 const BadRequest = (): ReactElement => {
   const { t } = useTranslation('error');
 
@@ -12,7 +10,7 @@ const BadRequest = (): ReactElement => {
       <Container>
         <div>
           <div>
-            <img src={getImagePath('background/error-400.png')} className="img-fluid" alt="" />
+            <img src="/assets/images/background/error-400.png" className="img-fluid" alt="" />
           </div>
 
           <div className="mb-3">

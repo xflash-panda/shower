@@ -9,7 +9,6 @@ import { description } from '@/helpers/default';
 import { emailVerify, forget } from '@/api/v1/identity';
 import toast from '@/helpers/toast';
 import { turnstile } from '@/helpers/turnstile';
-import { getLogoPath } from '@/helpers/assets';
 import { EmailCodeInput } from '@/components/Common/EmailCodeInput';
 import { getEmailCodeSentAddress, clearEmailCodeSentAddress } from '@/hooks/useEmailCodeCountdown';
 import {
@@ -323,7 +322,7 @@ const ForgotPassword = () => {
             <div className="login-form-container">
               <div className="mb-4">
                 <div className="logo d-inline-block">
-                  <img src={getLogoPath('logo', 'webp')} width="250" alt="Logo" />
+                  <img src="/assets/images/logo/logo.webp" width="250" alt="Logo" />
                 </div>
               </div>
               <div className="form_container w-400">

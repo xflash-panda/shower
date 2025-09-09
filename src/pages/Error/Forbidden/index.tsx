@@ -2,7 +2,6 @@ import type { ReactElement } from 'react';
 import { Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { getImagePath } from '@/helpers/assets';
 
 const Forbidden = (): ReactElement => {
   const { t } = useTranslation('error');
@@ -12,7 +11,7 @@ const Forbidden = (): ReactElement => {
       <Container>
         <div>
           <div>
-            <img src={getImagePath('background/error-403.png')} className="img-fluid" alt="" />
+            <img src="/assets/images/background/error-403.png" className="img-fluid" alt="" />
           </div>
           <div className="mb-3">
             <div className="row">

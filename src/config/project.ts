@@ -26,8 +26,3 @@ export const API_CONFIG = {
   baseURL: import.meta.env.SHOWER_API_BASE_URL ?? '',
   timeout: 10000,
 };
-
-// 资源路径前缀配置（仅生产环境生效）
-export const ASSET_PREFIX = PROJECT_CONFIG.isProduction
-  ? (import.meta.env.SHOWER_ASSET_PREFIX ?? '')
-  : '';
