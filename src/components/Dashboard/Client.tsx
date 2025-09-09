@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react';
 import { Input, Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
-import { ClientDownloadData, type Client, type DownloadOption } from '@data/V1/Client/ClientData';
+import { ClientDownloadData } from '@data/client';
+import type { Client, DownloadOption } from '@/types/client';
 import { copyText } from '@helpers/clipboard';
 import { detectPlatform, type PlatformType } from '@helpers/platform';
 import toast from '@helpers/toast';
@@ -41,7 +42,7 @@ const ClientComponent: React.FC<ClientProps> = ({ subscribeUrl }) => {
   const copySubscriptionLink = (flag: string): void => {
     try {
       const subscriptionUrlWithFlag = buildSubscriptionUrl(flag);
-      const _success = copyText(subscriptionUrlWithFlag);
+      copyText(subscriptionUrlWithFlag);
     } catch (error) {
       console.error('Error copying subscription link:', error);
     }

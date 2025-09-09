@@ -16,7 +16,8 @@ import {
 import toast from '@/helpers/toast';
 import { copyText } from '@/helpers/clipboard';
 import { detectPlatform, type PlatformType } from '@/helpers/platform';
-import { ClientDownloadData, type Client } from '@data/V1/Client/ClientData';
+import { ClientDownloadData } from '@/data/client';
+import type { Client } from '@/types/client';
 import type { UserSubscribeData } from '@/helpers/user';
 import { calculateRemainingTraffic, bytesToGB } from '@/helpers/bytes';
 
