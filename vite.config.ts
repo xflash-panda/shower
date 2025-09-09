@@ -2,7 +2,6 @@ import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import htmlMinifier from 'vite-plugin-html-minifier';
 import i18nextLoader from 'vite-plugin-i18next-loader';
-import { criticalCSS } from './scripts/vite-plugin-critical-css';
 import { asyncifyCSSPlugin } from './scripts/vite-plugin-asyncify-css';
 import { purgeCSSPlugin } from './scripts/vite-plugin-purgecss';
 // import analyze from 'rollup-plugin-analyzer';
@@ -19,28 +18,6 @@ const getProductionPlugins = () => {
   if (!isProduction) return [];
   
   return [
-    // 关键 CSS 优化插件
-    criticalCSS({
-      inlineThreshold: 25000, // 25KB 以下的关键样式直接内联
-      criticalSelectors: [
-        // 布局相关
-        '.container', '.row', '.col-', '.d-flex', '.justify-content-', '.align-items-',
-        // 导航和侧边栏
-        '.sidebar', '.nav', '.navbar', '.header', '.main-wrapper', '.app-wrapper',
-        // 加载和首屏组件
-        '.loader', '.spinner', '.loading',
-        // 基础按钮和表单
-        '.btn', '.btn-primary', '.form-control', '.input-group',
-        // 字体和文本样式类
-        '.f-fw-', '.text-', '.mg-b-', '.pa-', '.mg-', '.h1', '.h2', '.h3', '.h4', '.h5', '.h6',
-        // 主题变量依赖样式
-        '.ltr', '.rtl', 'body', 'html', '.cursor-pointer',
-        // 响应式工具类
-        '.w-100', '.h-100', '.text-center', '.position-', '.overflow-',
-        // 颜色相关
-        '.text-primary', '.text-secondary', '.bg-primary', '.bg-secondary'
-      ]
-    }),
     htmlMinifier({
       minify: {
         collapseWhitespace: false, // 不压缩空白字符
