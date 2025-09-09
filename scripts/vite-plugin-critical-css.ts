@@ -1,6 +1,4 @@
 import { type Plugin } from 'vite';
-import * as fs from 'fs';
-import * as path from 'path';
 
 /**
  * 关键 CSS 内联插件
