@@ -531,7 +531,7 @@ const SignUp = () => {
                           ) : (
                             emailSuffixes.map(suffix => (
                               <option key={suffix} value={suffix}>
-                                {suffix}
+                                @{suffix}
                               </option>
                             ))
                           )}
