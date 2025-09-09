@@ -183,7 +183,7 @@ export default defineConfig({
           'ui-components': ['react-slick', 'simplebar-react', 'react-apple-login', '@react-oauth/google'],
         },
 
-        chunkFileNames: 'assets/js/[name].min.js',
+        chunkFileNames: 'assets/js/[name].chunk.min.js',
         entryFileNames: 'assets/js/[name].min.js',
         assetFileNames: (assetInfo) => {
           const fileName = assetInfo.names?.[0] || 'unknown';
