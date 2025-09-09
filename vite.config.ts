@@ -1,11 +1,11 @@
-import { defineConfig, type Plugin, loadEnv } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import htmlMinifier from 'vite-plugin-html-minifier';
 import i18nextLoader from 'vite-plugin-i18next-loader';
 import { asyncifyCSSPlugin } from './scripts/vite-plugin-asyncify-css';
 import { purgeCSSPlugin } from './scripts/vite-plugin-purgecss';
 import { criticalCSSPlugin } from './scripts/vite-plugin-critical-css';
-import { versionInjectPlugin } from './scripts/vite-plugin-version-inject';
+import { manifestPlugin } from './scripts/vite-plugin-manifest';
 // import analyze from 'rollup-plugin-analyzer';
 import { resolve } from 'path';
 import autoprefixer from 'autoprefixer';
@@ -17,8 +17,8 @@ const getProductionPlugins = (isProduction: boolean) => {
   if (!isProduction) return [];
   
   return [
-    // 版本注入插件 - 必须在最前面执行
-    versionInjectPlugin(),
+    // 生成文件映射表
+    manifestPlugin(),
     // 关键CSS内联 - 必须在最前面执行，避免白屏
     criticalCSSPlugin(),
     htmlMinifier({
@@ -134,6 +134,8 @@ export default defineConfig(({ mode }) => {
     outDir: 'dist',
     chunkSizeWarningLimit: 1000,
     minify: 'terser', // 使用 terser 进行更彻底的代码压缩和清理
+    // 强制重新构建，避免缓存问题
+    emptyOutDir: true,
     terserOptions: {
       compress: {
         drop_console: true, // 移除 console.log
@@ -188,8 +190,8 @@ export default defineConfig(({ mode }) => {
           'ui-components': ['react-slick', 'simplebar-react', 'react-apple-login', '@react-oauth/google'],
         },
 
-        chunkFileNames: 'assets/js/[name].min.js',
-        entryFileNames: 'assets/js/[name].min.js',
+        chunkFileNames: 'assets/js/[name]-[hash:8].chunk.min.js',
+        entryFileNames: 'assets/js/[name]-[hash:8].entry.min.js',
         assetFileNames: (assetInfo) => {
           const fileName = assetInfo.names?.[0] || 'unknown';
           const info = fileName.split('.');

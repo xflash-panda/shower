@@ -6,3 +6,8 @@ yarn-error.log
 
 # 客户端配置文件（用户可编辑）
 src/data/client.ts
+
+# 构建生成的 hash 文件和 manifest
+public/assets/js/*.min.js
+public/assets/css/*.css
+public/manifest.json
