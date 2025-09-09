@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 
 interface InviteHeaderProps {
   codesLength: number;
@@ -20,7 +20,11 @@ const InviteHeader = ({
   return (
     <div className="d-flex justify-content-between align-items-center mb-3">
       <span className="text-muted">
-        {t('header.generatedCount', { current: codesLength, total: inviteGenLimit })}
+        <Trans
+          i18nKey="invite:header.generatedCount"
+          values={{ current: codesLength, total: inviteGenLimit }}
+          components={{ b: <b /> }}
+        />
       </span>
       <Button
         color="primary"
