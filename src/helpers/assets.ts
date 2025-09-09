@@ -1,6 +1,6 @@
 /**
  * 静态资源路径辅助函数
- * 使用 Vite 的 BASE_URL 来正确处理资源路径前缀
+ * 使用 window.assetsPath 来正确处理资源路径前缀
  */
 
 /**
@@ -9,9 +9,10 @@
  * @returns 带有正确前缀的资源路径
  */
 export const getAssetPath = (assetPath: string): string => {
-  const baseUrl = import.meta.env.BASE_URL;
+  const baseUrl = (window as Window & { assetsPath?: string }).assetsPath ?? '/';
   const cleanPath = assetPath.startsWith('/') ? assetPath.slice(1) : assetPath;
-  return `${baseUrl}${cleanPath}`;
+  const normalizedBaseUrl = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+  return `${normalizedBaseUrl}${cleanPath}`;
 };
 
 /**

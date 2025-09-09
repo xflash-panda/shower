@@ -60,6 +60,8 @@ declare function Toastify(options: ToastifyOptions): ToastifyInstance;
 declare global {
   interface Window {
     [key: string]: any;
+    // 静态资源路径前缀
+    assetsPath?: string;
     // Turnstile 验证码类型定义
     turnstile?: {
       render: (
