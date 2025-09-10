@@ -23,6 +23,6 @@ export const PROJECT_CONFIG = {
 
 // API 基础配置
 export const API_CONFIG = {
-  baseURL: import.meta.env.SHOWER_API_BASE_URL ?? '',
+  baseURL: PROJECT_CONFIG.isProduction ? '' : (import.meta.env.SHOWER_API_BASE_URL ?? ''),
   timeout: 10000,
 };
