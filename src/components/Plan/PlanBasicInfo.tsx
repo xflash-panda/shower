@@ -161,7 +161,7 @@ const PlanBasicInfo: React.FC<PlanBasicInfoProps> = ({ plan, nodeOverviews, plan
             </span>
             <div className="flex-grow-1 overflow-hidden">
               {planFeatures.length > 0 ? (
-                <div className="d-flex gap-2 flex-wrap">
+                <div className="d-flex gap-2 flex-wrap justify-content-start justify-content-lg-end">
                   {planFeatures.map(feature => (
                     <span
                       key={feature}
