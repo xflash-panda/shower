@@ -32,10 +32,9 @@ const SubscriptionSpecification: React.FC<SubscriptionSpecificationProps> = ({
 
   return (
     <div className="plan-detail-section">
-      {/* 第一行：基础信息和套餐特性并列 */}
-      <Row className="position-relative">
-        {/* 基础信息卡片 */}
-        <Col md={6}>
+      {/* 第一行：基础信息 - 占整行 */}
+      <Row>
+        <Col md={12}>
           <Card>
             <CardHeader>
               <h6 className="fw-bold text-dark d-flex align-items-center mg-b-0">
@@ -59,27 +58,14 @@ const SubscriptionSpecification: React.FC<SubscriptionSpecificationProps> = ({
             </CardBody>
           </Card>
         </Col>
+      </Row>
 
-        {/* 套餐特性卡片 */}
-        <Col md={6} className="position-relative">
-          {/* 竖直分割线 - 使用伪元素 */}
-          <div
-            className="d-none d-md-block position-absolute top-0 start-0 h-100"
-            style={{ left: '-12px', width: '1px', backgroundColor: 'rgba(0,0,0,0.1)' }}
-          ></div>
+      {/* 分割线 */}
+      <div className="border-top my-3" style={{ borderColor: 'rgba(var(--secondary), 0.2)' }}></div>
 
-          {/* 小屏幕分割线 - 放在卡片外面 */}
-          <div className="d-md-none mb-2">
-            <div
-              className="w-100"
-              style={{
-                height: '1px',
-                backgroundColor: 'var(--border_color)',
-                opacity: 0.5,
-              }}
-            ></div>
-          </div>
-
+      {/* 第二行：套餐特性 - 占整行 */}
+      <Row>
+        <Col md={12}>
           <Card>
             <CardHeader>
               <h6 className="fw-bold text-dark d-flex align-items-center mg-b-0">
@@ -98,10 +84,10 @@ const SubscriptionSpecification: React.FC<SubscriptionSpecificationProps> = ({
         </Col>
       </Row>
 
-      {/* 分界线 - 使用更小的间距 */}
-      <div className="border-top my-2" style={{ borderColor: 'rgba(var(--secondary), 0.3)' }}></div>
+      {/* 分割线 */}
+      <div className="border-top my-3" style={{ borderColor: 'rgba(var(--secondary), 0.2)' }}></div>
 
-      {/* 第二行：节点概览 */}
+      {/* 第三行：节点概览 - 占整行 */}
       <Row>
         <Col md={12}>
           <Card>

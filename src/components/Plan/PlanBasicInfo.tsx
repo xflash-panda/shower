@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { Row, Col } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import { formatBytesToReadable } from '@helpers/bytes';
 
@@ -51,78 +52,108 @@ const PlanBasicInfo: React.FC<PlanBasicInfoProps> = ({ plan, nodeOverviews }) =>
   }, [nodeOverviews]);
 
   return (
-    <div className="space-y-3">
-      <div className="plan-data-item d-flex align-items-center justify-content-between">
-        <span className="text-dark small fw-medium">{t('basicInfo.labels.trafficQuota')}：</span>
-        <span className="text-dark small fw-bold">
-          <span className="text-primary">{formatBytesToReadable(plan.transfer_enable_value)}</span>
-        </span>
-      </div>
-      <div className="plan-data-item d-flex align-items-center justify-content-between">
-        <span className="text-dark small fw-medium">{t('basicInfo.labels.nodeRegions')}：</span>
-        <span className="text-dark small fw-bold">
-          <span className="text-primary fw-bold">{nodeStats.totalCountries}</span>{' '}
-          {t('basicInfo.values.countries')}
-        </span>
-      </div>
-      <div className="plan-data-item d-flex align-items-center justify-content-between">
-        <span className="text-dark small fw-medium">{t('basicInfo.labels.renewable')}：</span>
-        <span className="text-dark small fw-bold">
-          {plan.renew ? t('basicInfo.values.supported') : t('basicInfo.values.notSupported')}
-        </span>
-      </div>
-      <div className="plan-data-item d-flex align-items-center justify-content-between">
-        <span className="text-dark small fw-medium">{t('basicInfo.labels.nodeExitIPs')}：</span>
-        <span className="text-dark small fw-bold">
-          <span className="text-primary">{nodeStats.totalExitIPs}</span> {t('basicInfo.values.ips')}
-        </span>
-      </div>
-      <div className="plan-data-item d-flex align-items-center justify-content-between">
-        <span className="text-dark small fw-medium">{t('basicInfo.labels.totalNodes')}：</span>
-        <span className="text-dark small fw-bold">
-          <span className="text-primary fw-bold">{nodeStats.totalNodes}</span>{' '}
-          {t('basicInfo.values.nodes')}
-          {(() => {
-            const hasDirectNodes = nodeStats.totalDirectNodes > 0;
-            const hasRelayNodes = nodeStats.totalRelayNodes > 0;
+    <div>
+      {/* 第一行：流量配额 + 节点地区 */}
+      <Row className="mg-b-15">
+        <Col md={6}>
+          <div className="plan-data-item d-flex align-items-center justify-content-between">
+            <span className="text-dark small fw-medium">
+              {t('basicInfo.labels.trafficQuota')}：
+            </span>
+            <span className="text-dark small fw-bold">
+              <span className="text-primary">
+                {formatBytesToReadable(plan.transfer_enable_value)}
+              </span>
+            </span>
+          </div>
+        </Col>
+        <Col md={6}>
+          <div className="plan-data-item d-flex align-items-center justify-content-between">
+            <span className="text-dark small fw-medium">{t('basicInfo.labels.nodeRegions')}：</span>
+            <span className="text-dark small fw-bold">
+              <span className="text-primary fw-bold">{nodeStats.totalCountries}</span>{' '}
+              {t('basicInfo.values.countries')}
+            </span>
+          </div>
+        </Col>
+      </Row>
 
-            if (hasDirectNodes && hasRelayNodes) {
-              return (
-                <span className="text-muted small ms-2">
-                  ({t('basicInfo.values.directNodes')}{' '}
-                  <span className="text-primary f-fw-600">{nodeStats.totalDirectNodes}</span>{' '}
-                  {t('basicInfo.values.nodes')}，{t('basicInfo.values.relayNodes')}{' '}
-                  <span className="text-primary f-fw-600">{nodeStats.totalRelayNodes}</span>{' '}
-                  {t('basicInfo.values.nodes')})
-                </span>
-              );
-            } else if (hasDirectNodes) {
-              return (
-                <span className="text-muted small ms-2">
-                  ({t('basicInfo.values.directNodes')}{' '}
-                  <span className="text-primary f-fw-600">{nodeStats.totalDirectNodes}</span>{' '}
-                  {t('basicInfo.values.nodes')})
-                </span>
-              );
-            } else if (hasRelayNodes) {
-              return (
-                <span className="text-muted small ms-2">
-                  ({t('basicInfo.values.relayNodes')}{' '}
-                  <span className="text-primary f-fw-600">{nodeStats.totalRelayNodes}</span>{' '}
-                  {t('basicInfo.values.nodes')})
-                </span>
-              );
-            }
-            return null;
-          })()}
-        </span>
-      </div>
-      <div className="plan-data-item d-flex align-items-center justify-content-between">
-        <span className="text-dark small fw-medium">{t('basicInfo.labels.nodeProtocols')}：</span>
-        <span className="text-dark small fw-bold">
-          {nodeStats.supportedProtocols.length > 0 ? nodeStats.supportedProtocols.join(', ') : '-'}
-        </span>
-      </div>
+      {/* 第二行：续费支持 + 出口IP */}
+      <Row className="mg-b-15">
+        <Col md={6}>
+          <div className="plan-data-item d-flex align-items-center justify-content-between">
+            <span className="text-dark small fw-medium">{t('basicInfo.labels.renewable')}：</span>
+            <span className="text-dark small fw-bold">
+              {plan.renew ? t('basicInfo.values.supported') : t('basicInfo.values.notSupported')}
+            </span>
+          </div>
+        </Col>
+        <Col md={6}>
+          <div className="plan-data-item d-flex align-items-center justify-content-between">
+            <span className="text-dark small fw-medium">{t('basicInfo.labels.nodeExitIPs')}：</span>
+            <span className="text-dark small fw-bold">
+              <span className="text-primary">{nodeStats.totalExitIPs}</span>{' '}
+              {t('basicInfo.values.ips')}
+            </span>
+          </div>
+        </Col>
+      </Row>
+
+      {/* 第三行：支持协议 + 总节点数 */}
+      <Row className="mg-b-15">
+        <Col md={6}>
+          <div className="plan-data-item d-flex align-items-center justify-content-between">
+            <span className="text-dark small fw-medium">
+              {t('basicInfo.labels.nodeProtocols')}：
+            </span>
+            <span className="text-dark small fw-bold">
+              {nodeStats.supportedProtocols.length > 0
+                ? nodeStats.supportedProtocols.join(', ')
+                : '-'}
+            </span>
+          </div>
+        </Col>
+        <Col md={6}>
+          <div className="plan-data-item d-flex align-items-center justify-content-between">
+            <span className="text-dark small fw-medium">{t('basicInfo.labels.totalNodes')}：</span>
+            <span className="text-dark small fw-bold">
+              <span className="text-primary fw-bold">{nodeStats.totalNodes}</span>{' '}
+              {t('basicInfo.values.nodes')}
+              {(() => {
+                const hasDirectNodes = nodeStats.totalDirectNodes > 0;
+                const hasRelayNodes = nodeStats.totalRelayNodes > 0;
+
+                if (hasDirectNodes && hasRelayNodes) {
+                  return (
+                    <span className="text-muted small ms-1">
+                      ({t('basicInfo.values.directNodes')}{' '}
+                      <span className="text-primary f-fw-600">{nodeStats.totalDirectNodes}</span>
+                      个，
+                      {t('basicInfo.values.relayNodes')}{' '}
+                      <span className="text-primary f-fw-600">{nodeStats.totalRelayNodes}</span>个)
+                    </span>
+                  );
+                } else if (hasDirectNodes) {
+                  return (
+                    <span className="text-muted small ms-1">
+                      ({t('basicInfo.values.directNodes')}{' '}
+                      <span className="text-primary f-fw-600">{nodeStats.totalDirectNodes}</span>个)
+                    </span>
+                  );
+                } else if (hasRelayNodes) {
+                  return (
+                    <span className="text-muted small ms-1">
+                      ({t('basicInfo.values.relayNodes')}{' '}
+                      <span className="text-primary f-fw-600">{nodeStats.totalRelayNodes}</span>个)
+                    </span>
+                  );
+                }
+                return null;
+              })()}
+            </span>
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 };
