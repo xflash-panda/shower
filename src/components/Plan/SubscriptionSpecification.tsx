@@ -33,7 +33,7 @@ const SubscriptionSpecification: React.FC<SubscriptionSpecificationProps> = ({
   return (
     <div className="plan-detail-section">
       {/* 第一行：基础信息和套餐特性并列 */}
-      <Row className="g-4 position-relative">
+      <Row className="position-relative">
         {/* 基础信息卡片 */}
         <Col md={6}>
           <Card>
@@ -69,7 +69,7 @@ const SubscriptionSpecification: React.FC<SubscriptionSpecificationProps> = ({
           ></div>
 
           {/* 小屏幕分割线 - 放在卡片外面 */}
-          <div className="d-md-none mb-3">
+          <div className="d-md-none mb-2">
             <div
               className="w-100"
               style={{
@@ -98,8 +98,8 @@ const SubscriptionSpecification: React.FC<SubscriptionSpecificationProps> = ({
         </Col>
       </Row>
 
-      {/* 分割线 */}
-      <div className="app-divider-v"></div>
+      {/* 分界线 - 使用更小的间距 */}
+      <div className="border-top my-2" style={{ borderColor: 'rgba(var(--secondary), 0.3)' }}></div>
 
       {/* 第二行：节点概览 */}
       <Row>
