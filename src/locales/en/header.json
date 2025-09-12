@@ -6,6 +6,15 @@
     "accountBalance": "Account Balance",
     "profile": "Account Management",
     "ticket": "Support Tickets",
+    "switchToOldVersion": "Switch to Classic",
     "logout": "Logout"
+  },
+  "toast": {
+    "auth": {
+      "logoutSuccess": "Logout successful"
+    },
+    "theme": {
+      "switchToOldVersionSuccess": "Switched to classic interface"
+    }
   }
 }

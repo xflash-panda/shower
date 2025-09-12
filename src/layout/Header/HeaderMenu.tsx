@@ -11,10 +11,14 @@ import { logout } from '@/api/v1/user';
 import { useUserInfo } from '@/hooks/useUser';
 import { formatCurrency } from '@/helpers/currency';
 import { generateUserInitials } from '@/helpers/avatar';
+import { CookieHelper } from '@/helpers/cookie';
 
 const HeaderMenu: React.FC = () => {
   const navigate = useNavigate();
   const { t } = useTranslation(['header', 'common']);
+
+  // 创建无前缀的 CookieHelper 实例
+  const cookieHelper = new CookieHelper('');
 
   // 获取用户信息
   const { userInfo, isLoading, isError, error } = useUserInfo();
@@ -55,6 +59,31 @@ const HeaderMenu: React.FC = () => {
 
       // 重定向到登录页面
       navigate(RoutePaths.LOGIN, { replace: true });
+    }
+  };
+
+  /**
+   * 处理切换到旧版
+   * 设置user_theme_preference cookie为default值
+   */
+  const handleSwitchToOldVersion = (): void => {
+    try {
+      // 设置cookie，过期时间为365天
+      cookieHelper.set('user_theme_preference', 'default', {
+        expires: 365,
+        path: '/',
+        secure: window.location.protocol === 'https:',
+        sameSite: 'Lax',
+      });
+
+      // 显示成功消息
+      toast.success(t('header:toast.theme.switchToOldVersionSuccess'), 1200);
+
+      // 刷新页面以应用新的主题设置
+      window.location.reload();
+    } catch (error) {
+      console.error('Failed to switch to old version:', error);
+      toast.error('Failed to switch to classic interface');
     }
   };
 
@@ -187,6 +216,19 @@ const HeaderMenu: React.FC = () => {
                     <i className="ph-bold ph-ticket pe-1 f-s-20"></i> {t('menu.ticket')}
                   </Link>
                 </li>
+
+                <li>
+                  <button
+                    className="f-w-500 text-decoration-none border-0 bg-transparent p-0 text-start"
+                    onClick={handleSwitchToOldVersion}
+                    type="button"
+                  >
+                    <i className="ph-bold ph-arrow-counter-clockwise pe-1 f-s-20"></i>{' '}
+                    {t('menu.switchToOldVersion')}
+                  </button>
+                </li>
+
+                <li className="app-divider-v dotted py-1"></li>
 
                 <li>
                   <button
