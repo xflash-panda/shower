@@ -174,6 +174,30 @@ export const clearAllCookies = (options?: Pick<CookieOptions, 'path' | 'domain'>
   return defaultCookieHelper.clearAll(options);
 };
 
+/**
+ * 获取适合 Cookie 的域名配置
+ * 自动处理子域共享逻辑
+ * @returns 适合设置 Cookie 的域名，如果不需要设置域名则返回空字符串
+ */
+export const getCookieDomain = (): string => {
+  const hostname = window.location.hostname;
+
+  // 如果是 localhost 或 IP 地址，不设置域名
+  if (hostname === 'localhost' || /^\d+\.\d+\.\d+\.\d+$/.test(hostname)) {
+    return '';
+  }
+
+  // 如果是子域名，返回主域名（例如：从 app.example.com 返回 .example.com）
+  const parts = hostname.split('.');
+  if (parts.length > 2) {
+    return `.${parts.slice(-2).join('.')}`;
+  }
+
+  // 对于顶级域名，也返回点号前缀的形式以支持子域共享
+  // 例如：example.com 返回 .example.com
+  return `.${hostname}`;
+};
+
 // 导出 CookieHelper 类，允许创建自定义前缀的实例
 export { CookieHelper };
 export type { CookieOptions };

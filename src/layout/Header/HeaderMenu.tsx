@@ -11,7 +11,7 @@ import { logout } from '@/api/v1/user';
 import { useUserInfo } from '@/hooks/useUser';
 import { formatCurrency } from '@/helpers/currency';
 import { generateUserInitials } from '@/helpers/avatar';
-import { CookieHelper } from '@/helpers/cookie';
+import { CookieHelper, getCookieDomain } from '@/helpers/cookie';
 
 const HeaderMenu: React.FC = () => {
   const navigate = useNavigate();
@@ -68,10 +68,13 @@ const HeaderMenu: React.FC = () => {
    */
   const handleSwitchToOldVersion = (): void => {
     try {
+      const domain = getCookieDomain();
+
       // 设置cookie，过期时间为365天
       cookieHelper.set('user_theme_preference', 'default', {
         expires: 365,
         path: '/',
+        domain: domain || undefined, // 只有在有域名时才设置
         secure: window.location.protocol === 'https:',
         sameSite: 'Lax',
       });

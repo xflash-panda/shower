@@ -1,5 +1,5 @@
 import { getStorageItem, setStorageItem, removeStorageItem } from './storage';
-import { getCookie, setCookie, removeCookie } from './cookie';
+import { getCookie, setCookie, removeCookie, getCookieDomain } from './cookie';
 
 /**
  * 获取认证令牌
@@ -25,10 +25,12 @@ export const setToken = (token: string, expires: number = 7): void => {
   // 保存到 localStorage
   setStorageItem('token', token);
 
-  // 保存到 cookie，设置过期时间
+  // 保存到 cookie，设置过期时间和域名以支持子域共享
+  const domain = getCookieDomain();
   setCookie('token', token, {
     expires,
     path: '/',
+    domain: domain || undefined, // 只有在有域名时才设置 domain 属性
     secure: window.location.protocol === 'https:',
     sameSite: 'Lax',
   });
@@ -40,7 +42,13 @@ export const setToken = (token: string, expires: number = 7): void => {
  */
 export const clearToken = (): void => {
   removeStorageItem('token');
-  removeCookie('token');
+
+  // 清除 cookie 时也要指定域名，确保能正确删除
+  const domain = getCookieDomain();
+  removeCookie('token', {
+    path: '/',
+    domain: domain || undefined,
+  });
 };
 
 /**
