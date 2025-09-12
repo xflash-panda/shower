@@ -2,43 +2,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* Shimmer 动画效果 */
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-/* 卡片悬停效果 */
-.hover-shadow-16:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* 按钮悬停效果 */
-.btn:hover {
-  transform: translateY(-1px);
-  transition: all 0.3s ease;
-}
-
-/* 卡片缩放效果 */
-.transform-scale-105 {
-  transform: scale(1.02) !important;
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
-  .transform-scale-105 {
-    transform: scale(1.01) !important;
-  }
-}
-
 /* 阴影增强 */
 .box-shadow-12 {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -46,16 +9,4 @@ code {
 
 .box-shadow-18 {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* 动画优化 */
-.transition-all {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* 响应式媒体查询优化 */
-@media (max-width: 768px) {
-  .hover-shadow-16:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
-  }
 }
