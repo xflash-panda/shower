@@ -20,11 +20,11 @@ const PlanFeatures: React.FC<PlanFeaturesProps> = ({ planFeatures }) => {
             key={feature}
             className="plan-data-item d-flex align-items-center justify-content-between"
           >
-            <div className="d-flex align-items-center text-dark small fw-medium">
+            <div className="d-flex align-items-start text-dark small fw-medium">
               <span className="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-circle me-2 flex-shrink-0 plan-feature-index">
                 {index + 1}
               </span>
-              {feature}
+              <span className="lh-base">{feature}</span>
             </div>
           </div>
         );

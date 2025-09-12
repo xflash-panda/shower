@@ -231,6 +231,7 @@
   .plan-data-item {
     padding: 0.75rem 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    min-height: 2.5rem; // 确保所有项目高度一致
 
     &:last-child {
       border-bottom: none;
@@ -1249,11 +1250,13 @@ body[class='ltr dark'] .plan-card-modern {
   height: 20px;
   font-size: 12px;
   font-weight: 600;
+  margin-top: -2px; // 微调位置，使其与文本更好对齐
 
   // 响应式调整
   @media (max-width: 768px) {
     width: 18px;
     height: 18px;
     font-size: 11px;
+    margin-top: -1px;
   }
 }
