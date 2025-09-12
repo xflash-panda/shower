@@ -184,7 +184,6 @@
 
     &:hover {
       transform: translateY(-2px);
-      border-color: var(--bs-primary);
     }
   }
 
@@ -1244,19 +1243,103 @@ body[class='ltr dark'] .plan-card-modern {
 
 // ============================= 套餐功能特性样式 ============================= //
 
-// 功能特性索引样式
-.plan-feature-index {
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  margin-top: -2px; // 微调位置，使其与文本更好对齐
+// 特性网格容器
+.plan-features-grid {
+  margin-top: 0.5rem;
+}
+
+// 特性项目容器
+.plan-feature-item {
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 3rem;
+
+  // 悬停效果
+  &:hover {
+    transform: translateY(-1px);
+  }
 
   // 响应式调整
   @media (max-width: 768px) {
-    width: 18px;
-    height: 18px;
+    padding: 0.625rem;
+    min-height: 2.75rem;
+  }
+}
+
+// 功能特性索引样式
+.plan-feature-index {
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 0; // 与容器顶部对齐
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.25s ease;
+
+  // 强制使用项目主色调，覆盖 Bootstrap
+  &.bg-primary {
+    background-color: rgba(var(--primary), 1) !important;
+    color: rgba(var(--white), 1) !important;
+  }
+
+  // 响应式调整
+  @media (max-width: 768px) {
+    width: 20px;
+    height: 20px;
     font-size: 11px;
-    margin-top: -1px;
+  }
+}
+
+// 专门的背景色类，优先级更高
+.plan-feature-index-bg {
+  background-color: rgba(var(--primary), 1) !important;
+  color: rgba(var(--white), 1) !important;
+}
+
+// 功能特性文本样式
+.plan-feature-text {
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  word-break: break-word;
+  hyphens: auto;
+  margin-top: 1px; // 与索引圆圈中心对齐
+
+  // 确保文本垂直居中对齐
+  display: flex;
+  align-items: center;
+  min-height: 22px;
+
+  @media (max-width: 768px) {
+    font-size: 0.8125rem;
+    min-height: 20px;
+  }
+}
+
+// 特性网格动画效果
+.plan-features-grid .plan-feature-item {
+  animation: fadeInUp 0.4s ease-out;
+  animation-fill-mode: both;
+
+  // 依次出现的效果
+  @for $i from 1 through 12 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{($i - 1) * 0.05}s;
+    }
+  }
+}
+
+// 淡入上升动画
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
