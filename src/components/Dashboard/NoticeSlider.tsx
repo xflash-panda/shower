@@ -48,20 +48,36 @@ const NoticeSlider: React.FC<NoticeSliderProps> = ({ notices }) => {
                 className="position-relative cursor-pointer"
                 onClick={() => handleNoticeClick(notice)}
               >
-                <img
-                  src={notice.img_url}
-                  alt={notice.title}
-                  className="img-fluid b-r-15 w-100 notice-slide-image"
-                />
-                {/* 覆盖层 */}
-                <div className="notice-slide-overlay position-absolute">
-                  <div className="pa-20 text-white w-100">
-                    <h5 className="f-fw-600 mg-b-5 notice-text-white">{notice.title}</h5>
-                    <small className="mg-b-0 notice-text-white d-block">
-                      {formatTime(notice.created_at, TIME_FORMATS.DATE)}
-                    </small>
+                {notice.img_url ? (
+                  <>
+                    <img
+                      src={notice.img_url}
+                      alt={notice.title}
+                      className="img-fluid b-r-15 w-100 notice-slide-image"
+                    />
+                    {/* 覆盖层 */}
+                    <div className="notice-slide-overlay position-absolute">
+                      <div className="pa-20 text-white w-100">
+                        <h5 className="f-fw-600 mg-b-5 notice-text-white">{notice.title}</h5>
+                        <small className="mg-b-0 notice-text-white d-block">
+                          {formatTime(notice.created_at, TIME_FORMATS.DATE)}
+                        </small>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <div className="notice-slide-no-image b-r-15 d-flex align-items-center justify-content-center txt-bg-primary">
+                    <div className="pa-20 text-center w-100">
+                      <div className="mg-b-15">
+                        <i className="ph-duotone ph-megaphone text-primary f-s-48"></i>
+                      </div>
+                      <h5 className="f-fw-600 mg-b-5 text-primary">{notice.title}</h5>
+                      <small className="mg-b-0 text-muted d-block">
+                        {formatTime(notice.created_at, TIME_FORMATS.DATE)}
+                      </small>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           ))}

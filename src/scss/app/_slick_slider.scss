@@ -234,6 +234,34 @@
   object-fit: cover;
 }
 
+.notice-slide-no-image {
+  height: 200px;
+  min-height: 200px;
+}
+
+// 响应式调整 - 移动设备上适当减小高度
+@media (max-width: 768px) {
+  .notice-slide-image {
+    height: 160px;
+  }
+
+  .notice-slide-no-image {
+    height: 160px;
+    min-height: 160px;
+  }
+}
+
+@media (max-width: 576px) {
+  .notice-slide-image {
+    height: 140px;
+  }
+
+  .notice-slide-no-image {
+    height: 140px;
+    min-height: 140px;
+  }
+}
+
 .notice-slide-overlay {
   top: 0;
   left: 0;
