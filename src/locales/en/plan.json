@@ -62,8 +62,7 @@
       "renewable": "Renewable",
       "nodeExitIPs": "Node Exit IPs",
       "totalNodes": "Total Nodes",
-      "nodeProtocols": "Node Protocols",
-      "planFeatures": "Plan Features"
+      "nodeProtocols": "Node Protocols"
     },
     "values": {
       "supported": "Supported",
@@ -125,6 +124,7 @@
   },
   "specification": {
     "basicInfo": "Basic Information",
+    "planFeatures": "Plan Features",
     "nodeOverview": "Node Overview",
     "loading": "Loading...",
     "noData": "No data",

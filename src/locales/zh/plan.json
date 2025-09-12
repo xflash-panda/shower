@@ -62,8 +62,7 @@
       "renewable": "可续费",
       "nodeExitIPs": "节点出口IP",
       "totalNodes": "节点总数",
-      "nodeProtocols": "节点协议",
-      "planFeatures": "套餐特性"
+      "nodeProtocols": "节点协议"
     },
     "values": {
       "supported": "支持",
@@ -125,6 +124,7 @@
   },
   "specification": {
     "basicInfo": "基础信息",
+    "planFeatures": "套餐特性",
     "nodeOverview": "节点概览",
     "loading": "加载中...",
     "noData": "暂无数据",

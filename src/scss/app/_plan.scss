@@ -1240,3 +1240,20 @@ body[class='ltr dark'] .plan-card-modern {
     left: 8px;
   }
 }
+
+// ============================= 套餐功能特性样式 ============================= //
+
+// 功能特性索引样式
+.plan-feature-index {
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  font-weight: 600;
+
+  // 响应式调整
+  @media (max-width: 768px) {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+  }
+}
