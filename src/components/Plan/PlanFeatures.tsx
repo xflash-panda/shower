@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Col } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 
 interface PlanFeaturesProps {
@@ -13,23 +14,20 @@ const PlanFeatures: React.FC<PlanFeaturesProps> = ({ planFeatures }) => {
   }
 
   return (
-    <div className="space-y-3">
+    <Row>
       {planFeatures.map((feature, index) => {
         return (
-          <div
-            key={feature}
-            className="plan-data-item d-flex align-items-center justify-content-between"
-          >
+          <Col key={feature} xl={6} lg={6} md={12} className="mg-b-10">
             <div className="d-flex align-items-start text-dark small fw-medium">
               <span className="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-circle me-2 flex-shrink-0 plan-feature-index">
                 {index + 1}
               </span>
               <span className="lh-base">{feature}</span>
             </div>
-          </div>
+          </Col>
         );
       })}
-    </div>
+    </Row>
   );
 };
 

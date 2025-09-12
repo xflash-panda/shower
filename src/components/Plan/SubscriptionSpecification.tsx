@@ -32,8 +32,8 @@ const SubscriptionSpecification: React.FC<SubscriptionSpecificationProps> = ({
 
   return (
     <div className="plan-detail-section">
-      {/* 第一行：基础信息 - 占整行 */}
-      <Row>
+      {/* 合并卡片：基础信息 + 套餐特性 */}
+      <Row className="mg-b-15">
         <Col md={12}>
           <Card>
             <CardHeader>
@@ -53,41 +53,34 @@ const SubscriptionSpecification: React.FC<SubscriptionSpecificationProps> = ({
                   size="sm"
                 />
               ) : (
-                <PlanBasicInfo plan={plan} nodeOverviews={safeNodeOverview} />
+                <>
+                  <PlanBasicInfo plan={plan} nodeOverviews={safeNodeOverview} />
+
+                  {/* 套餐特性部分 */}
+                  {planFeatures && planFeatures.length > 0 && (
+                    <>
+                      <hr className="my-3" style={{ borderColor: 'rgba(var(--secondary), 0.2)' }} />
+                      <div className="mg-b-10">
+                        <h6 className="fw-bold text-dark d-flex align-items-center mg-b-15">
+                          <i className="ph-duotone ph-sparkle text-primary me-2 f-s-16"></i>
+                          {t('specification.planFeatures')}
+                        </h6>
+                      </div>
+                      {planLoading ? (
+                        <Loading text={t('specification.loading')} variant="spinner" size="sm" />
+                      ) : (
+                        <PlanFeatures planFeatures={planFeatures || []} />
+                      )}
+                    </>
+                  )}
+                </>
               )}
             </CardBody>
           </Card>
         </Col>
       </Row>
 
-      {/* 分割线 */}
-      <div className="border-top my-3" style={{ borderColor: 'rgba(var(--secondary), 0.2)' }}></div>
-
-      {/* 第二行：套餐特性 - 占整行 */}
-      <Row>
-        <Col md={12}>
-          <Card>
-            <CardHeader>
-              <h6 className="fw-bold text-dark d-flex align-items-center mg-b-0">
-                <i className="ph-duotone ph-sparkle text-primary me-2 f-s-18"></i>
-                {t('specification.planFeatures')}
-              </h6>
-            </CardHeader>
-            <CardBody className="pa-20">
-              {planLoading ? (
-                <Loading text={t('specification.loading')} variant="spinner" size="md" />
-              ) : (
-                <PlanFeatures planFeatures={planFeatures || []} />
-              )}
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-
-      {/* 分割线 */}
-      <div className="border-top my-3" style={{ borderColor: 'rgba(var(--secondary), 0.2)' }}></div>
-
-      {/* 第三行：节点概览 - 占整行 */}
+      {/* 节点概览 - 独立卡片 */}
       <Row>
         <Col md={12}>
           <Card>
