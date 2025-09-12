@@ -12,9 +12,6 @@
   "toast": {
     "auth": {
       "logoutSuccess": "登出成功"
-    },
-    "theme": {
-      "switchToOldVersionSuccess": "已切换到旧版界面"
     }
   }
 }

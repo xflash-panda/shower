@@ -79,9 +79,6 @@ const HeaderMenu: React.FC = () => {
         sameSite: 'Lax',
       });
 
-      // 显示成功消息
-      toast.success(t('header:toast.theme.switchToOldVersionSuccess'), 1200);
-
       // 刷新页面以应用新的主题设置
       window.location.reload();
     } catch (error) {
@@ -89,7 +86,6 @@ const HeaderMenu: React.FC = () => {
       toast.error('Failed to switch to classic interface');
     }
   };
-
   // 处理加载状态
   if (isLoading) {
     return (
@@ -221,14 +217,10 @@ const HeaderMenu: React.FC = () => {
                 </li>
 
                 <li>
-                  <button
-                    className="f-w-500 text-decoration-none border-0 bg-transparent p-0 text-start"
-                    onClick={handleSwitchToOldVersion}
-                    type="button"
-                  >
-                    <i className="ph-bold ph-arrow-counter-clockwise pe-1 f-s-20"></i>{' '}
+                  <Link className="f-w-500" to="#" onClick={handleSwitchToOldVersion} type="button">
+                    <i className="ph-bold ph-arrow-counter-clockwise pe-1 f-s-20"></i>
                     {t('menu.switchToOldVersion')}
-                  </button>
+                  </Link>
                 </li>
 
                 <li className="app-divider-v dotted py-1"></li>
