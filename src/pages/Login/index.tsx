@@ -8,7 +8,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { login, googleSignInWithAccessToken, appleSignIn } from '@/api/v1/identity';
 import { RoutePaths } from '@/routes/AuthRoutes';
 import toast from '@/helpers/toast';
-import { isNetworkError, isAuthError } from '@/helpers/error';
+import { isNetworkError, isAuthError, getErrorMessage } from '@/helpers/error';
 import { description } from '@/helpers/default';
 import { mutate } from 'swr';
 import {
@@ -166,7 +166,7 @@ const LoginPage = () => {
       }
     } catch (error) {
       console.error('Login failed:', error);
-      toast.error(t('error.loginFailed'));
+      toast.error(getErrorMessage(error, t('error.loginFailed')));
     } finally {
       setIsSubmitting(false);
     }
