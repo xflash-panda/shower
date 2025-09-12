@@ -1,4 +1,4 @@
-import { Row, Col, Card, CardHeader, CardBody } from 'reactstrap';
+import { Row, Col, Card, CardBody } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import PlanBasicInfo from '@components/Plan/PlanBasicInfo';
 import PlanFeatures from '@components/Plan/PlanFeatures';
@@ -32,16 +32,10 @@ const SubscriptionSpecification: React.FC<SubscriptionSpecificationProps> = ({
 
   return (
     <div className="plan-detail-section">
-      {/* 合并卡片：基础信息 + 套餐特性 */}
-      <Row className="mg-b-15">
+      {/* 统一卡片：基础信息 + 套餐特性 + 节点概览 */}
+      <Row className="mg-b-10">
         <Col md={12}>
           <Card>
-            <CardHeader>
-              <h6 className="fw-bold text-dark d-flex align-items-center mg-b-0">
-                <i className="ph-duotone ph-info text-primary me-2 f-s-18"></i>
-                {t('specification.basicInfo')}
-              </h6>
-            </CardHeader>
             <CardBody className="pa-20">
               {nodeOverviewLoading ? (
                 <Loading text={t('specification.loading')} variant="spinner" size="md" />
@@ -54,18 +48,24 @@ const SubscriptionSpecification: React.FC<SubscriptionSpecificationProps> = ({
                 />
               ) : (
                 <>
+                  {/* 基础信息部分 */}
+                  <h6 className="fw-bold text-dark d-flex align-items-center mg-b-15">
+                    <i className="ph-duotone ph-info text-primary me-2 f-s-16"></i>
+                    {t('specification.basicInfo')}
+                  </h6>
                   <PlanBasicInfo plan={plan} nodeOverviews={safeNodeOverview} />
 
                   {/* 套餐特性部分 */}
                   {planFeatures && planFeatures.length > 0 && (
                     <>
-                      <hr className="my-3" style={{ borderColor: 'rgba(var(--secondary), 0.2)' }} />
-                      <div className="mg-b-10">
-                        <h6 className="fw-bold text-dark d-flex align-items-center mg-b-15">
-                          <i className="ph-duotone ph-sparkle text-primary me-2 f-s-16"></i>
-                          {t('specification.planFeatures')}
-                        </h6>
-                      </div>
+                      <div
+                        className="pa-t-15 mg-b-15"
+                        style={{ borderTop: '1px solid #dee2e6' }}
+                      ></div>
+                      <h6 className="fw-bold text-dark d-flex align-items-center mg-b-15">
+                        <i className="ph-duotone ph-sparkle text-primary me-2 f-s-16"></i>
+                        {t('specification.planFeatures')}
+                      </h6>
                       {planLoading ? (
                         <Loading text={t('specification.loading')} variant="spinner" size="sm" />
                       ) : (
@@ -73,40 +73,31 @@ const SubscriptionSpecification: React.FC<SubscriptionSpecificationProps> = ({
                       )}
                     </>
                   )}
-                </>
-              )}
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
 
-      {/* 节点概览 - 独立卡片 */}
-      <Row>
-        <Col md={12}>
-          <Card>
-            <CardHeader>
-              <h6 className="fw-bold text-dark d-flex align-items-center mg-b-0">
-                <i className="ph-duotone ph-map-pin text-primary me-2 f-s-18"></i>
-                {t('specification.nodeOverview')}
-              </h6>
-            </CardHeader>
-            <CardBody className="pa-20">
-              {nodeOverviewLoading ? (
-                <Loading text={t('specification.loading')} variant="spinner" size="md" />
-              ) : nodeOverviewError ? (
-                <EmptyState
-                  title={t('specification.loadFailed')}
-                  icon="iconoir-glass-empty"
-                  size="sm"
-                />
-              ) : safeNodeOverview.length === 0 ? (
-                <EmptyState
-                  title={t('specification.noData')}
-                  icon="iconoir-glass-empty"
-                  size="sm"
-                />
-              ) : (
-                <PlanNodeOverview nodeOverviews={safeNodeOverview} />
+                  {/* 节点概览部分 */}
+                  <div className="pa-t-15 mg-b-15" style={{ borderTop: '1px solid #dee2e6' }}></div>
+                  <h6 className="fw-bold text-dark d-flex align-items-center mg-b-15">
+                    <i className="ph-duotone ph-map-pin text-primary me-2 f-s-16"></i>
+                    {t('specification.nodeOverview')}
+                  </h6>
+                  {nodeOverviewLoading ? (
+                    <Loading text={t('specification.loading')} variant="spinner" size="sm" />
+                  ) : nodeOverviewError ? (
+                    <EmptyState
+                      title={t('specification.loadFailed')}
+                      icon="iconoir-glass-empty"
+                      size="sm"
+                    />
+                  ) : safeNodeOverview.length === 0 ? (
+                    <EmptyState
+                      title={t('specification.noData')}
+                      icon="iconoir-glass-empty"
+                      size="sm"
+                    />
+                  ) : (
+                    <PlanNodeOverview nodeOverviews={safeNodeOverview} />
+                  )}
+                </>
               )}
             </CardBody>
           </Card>

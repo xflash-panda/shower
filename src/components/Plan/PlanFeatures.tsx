@@ -14,19 +14,17 @@ const PlanFeatures: React.FC<PlanFeaturesProps> = ({ planFeatures }) => {
   }
 
   return (
-    <Row>
-      {planFeatures.map((feature, index) => {
-        return (
-          <Col key={feature} xl={6} lg={6} md={12} className="mg-b-10">
-            <div className="d-flex align-items-start text-dark small fw-medium">
-              <span className="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-circle me-2 flex-shrink-0 plan-feature-index">
-                {index + 1}
-              </span>
-              <span className="lh-base">{feature}</span>
-            </div>
-          </Col>
-        );
-      })}
+    <Row className="g-3 plan-features-grid">
+      {planFeatures.map((feature, index) => (
+        <Col key={feature} xl={6} lg={6} md={12} className="mg-b-6">
+          <div className="plan-feature-item d-flex align-items-start h-100">
+            <span className="d-inline-flex align-items-center justify-content-center text-white rounded-circle me-3 flex-shrink-0 plan-feature-index plan-feature-index-bg">
+              {index + 1}
+            </span>
+            <span className="flex-grow-1 plan-feature-text text-dark">{feature}</span>
+          </div>
+        </Col>
+      ))}
     </Row>
   );
 };
