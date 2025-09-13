@@ -55,25 +55,25 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
         switch (variant) {
           case 'notice':
             return (
-              <h4 className="text-primary f-fw-600 mg-t-25 mg-b-15" role="heading" aria-level={1}>
+              <h4 className="text-dark f-fw-600 mg-t-25 mg-b-15" role="heading" aria-level={1}>
                 {children}
               </h4>
             );
           case 'knowledge':
             return (
-              <h3 className="text-primary f-fw-600 mg-t-30 mg-b-20" role="heading" aria-level={1}>
+              <h3 className="text-dark f-fw-600 mg-t-30 mg-b-20" role="heading" aria-level={1}>
                 {children}
               </h3>
             );
           case 'compact':
             return (
-              <h5 className="text-primary f-fw-600 mg-t-15 mg-b-10" role="heading" aria-level={1}>
+              <h5 className="text-dark f-fw-600 mg-t-15 mg-b-10" role="heading" aria-level={1}>
                 {children}
               </h5>
             );
           default:
             return (
-              <h3 className="text-primary f-fw-600 mg-t-25 mg-b-18" role="heading" aria-level={1}>
+              <h3 className="text-dark f-fw-600 mg-t-25 mg-b-18" role="heading" aria-level={1}>
                 {children}
               </h3>
             );
@@ -83,41 +83,39 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
       h2: ({ children }: { children: React.ReactNode }) => {
         switch (variant) {
           case 'notice':
-            return <h5 className="text-primary f-fw-600 mg-t-20 mg-b-12">{children}</h5>;
+            return <h5 className="text-dark f-fw-600 mg-t-20 mg-b-12">{children}</h5>;
           case 'knowledge':
-            return <h4 className="text-primary f-fw-600 mg-t-25 mg-b-20">{children}</h4>;
+            return <h4 className="text-dark f-fw-600 mg-t-25 mg-b-20">{children}</h4>;
           case 'compact':
-            return <h6 className="text-primary f-fw-600 mg-t-12 mg-b-8">{children}</h6>;
+            return <h6 className="text-dark f-fw-600 mg-t-12 mg-b-8">{children}</h6>;
           default:
-            return <h4 className="text-primary f-fw-600 mg-t-20 mg-b-15">{children}</h4>;
+            return <h4 className="text-dark f-fw-600 mg-t-20 mg-b-15">{children}</h4>;
         }
       },
 
       h3: ({ children }: { children: React.ReactNode }) => {
         switch (variant) {
           case 'notice':
-            return <h6 className="text-secondary f-fw-600 mg-t-15 mg-b-10">{children}</h6>;
+            return <h6 className="text-dark f-fw-600 mg-t-15 mg-b-10">{children}</h6>;
           case 'knowledge':
-            return <h5 className="text-primary f-fw-600 mg-t-20 mg-b-15">{children}</h5>;
+            return <h5 className="text-dark f-fw-600 mg-t-20 mg-b-15">{children}</h5>;
           case 'compact':
-            return (
-              <span className="text-secondary f-fw-600 mg-t-10 mg-b-5 d-block">{children}</span>
-            );
+            return <span className="text-dark f-fw-600 mg-t-10 mg-b-5 d-block">{children}</span>;
           default:
-            return <h5 className="text-secondary f-fw-600 mg-t-18 mg-b-12">{children}</h5>;
+            return <h5 className="text-dark f-fw-600 mg-t-18 mg-b-12">{children}</h5>;
         }
       },
 
       h4: ({ children }: { children: React.ReactNode }) => (
-        <h6 className="text-secondary f-fw-600 mg-t-15 mg-b-10">{children}</h6>
+        <h6 className="text-dark f-fw-600 mg-t-15 mg-b-10">{children}</h6>
       ),
 
       h5: ({ children }: { children: React.ReactNode }) => (
-        <span className="text-secondary f-fw-600 mg-t-12 mg-b-8 d-block">{children}</span>
+        <span className="text-dark f-fw-600 mg-t-12 mg-b-8 d-block">{children}</span>
       ),
 
       h6: ({ children }: { children: React.ReactNode }) => (
-        <span className="text-secondary f-fw-500 mg-t-10 mg-b-6 d-block">{children}</span>
+        <span className="text-dark f-fw-500 mg-t-10 mg-b-6 d-block">{children}</span>
       ),
 
       // 段落样式

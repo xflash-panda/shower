@@ -100,15 +100,6 @@ const KnowledgeModal: React.FC<KnowledgeModalProps> = ({
                     {data.updated_at && formatTime(data.updated_at, TIME_FORMATS.DATE)}
                   </small>
                 </div>
-                <Badge
-                  color={data.free === 0 ? 'success' : 'warning'}
-                  className="pa-6 b-r-6 f-fw-500"
-                >
-                  <i className={`ph ${data.free === 0 ? 'ph-check-circle' : 'ph-lock'} mg-e-3`}></i>
-                  {data.free === 0
-                    ? t('knowledgeModal.freeContent')
-                    : t('knowledgeModal.premiumContent')}
-                </Badge>
                 <Badge className="grid-modal-category-badge pa-6 b-r-6 f-fw-500 bg-secondary text-white">
                   <i className="ph ph-folder mg-e-3"></i>
                   {data.category}

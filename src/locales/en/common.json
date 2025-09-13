@@ -99,8 +99,6 @@
     "loadError": "An error occurred while loading the content. Please try again.",
     "noContent": "No Content Available",
     "noContentMessage": "This document does not have any content to display.",
-    "freeContent": "Free Content",
-    "premiumContent": "Premium Content",
     "close": "Close"
   },
   "markdown": {

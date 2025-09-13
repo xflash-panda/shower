@@ -76,8 +76,6 @@
     "loadError": "加载内容时发生错误，请重试。",
     "noContent": "暂无内容",
     "noContentMessage": "此文档没有任何可显示的内容。",
-    "freeContent": "免费内容",
-    "premiumContent": "付费内容",
     "close": "关闭"
   },
   "markdown": {
