@@ -55,7 +55,7 @@ export default defineConfig(({ mode }) => {
   const isProduction = mode === 'production';
   
   return {
-  base: env.SHOWER_ASSET_PREFIX ? `/${env.SHOWER_ASSET_PREFIX}/` : '/',
+  base: '/',
   plugins: [
     react(),
     i18nextLoader({
