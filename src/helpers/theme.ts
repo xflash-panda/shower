@@ -19,7 +19,7 @@ export const THEME_CONSTANTS = {
     mode: 'light' as ThemeMode,
     sidebarOption: 'vertical-sidebar' as SidebarOption,
     layoutOption: 'ltr' as LayoutOption,
-    colorOption: 'warm' as ColorOption,
+    colorOption: 'nature' as ColorOption,
     textOption: 'medium-text' as TextOption,
   },
 } as const;

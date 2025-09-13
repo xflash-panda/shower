@@ -252,7 +252,7 @@ const KnowledgePage: React.FC = () => {
                           <div className="d-flex align-items-center justify-content-between">
                             <div className="d-flex align-items-center gap-3">
                               <Badge
-                                color={item.free === 0 ? 'outline-success' : 'outline-warning'}
+                                color={item.free === 0 ? 'outline-success' : 'outline-secondary'}
                                 className="pa-6 f-s-11 b-r-6"
                               >
                                 <i
@@ -265,8 +265,9 @@ const KnowledgePage: React.FC = () => {
                               </small>
                             </div>
                             <Button
-                              color={item.free === 0 ? 'primary' : 'warning'}
-                              className="btn-primary btn-sm"
+                              color="primary"
+                              outline={item.free !== 0}
+                              className="btn btn-sm"
                               onClick={() => handleDocumentClick(item)}
                             >
                               <i
