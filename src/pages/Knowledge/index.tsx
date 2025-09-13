@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 import KnowledgeModal from '@components/Common/KnowledgeModal';
 import SubscriptionRequiredModal from '@components/Common/SubscriptionRequiredModal';
 import EmptyState from '@components/Common/EmptyState';
-import { useKnowledges } from '@hooks/useUser';
+import { useKnowledges, useSubscribe } from '@hooks/useUser';
 import { formatTime, TIME_FORMATS } from '@helpers/time';
 import Loading from '@components/Common/Loading';
 import { getCurrentLanguage } from '@/helpers/i18n';
@@ -42,18 +42,26 @@ const KnowledgePage: React.FC = () => {
     true,
   );
 
+  // 获取用户订阅信息
+  const { subscribeInfo } = useSubscribe();
+
+  // 检查用户是否有订阅
+  const hasSubscription = useMemo(() => {
+    return subscribeInfo && subscribeInfo.plan_id > 0;
+  }, [subscribeInfo]);
+
   // 处理文档点击
   const handleDocumentClick = (item: KnowledgeItem): void => {
     if (item && typeof item.id === 'number') {
       setSelectedDocTitle(item.title || '');
-      // 检查是否需要订阅
-      if (item.free !== 0) {
-        // 需要订阅，显示订阅提示Modal
-        setSubscriptionModalOpen(true);
-      } else {
-        // 免费文档，显示文档详情Modal
+      // 检查是否可以查看文档
+      if (item.free === 0 || hasSubscription) {
+        // 免费文档或用户有订阅，显示文档详情Modal
         setSelectedDocId(item.id);
         setModalOpen(true);
+      } else {
+        // 付费文档且用户无订阅，显示订阅提示Modal
+        setSubscriptionModalOpen(true);
       }
     }
   };
@@ -281,14 +289,16 @@ const KnowledgePage: React.FC = () => {
                             </div>
                             <Button
                               color="primary"
-                              outline={item.free !== 0}
+                              outline={item.free !== 0 && !hasSubscription}
                               className="btn btn-sm"
                               onClick={() => handleDocumentClick(item)}
                             >
                               <i
-                                className={`ph ${item.free === 0 ? 'ph-eye' : 'ph-crown'} me-1`}
+                                className={`ph ${item.free === 0 || hasSubscription ? 'ph-eye' : 'ph-crown'} me-1`}
                               ></i>
-                              {item.free === 0 ? t('document.view') : t('document.subscribe')}
+                              {item.free === 0 || hasSubscription
+                                ? t('document.view')
+                                : t('document.subscribe')}
                             </Button>
                           </div>
                         </CardBody>
