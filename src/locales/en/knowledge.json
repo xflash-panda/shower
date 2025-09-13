@@ -24,5 +24,12 @@
     "noData": "No data",
     "noSearchResults": "No documents found containing \"{{searchTerm}}\"",
     "noCategoryDocuments": "No documents available in this category"
+  },
+  "subscriptionRequired": {
+    "title": "Subscription Required",
+    "message": "You need to subscribe to a paid plan to view this document content.",
+    "messageWithTitle": "The document \"{{title}}\" requires a paid subscription to view.",
+    "cancel": "Cancel",
+    "goToPlan": "Subscribe Now"
   }
 }

@@ -15,6 +15,7 @@ import {
 } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import KnowledgeModal from '@components/Common/KnowledgeModal';
+import SubscriptionRequiredModal from '@components/Common/SubscriptionRequiredModal';
 import EmptyState from '@components/Common/EmptyState';
 import { useKnowledges } from '@hooks/useUser';
 import { formatTime, TIME_FORMATS } from '@helpers/time';
@@ -33,6 +34,7 @@ const KnowledgePage: React.FC = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedDocId, setSelectedDocId] = useState<number | null>(null);
   const [selectedDocTitle, setSelectedDocTitle] = useState<string>('');
+  const [subscriptionModalOpen, setSubscriptionModalOpen] = useState<boolean>(false);
 
   // 获取知识库列表数据
   const { knowledges, isLoading: isKnowledgesLoading } = useKnowledges(
@@ -43,9 +45,16 @@ const KnowledgePage: React.FC = () => {
   // 处理文档点击
   const handleDocumentClick = (item: KnowledgeItem): void => {
     if (item && typeof item.id === 'number') {
-      setSelectedDocId(item.id);
       setSelectedDocTitle(item.title || '');
-      setModalOpen(true);
+      // 检查是否需要订阅
+      if (item.free !== 0) {
+        // 需要订阅，显示订阅提示Modal
+        setSubscriptionModalOpen(true);
+      } else {
+        // 免费文档，显示文档详情Modal
+        setSelectedDocId(item.id);
+        setModalOpen(true);
+      }
     }
   };
 
@@ -53,6 +62,12 @@ const KnowledgePage: React.FC = () => {
   const handleModalClose = (): void => {
     setModalOpen(false);
     setSelectedDocId(null);
+    setSelectedDocTitle('');
+  };
+
+  // 关闭订阅提示Modal并重置标题
+  const handleSubscriptionModalClose = (): void => {
+    setSubscriptionModalOpen(false);
     setSelectedDocTitle('');
   };
 
@@ -306,6 +321,13 @@ const KnowledgePage: React.FC = () => {
         toggle={handleModalClose}
         knowledgeId={selectedDocId ?? undefined}
         title={selectedDocTitle}
+      />
+
+      {/* 订阅提示 Modal */}
+      <SubscriptionRequiredModal
+        isOpen={subscriptionModalOpen}
+        toggle={handleSubscriptionModalClose}
+        documentTitle={selectedDocTitle}
       />
     </div>
   );

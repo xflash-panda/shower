@@ -24,5 +24,12 @@
     "noData": "No data",
     "noSearchResults": "没有找到包含 \"{{searchTerm}}\" 的文档",
     "noCategoryDocuments": "当前分类下暂无文档"
+  },
+  "subscriptionRequired": {
+    "title": "此文档需要订阅",
+    "message": "您需要订阅付费套餐才能查看此文档内容。",
+    "messageWithTitle": "文档《{{title}}》需要订阅付费套餐才能查看。",
+    "cancel": "取消",
+    "goToPlan": "立即订阅"
   }
 }
