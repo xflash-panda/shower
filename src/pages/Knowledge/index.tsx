@@ -274,15 +274,19 @@ const KnowledgePage: React.FC = () => {
 
                           <div className="d-flex align-items-center justify-content-between">
                             <div className="d-flex align-items-center gap-3">
-                              <Badge
-                                color={item.free === 0 ? 'outline-success' : 'outline-secondary'}
-                                className="pa-6 f-s-11 b-r-6"
-                              >
-                                <i
-                                  className={`ph ${item.free === 0 ? 'ph-check-circle' : 'ph-lock'} me-1`}
-                                ></i>
-                                {item.free === 0 ? t('document.free') : t('document.subscription')}
-                              </Badge>
+                              {!hasSubscription && (
+                                <Badge
+                                  color={item.free === 0 ? 'outline-success' : 'outline-secondary'}
+                                  className="pa-6 f-s-11 b-r-6"
+                                >
+                                  <i
+                                    className={`ph ${item.free === 0 ? 'ph-check-circle' : 'ph-lock'} me-1`}
+                                  ></i>
+                                  {item.free === 0
+                                    ? t('document.free')
+                                    : t('document.subscription')}
+                                </Badge>
+                              )}
                               <small className="text-muted f-s-11">
                                 {item.updated_at && formatTime(item.updated_at, TIME_FORMATS.DATE)}
                               </small>
