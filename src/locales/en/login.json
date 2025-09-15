@@ -25,6 +25,11 @@
     "googleNotAuthorized": "Google account not authorized, please try another account or contact support",
     "googleLoginFailed": "Google login failed, please try again",
     "appleNotAuthorized": "Apple account not authorized, please try another account or contact support",
-    "appleLoginFailed": "Apple login failed, please try again"
+    "appleLoginFailed": "Apple login failed, please try again",
+    "invalidToken": "Invalid token, please login manually",
+    "tokenValidationFailed": "Token validation failed, please try again"
+  },
+  "toast": {
+    "autoLoginSuccess": "Auto login successful"
   }
 }

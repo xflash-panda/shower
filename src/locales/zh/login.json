@@ -25,6 +25,11 @@
     "googleNotAuthorized": "Google账号未授权，请尝试其他账号或联系支持",
     "googleLoginFailed": "Google登录失败，请重试",
     "appleNotAuthorized": "Apple账号未授权，请尝试其他账号或联系支持",
-    "appleLoginFailed": "Apple登录失败，请重试"
+    "appleLoginFailed": "Apple登录失败，请重试",
+    "invalidToken": "无效的令牌，请手动登录",
+    "tokenValidationFailed": "令牌验证失败，请重试"
+  },
+  "toast": {
+    "autoLoginSuccess": "自动登录成功"
   }
 }

@@ -17,12 +17,15 @@ import {
   setRememberMeCredentials,
   setToken,
   getRedirectPath,
+  clearToken,
 } from '@/helpers/auth';
 import { encryptPassword, decryptPassword } from '../../helpers/crypto';
 import { matchesEmailRegex, isValidPassword } from '@/helpers/validation';
 import HeaderLanguage from '@layout/Header/HeaderLanguage';
 import { useCommonConfig } from '@/hooks/useGuest';
 import { getLogoPath } from '@/helpers/assets';
+import { useHashParams } from '@/hooks/useHashParams';
+import { useCheckLogin } from '@/hooks/useIdentity';
 
 interface FormData {
   email: string;
@@ -50,9 +53,20 @@ interface AppleLoginResponse {
   };
 }
 
+// 清除URL中的token参数的工具函数
+const clearTokenFromUrl = (): void => {
+  const currentHash = window.location.hash;
+  const hashWithoutToken = currentHash.replace(/([?&])token=[^&]*(&|$)/, '$1').replace(/[?&]$/, '');
+  if (hashWithoutToken !== currentHash) {
+    window.history.replaceState(null, '', hashWithoutToken || '#/');
+  }
+};
+
 const LoginPage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation('login');
+  const { getParam } = useHashParams();
+  const { checkLoginStatus } = useCheckLogin();
   const [formData, setFormData] = useState<FormData>({
     email: '',
     password: '',
@@ -62,9 +76,61 @@ const LoginPage = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isGoogleLoggingIn, setIsGoogleLoggingIn] = useState<boolean>(false);
+  const [tokenProcessed, setTokenProcessed] = useState<boolean>(false);
 
   // 初始化加载 commonConfig
   const { config: commonConfig } = useCommonConfig();
+
+  // 处理URL中的token自动登录
+  useEffect(() => {
+    const handleUrlTokenLogin = async (): Promise<void> => {
+      const urlToken = getParam('token');
+
+      // 只有当URL中存在token参数且未处理过时才执行登录逻辑
+      if (!urlToken || tokenProcessed) {
+        return;
+      }
+
+      // 标记为已处理，避免重复执行
+      setTokenProcessed(true);
+
+      try {
+        console.log('Found token in URL, attempting auto-login...');
+
+        // 设置token
+        setToken(urlToken);
+
+        // 验证token有效性
+        const result = await checkLoginStatus();
+
+        if (result?.data?.is_login) {
+          console.log('URL token validation successful, redirecting to dashboard...');
+          toast.success(t('toast.autoLoginSuccess'));
+
+          // 清除URL中的token参数，避免敏感信息暴露
+          clearTokenFromUrl();
+
+          // 获取重定向路径或默认跳转到dashboard
+          const redirectPath = getRedirectPath() || RoutePaths.DASHBOARD;
+          navigate(redirectPath, { replace: true });
+        } else {
+          console.warn('URL token validation failed');
+          clearToken();
+          // 保留URL中的token参数方便调试，但只显示一次错误
+          toast.error(t('error.invalidToken'));
+          console.log('Debug: Token preserved in URL for debugging. Refresh page to retry.');
+        }
+      } catch (error) {
+        console.error('URL token login failed:', getErrorMessage(error));
+        clearToken();
+        // 保留URL中的token参数方便调试，但只显示一次错误
+        toast.error(t('error.tokenValidationFailed'));
+        console.log('Debug: Token preserved in URL for debugging. Refresh page to retry.');
+      }
+    };
+
+    void handleUrlTokenLogin();
+  }, [getParam, checkLoginStatus, navigate, t, tokenProcessed]);
 
   // 组件初始化时从localStorage恢复用户信息
   useEffect(() => {
@@ -159,6 +225,10 @@ const LoginPage = () => {
         }
 
         toast.success(t('success'), 1200);
+
+        // 清除URL中的token参数，避免敏感信息暴露
+        clearTokenFromUrl();
+
         // 添加短暂延迟确保 token 完全设置后再跳转，避免 Dashboard 数据加载问题
         setTimeout(() => {
           navigate(getRedirectPath(RoutePaths.DASHBOARD), { replace: true });
@@ -193,6 +263,9 @@ const LoginPage = () => {
 
         // 显示成功消息
         toast.success(t('success'), 1200);
+
+        // 清除URL中的token参数，避免敏感信息暴露
+        clearTokenFromUrl();
 
         // 添加短暂延迟确保 token 完全设置后再跳转，避免 Dashboard 数据加载问题
         setTimeout(() => {
@@ -250,6 +323,9 @@ const LoginPage = () => {
 
           // 显示成功消息
           toast.success(t('success'), 1200);
+
+          // 清除URL中的token参数，避免敏感信息暴露
+          clearTokenFromUrl();
 
           // 添加短暂延迟确保 token 完全设置后再跳转，避免 Dashboard 数据加载问题
           setTimeout(() => {
