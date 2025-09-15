@@ -54,7 +54,7 @@ const PlanBasicInfo: React.FC<PlanBasicInfoProps> = ({ plan, nodeOverviews }) =>
   return (
     <div>
       {/* 第一行：流量配额 + 节点地区 */}
-      <Row className="mg-b-15">
+      <Row>
         <Col md={6}>
           <div className="plan-data-item d-flex align-items-center justify-content-between">
             <span className="text-dark small fw-medium">
@@ -79,7 +79,7 @@ const PlanBasicInfo: React.FC<PlanBasicInfoProps> = ({ plan, nodeOverviews }) =>
       </Row>
 
       {/* 第二行：续费支持 + 出口IP */}
-      <Row className="mg-b-15">
+      <Row>
         <Col md={6}>
           <div className="plan-data-item d-flex align-items-center justify-content-between">
             <span className="text-dark small fw-medium">{t('basicInfo.labels.renewable')}：</span>
@@ -100,7 +100,7 @@ const PlanBasicInfo: React.FC<PlanBasicInfoProps> = ({ plan, nodeOverviews }) =>
       </Row>
 
       {/* 第三行：支持协议 + 总节点数 */}
-      <Row className="mg-b-15">
+      <Row className="mg-b-0">
         <Col md={6}>
           <div className="plan-data-item d-flex align-items-center justify-content-between">
             <span className="text-dark small fw-medium">
