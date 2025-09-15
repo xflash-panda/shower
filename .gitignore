@@ -2,6 +2,8 @@ node_modules
 dist
 yarn-error.log
 .env
+.env.development
+.env.production
 .claude
 
 # 客户端配置文件（用户可编辑）
