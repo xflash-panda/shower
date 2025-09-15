@@ -83,7 +83,8 @@
     },
     "validation": {
       "methodRequired": "Please select withdrawal method",
-      "accountRequired": "Please enter withdrawal account"
+      "accountRequired": "Please enter withdrawal account",
+      "minimumAmount": "Commission must reach {{amount}} to withdraw"
     },
     "buttons": {
       "cancel": "Cancel",

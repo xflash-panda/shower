@@ -24,10 +24,6 @@
     "withdrawDescription": "申请将推广收益转入指定账户",
     "withdrawButton": "申请"
   },
-  "records": {
-    "title": "操作记录",
-    "total": "共 {{total}} 条记录"
-  },
   "recharge": {
     "success": "充值订单创建成功",
     "error": "充值失败"
@@ -83,7 +79,8 @@
     },
     "validation": {
       "methodRequired": "请选择提现方式",
-      "accountRequired": "请输入提现账号"
+      "accountRequired": "请输入提现账号",
+      "minimumAmount": "推广佣金满 {{amount}} 元才能提现"
     },
     "buttons": {
       "cancel": "取消",
@@ -138,6 +135,8 @@
     }
   },
   "records": {
+    "title": "操作记录",
+    "total": "共 {{total}} 条记录",
     "types": {
       "commissionTransfer": "推广佣金划转",
       "balanceRecharge": "余额充值",

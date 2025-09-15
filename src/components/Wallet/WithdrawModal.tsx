@@ -74,7 +74,9 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({
               <div className="d-flex align-items-center mt-2">
                 <i className="ph-duotone ph-warning-circle text-danger me-2"></i>
                 <small className="text-danger fw-medium mb-0">
-                  推广佣金满 {formatCurrency(withdrawLimit * 100)} 元才能提现
+                  {t('withdrawModal.validation.minimumAmount', {
+                    amount: formatCurrency(withdrawLimit * 100),
+                  })}
                 </small>
               </div>
             )}
