@@ -54,8 +54,11 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   const isProduction = mode === 'production';
   
+  // 获取部署基础路径，支持环境变量配置
+  const baseUrl = env.SHOWER_BASE_PATH || '/';
+  
   return {
-  base: '/',
+  base: baseUrl,
   plugins: [
     react(),
     i18nextLoader({
