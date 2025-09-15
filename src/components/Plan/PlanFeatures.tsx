@@ -14,7 +14,7 @@ const PlanFeatures: React.FC<PlanFeaturesProps> = ({ planFeatures }) => {
   }
 
   return (
-    <Row className="g-3 plan-features-grid">
+    <Row className="g-1 plan-features-grid">
       {planFeatures.map((feature, index) => (
         <Col key={feature} xl={6} lg={6} md={12} className="mg-b-6">
           <div className="plan-feature-item d-flex align-items-start h-100">
