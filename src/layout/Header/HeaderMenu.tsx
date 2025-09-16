@@ -79,8 +79,8 @@ const HeaderMenu: React.FC = () => {
         sameSite: 'Lax',
       });
 
-      // 刷新页面以应用新的主题设置
-      window.location.reload();
+      // 跳转到根路径，因为当前路径在旧版中可能不存在
+      window.location.href = '/';
     } catch (error) {
       console.error('Failed to switch to old version:', error);
       toast.error('Failed to switch to classic interface');
