@@ -1,17 +1,5 @@
 import { useState, useEffect } from 'react';
-import {
-  Col,
-  Container,
-  Row,
-  Card,
-  CardHeader,
-  CardBody,
-  Nav,
-  NavItem,
-  NavLink,
-  TabContent,
-  TabPane,
-} from 'reactstrap';
+import { Col, Container, Row, Card, CardHeader, CardBody, Nav, NavItem, NavLink } from 'reactstrap';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import SecurityCard from '@components/Profile/SecurityCard';
@@ -86,9 +74,9 @@ const ProfilePage = () => {
               <CardBody>
                 <div className="vertical-tab setting-tab">
                   <Nav tabs className="app-tabs-primary">
-                    <NavItem className="cursor-pointer">
+                    <NavItem>
                       <NavLink
-                        className={`nav-link ${activeTab === 'feature' ? 'active' : 'text-dark'}`}
+                        className={activeTab === 'feature' ? 'active' : ''}
                         onClick={() => toggleTab('feature')}
                       >
                         <i className="ph-bold ph-notification pe-2"></i>
@@ -96,9 +84,9 @@ const ProfilePage = () => {
                       </NavLink>
                     </NavItem>
 
-                    <NavItem className="cursor-pointer">
+                    <NavItem>
                       <NavLink
-                        className={`nav-link ${activeTab === 'security' ? 'active' : 'text-dark'}`}
+                        className={activeTab === 'security' ? 'active' : ''}
                         onClick={() => toggleTab('security')}
                       >
                         <i className="ph-bold ph-shield-check pe-2"></i>
@@ -106,9 +94,9 @@ const ProfilePage = () => {
                       </NavLink>
                     </NavItem>
 
-                    <NavItem className="cursor-pointer">
+                    <NavItem>
                       <NavLink
-                        className={`nav-link ${activeTab === 'connection' ? 'active' : 'text-dark'}`}
+                        className={activeTab === 'connection' ? 'active' : ''}
                         onClick={() => toggleTab('connection')}
                       >
                         <i className="ph-bold ph-link pe-2"></i>
@@ -123,25 +111,31 @@ const ProfilePage = () => {
             {/* Used Space Card */}
           </Col>
           <Col lg={8} xxl={9}>
-            <TabContent activeTab={activeTab}>
-              <TabPane tabId="security">
-                <SecurityCard />
-              </TabPane>
-              <TabPane tabId="feature">
-                <FeatureCard
-                  userInfo={userInfo}
-                  isLoading={isLoading}
-                  onUpdateConfig={handleUpdateConfig}
-                />
-              </TabPane>
-              <TabPane tabId="connection">
-                <ConnectionCard
-                  userInfo={userInfo}
-                  profileConfig={profileConfig}
-                  onUserInfoMutate={handleUserInfoMutate}
-                />
-              </TabPane>
-            </TabContent>
+            <div className="tab-content">
+              {activeTab === 'feature' && (
+                <div className="tab-pane active">
+                  <FeatureCard
+                    userInfo={userInfo}
+                    isLoading={isLoading}
+                    onUpdateConfig={handleUpdateConfig}
+                  />
+                </div>
+              )}
+              {activeTab === 'security' && (
+                <div className="tab-pane active">
+                  <SecurityCard />
+                </div>
+              )}
+              {activeTab === 'connection' && (
+                <div className="tab-pane active">
+                  <ConnectionCard
+                    userInfo={userInfo}
+                    profileConfig={profileConfig}
+                    onUserInfoMutate={handleUserInfoMutate}
+                  />
+                </div>
+              )}
+            </div>
           </Col>
         </Row>
       </Container>
