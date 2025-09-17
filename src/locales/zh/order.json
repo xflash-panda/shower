@@ -106,7 +106,10 @@
     },
     "info": {
       "redirecting": "正在跳转到支付平台..."
-    }
+    },
+    "balancePayment": "余额折抵",
+    "confirmBalancePayment": "确认余额支付",
+    "confirmOrder": "确认订单"
   },
   "subscription": {
     "rechargeType": "充值类型",

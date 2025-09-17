@@ -106,7 +106,10 @@
     },
     "info": {
       "redirecting": "Redirecting to payment platform..."
-    }
+    },
+    "balancePayment": "Balance Payment",
+    "confirmBalancePayment": "Confirm Balance Payment",
+    "confirmOrder": "Confirm Order"
   },
   "subscription": {
     "rechargeType": "Recharge Type",

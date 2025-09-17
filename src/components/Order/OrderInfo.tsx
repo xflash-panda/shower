@@ -13,6 +13,7 @@ interface OrderInfoProps {
 const OrderInfo: React.FC<OrderInfoProps> = ({ order }) => {
   const { t } = useTranslation(['order', 'common']);
 
+
   // 订单状态映射
   const statusMap: Record<number, { text: string; color: string }> = {
     0: { text: t('detail.status.pending'), color: 'warning' },
@@ -119,7 +120,7 @@ const OrderInfo: React.FC<OrderInfoProps> = ({ order }) => {
             </h6>
             <div className="space-y-3">
               {/* 修改：套餐和周期显示（仅针对套餐订单） */}
-              {order.type !== 6 && order.price_meta?.value && (
+              {order.type !== 6 && order.price_meta?.value != null && (
                 <div className="d-flex justify-content-between align-items-center py-3 border-bottom border-light">
                   <span className="text-muted fw-medium d-flex align-items-center">
                     {order.plan?.name} × {order.price_name}
@@ -129,24 +130,30 @@ const OrderInfo: React.FC<OrderInfoProps> = ({ order }) => {
                   </span>
                 </div>
               )}
-              <div className="d-flex justify-content-between align-items-center py-3 border-bottom border-light">
-                <span className="text-muted fw-medium d-flex align-items-center">
-                  {t('detail.labels.discountAmount')}
-                </span>
-                <span className="fw-bold text-success h6 mb-0">
-                  -{order.discount_amount ? formatCurrency(order.discount_amount) : '¥0.00'}
-                </span>
-              </div>
 
-              <div className="d-flex justify-content-between align-items-center py-3 border-bottom border-light">
-                <span className="text-muted fw-medium">{t('detail.labels.balancePayment')}</span>
-                <span className="fw-bold text-success h6 mb-0">
-                  -{order.balance_amount ? formatCurrency(order.balance_amount) : '¥0.00'}
-                </span>
-              </div>
+              {/* 显示完整的金额明细 */}
+              {(order.discount_amount ?? 0) > 0 && (
+                <div className="d-flex justify-content-between align-items-center py-3 border-bottom border-light">
+                  <span className="text-muted fw-medium d-flex align-items-center">
+                    {t('detail.labels.discountAmount')}
+                  </span>
+                  <span className="fw-bold text-success h6 mb-0">
+                    -{formatCurrency(order.discount_amount ?? 0)}
+                  </span>
+                </div>
+              )}
+
+              {(order.balance_amount ?? 0) > 0 && (
+                <div className="d-flex justify-content-between align-items-center py-3 border-bottom border-light">
+                  <span className="text-muted fw-medium">{t('detail.labels.balancePayment')}</span>
+                  <span className="fw-bold text-success h6 mb-0">
+                    -{formatCurrency(order.balance_amount ?? 0)}
+                  </span>
+                </div>
+              )}
 
               {order.handling_amount > 0 && (
-                <div className="d-flex justify-content-between align-items-center py-3">
+                <div className="d-flex justify-content-between align-items-center py-3 border-bottom border-light">
                   <span className="text-muted fw-medium">{t('detail.labels.handlingFee')}</span>
                   <span className="fw-bold text-warning h6 mb-0">
                     +{formatCurrency(order.handling_amount)}
@@ -154,7 +161,7 @@ const OrderInfo: React.FC<OrderInfoProps> = ({ order }) => {
                 </div>
               )}
 
-              <div className="d-flex justify-content-between align-items-center py-3 border-bottom border-light">
+              <div className="d-flex justify-content-between align-items-center py-3">
                 <span className="text-muted fw-medium">{t('detail.labels.orderAmount')}</span>
                 <span className="fw-bold text-dark h6 mb-0">
                   {formatCurrency(order.total_amount)}

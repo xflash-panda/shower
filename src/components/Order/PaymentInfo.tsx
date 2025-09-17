@@ -9,6 +9,7 @@ interface PaymentInfoProps {
   isUpdatingPayment: boolean;
   isProcessing: boolean;
   handlePayment: () => void | Promise<void>;
+  showFinalAmount?: boolean;
 }
 
 const PaymentInfo: React.FC<PaymentInfoProps> = ({
@@ -17,11 +18,16 @@ const PaymentInfo: React.FC<PaymentInfoProps> = ({
   isUpdatingPayment,
   isProcessing,
   handlePayment,
+  showFinalAmount = true,
 }) => {
   const { t } = useTranslation('order');
   // 直接使用服务器返回的订单数据，无需前端重复计算
   const hasHandlingFee = (order?.handling_amount ?? 0) > 0;
   const finalAmount = order?.total_amount ?? 0;
+
+  // 区分余额支付（移除免费订单特殊处理）
+  const balanceAmount = order?.balance_amount ?? 0;
+  const isBalancePayment = finalAmount === 0 && balanceAmount > 0;
 
   // 包装异步函数以避免 TypeScript 错误
   const handlePaymentClick = () => {
@@ -75,17 +81,19 @@ const PaymentInfo: React.FC<PaymentInfoProps> = ({
               </div>
             )}
 
-            {/* 实付金额 */}
-            <div className="bg-gradient-primary text-dark p-3">
-              <div className="d-flex justify-content-between align-items-center">
-                <span className="fw-bold d-flex align-items-center">
-                  {t('payment.finalAmount')}
-                </span>
-                <div className="text-end">
-                  <div className="fw-bold h4 mb-0">{formatCurrency(finalAmount)}</div>
+            {/* 实付金额 - 仅在需要时显示 */}
+            {showFinalAmount && finalAmount > 0 && (
+              <div className="bg-gradient-primary text-dark p-3">
+                <div className="d-flex justify-content-between align-items-center">
+                  <span className="fw-bold d-flex align-items-center">
+                    {t('payment.finalAmount')}
+                  </span>
+                  <div className="text-end">
+                    <div className="fw-bold h4 mb-0">{formatCurrency(finalAmount)}</div>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
@@ -97,7 +105,7 @@ const PaymentInfo: React.FC<PaymentInfoProps> = ({
           size="lg"
           className="fw-bold py-3 rounded-3"
           onClick={handlePaymentClick}
-          disabled={isProcessing || isUpdatingPayment || !selectedPayment}
+          disabled={isProcessing || isUpdatingPayment || (finalAmount > 0 && !selectedPayment)}
         >
           {isProcessing ? (
             <>
@@ -106,10 +114,20 @@ const PaymentInfo: React.FC<PaymentInfoProps> = ({
               </span>
               {t('payment.processing')}
             </>
-          ) : (
+          ) : finalAmount > 0 ? (
             <>
               <i className="ti ti-credit-card me-2"></i>
               {t('payment.payNow', { amount: formatCurrency(finalAmount) })}
+            </>
+          ) : isBalancePayment ? (
+            <>
+              <i className="ti ti-wallet me-2"></i>
+              {t('payment.confirmBalancePayment')}
+            </>
+          ) : (
+            <>
+              <i className="ti ti-check me-2"></i>
+              {t('payment.confirmOrder')}
             </>
           )}
         </Button>

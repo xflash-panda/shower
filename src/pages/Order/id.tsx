@@ -91,7 +91,10 @@ const OrderDetail = () => {
 
   // 处理支付
   const handlePayment = async (): Promise<void> => {
-    if (!selectedPayment) {
+    const finalAmount = order.total_amount ?? 0;
+
+    // 如果实付金额大于0，需要选择支付方式
+    if (finalAmount > 0 && !selectedPayment) {
       toast.error(t('payment.error.selectMethod'));
       return;
     }
@@ -276,34 +279,40 @@ const OrderDetail = () => {
             {/* 现代化支付框 */}
             {order.status === 0 && (
               <div className="sticky-top-100">
-                {/* 支付方式选择卡片 */}
-                <Card className="shadow-sm border-0 mb-4">
-                  <CardHeader className="bg-gradient-primary text-white">
-                    <h5 className="f-fw-600 mg-b-0 text-dark">
-                      <i className="ti ti-settings me-2"></i>
-                      {t('detail.paymentMethod')}
-                    </h5>
-                  </CardHeader>
+                {/* 支付方式选择卡片 - 仅在实付金额大于0时显示 */}
+                {(order.total_amount ?? 0) > 0 && (
+                  <Card className="shadow-sm border-0 mb-4">
+                    <CardHeader className="bg-gradient-primary text-white">
+                      <h5 className="f-fw-600 mg-b-0 text-dark">
+                        <i className="ti ti-settings me-2"></i>
+                        {t('detail.paymentMethod')}
+                      </h5>
+                    </CardHeader>
 
-                  <CardBody className="px-4 pt-2 pb-4">
-                    {isPaymentLoading ? (
-                      <Loading text={t('common.loading')} variant="spinner" />
-                    ) : !paymentMethods || paymentMethods.length === 0 ? (
-                      <EmptyState title={t('common.noData')} icon="iconoir-glass-empty" size="sm" />
-                    ) : (
-                      <PaymentMethods
-                        paymentMethods={paymentMethods}
-                        selectedPayment={selectedPayment}
-                        onPaymentSelect={(paymentId, paymentData) => {
-                          if (paymentData) {
-                            void handlePaymentSelect(paymentId, paymentData);
-                          }
-                        }}
-                        isUpdatingPayment={isUpdatingPayment}
-                      />
-                    )}
-                  </CardBody>
-                </Card>
+                    <CardBody className="px-4 pt-2 pb-4">
+                      {isPaymentLoading ? (
+                        <Loading text={t('common.loading')} variant="spinner" />
+                      ) : !paymentMethods || paymentMethods.length === 0 ? (
+                        <EmptyState
+                          title={t('common.noData')}
+                          icon="iconoir-glass-empty"
+                          size="sm"
+                        />
+                      ) : (
+                        <PaymentMethods
+                          paymentMethods={paymentMethods}
+                          selectedPayment={selectedPayment}
+                          onPaymentSelect={(paymentId, paymentData) => {
+                            if (paymentData) {
+                              void handlePaymentSelect(paymentId, paymentData);
+                            }
+                          }}
+                          isUpdatingPayment={isUpdatingPayment}
+                        />
+                      )}
+                    </CardBody>
+                  </Card>
+                )}
 
                 {/* 支付信息卡片 - 独立的第二个卡片 */}
                 <Card className="shadow-sm border-0">
@@ -321,15 +330,18 @@ const OrderDetail = () => {
                       isUpdatingPayment={isUpdatingPayment}
                       isProcessing={isProcessing}
                       handlePayment={() => void handlePayment()}
+                      showFinalAmount={(order.total_amount ?? 0) > 0}
                     />
 
-                    {/* 安全提示 */}
-                    <div className="text-center mt-3">
-                      <small className="text-muted d-flex align-items-center justify-content-center">
-                        <i className="ti ti-shield-check me-1 text-success"></i>
-                        {t('detail.sslSecurity')}
-                      </small>
-                    </div>
+                    {/* 安全提示 - 仅在有实付金额时显示 */}
+                    {(order.total_amount ?? 0) > 0 && (
+                      <div className="text-center mt-3">
+                        <small className="text-muted d-flex align-items-center justify-content-center">
+                          <i className="ti ti-shield-check me-1 text-success"></i>
+                          {t('detail.sslSecurity')}
+                        </small>
+                      </div>
+                    )}
                   </CardBody>
                 </Card>
               </div>
