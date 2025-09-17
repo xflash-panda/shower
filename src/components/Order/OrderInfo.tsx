@@ -13,7 +13,6 @@ interface OrderInfoProps {
 const OrderInfo: React.FC<OrderInfoProps> = ({ order }) => {
   const { t } = useTranslation(['order', 'common']);
 
-
   // 订单状态映射
   const statusMap: Record<number, { text: string; color: string }> = {
     0: { text: t('detail.status.pending'), color: 'warning' },
@@ -54,18 +53,10 @@ const OrderInfo: React.FC<OrderInfoProps> = ({ order }) => {
               <div className="d-flex justify-content-between align-items-center py-3 border-bottom border-light">
                 <span className="text-muted fw-medium">{t('detail.labels.orderStatus')}</span>
                 <span
-                  className={`fw-bold px-3 py-1 rounded-pill small ${
-                    order?.status === 0
-                      ? 'bg-warning-subtle text-warning-emphasis'
-                      : order?.status === 1
-                        ? 'bg-info-subtle text-info-emphasis'
-                        : order?.status === 2
-                          ? 'bg-secondary-subtle text-secondary-emphasis'
-                          : order?.status === 3
-                            ? 'bg-success-subtle text-success-emphasis'
-                            : order?.status === 4
-                              ? 'bg-dark text-white'
-                              : 'bg-secondary-subtle text-secondary'
+                  className={`badge ${
+                    order?.status === 4
+                      ? 'bg-dark text-white'
+                      : `text-light-${statusMap[order?.status]?.color ?? 'secondary'}`
                   }`}
                 >
                   {order ? statusMap[order.status]?.text : t('detail.status.unknown')}
