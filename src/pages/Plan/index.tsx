@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { usePlans, useSubscribe } from '@hooks/useUser';
 import { orderSave, unpaidOrder } from '@/api/v1/user';
 import toast from '@/helpers/toast';
+import { getErrorMessage } from '@/helpers/error';
 
 import PlanSelector from '@components/Plan/PlanSelector';
 import PlanOverview from '@components/Plan/PlanOverview';
@@ -271,7 +272,9 @@ const PlanPage = () => {
       }
     } catch (error) {
       console.error('Order submission failed:', error);
-      toast.error(t('plan.error.submissionFailed'));
+      // 使用 helper 处理错误消息
+      const errorMessage = getErrorMessage(error, t('plan.error.submissionFailed'));
+      toast.error(errorMessage);
     } finally {
       setIsProcessing(false);
     }
