@@ -411,4 +411,64 @@
   }
 }
 
+// 宽屏优化 - 匹配登录框宽度
+@media (min-width: 1440px) {
+  .login-app-download-section {
+    max-width: 450px; // 匹配登录框宽度
+  }
+
+  .login-app-download-buttons {
+    max-width: 100%;
+    gap: 12px; // 设置固定间距
+  }
+
+  .login-app-download-button {
+    width: 210px; // 210px × 2 + 12px间距 = 432px，留有边距
+    padding: 16px 18px;
+
+    .download-text {
+      flex: 1;
+      line-height: 1.3;
+    }
+
+    .download-subtext {
+      font-size: 12px;
+    }
+
+    .download-label {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+}
+
+// 超宽屏优化 - 保持与登录框一致的尺寸
+@media (min-width: 1920px) {
+  .login-app-download-section {
+    max-width: 450px; // 保持与登录框一致的宽度
+  }
+
+  .login-app-download-button {
+    width: 210px; // 保持固定宽度，不超过登录框
+
+    i {
+      font-size: 28px;
+      margin-right: 12px;
+    }
+
+    .download-text {
+      line-height: 1.3;
+    }
+
+    .download-subtext {
+      font-size: 12px;
+    }
+
+    .download-label {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+}
+
 // >>-- 50 Login css end --<<
