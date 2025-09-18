@@ -492,17 +492,24 @@ const LoginPage = () => {
               {/* 应用下载区域 - 在登录框下方，但仍在背景范围内 */}
               {(PROJECT_CONFIG.iosDownloadUrl || PROJECT_CONFIG.androidDownloadUrl) && (
                 <div className="login-app-download-section mt-4">
+                  <div className="login-app-download-header text-center mb-3">
+                    <h6 className="login-app-download-title mb-1">{t('downloadSection.title')}</h6>
+                    <p className="login-app-download-subtitle mb-0">
+                      {t('downloadSection.subtitle')}
+                    </p>
+                  </div>
                   <div className="login-app-download-buttons">
                     {PROJECT_CONFIG.iosDownloadUrl && (
                       <a
                         href={PROJECT_CONFIG.iosDownloadUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="login-app-download-button"
+                        className="login-app-download-button ios-button"
                       >
                         <i className="fab fa-apple" />
                         <div className="download-text">
-                          <div className="download-label">{t('download.downloadIOS')}</div>
+                          <div className="download-subtext">{t('downloadSection.iosSubtext')}</div>
+                          <div className="download-label">{t('downloadSection.ios')}</div>
                         </div>
                       </a>
                     )}
@@ -511,11 +518,14 @@ const LoginPage = () => {
                         href={PROJECT_CONFIG.androidDownloadUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="login-app-download-button"
+                        className="login-app-download-button android-button"
                       >
-                        <i className="fab fa-android" />
+                        <i className="fab fa-google-play" />
                         <div className="download-text">
-                          <div className="download-label">{t('download.downloadAndroid')}</div>
+                          <div className="download-subtext">
+                            {t('downloadSection.androidSubtext')}
+                          </div>
+                          <div className="download-label">{t('downloadSection.android')}</div>
                         </div>
                       </a>
                     )}

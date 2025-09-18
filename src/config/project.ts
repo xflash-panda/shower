@@ -19,8 +19,8 @@ export const PROJECT_CONFIG = {
   cryptoSecretKey: import.meta.env.SHOWER_CRYPTO_SECRET_KEY ?? '',
   isDevelopment: import.meta.env.DEV ?? true,
   isProduction: !import.meta.env.DEV,
-  iosDownloadUrl: import.meta.env.SHOWER_IOS_DOWNLOAD_URL ?? '',
-  androidDownloadUrl: import.meta.env.SHOWER_ANDROID_DOWNLOAD_URL ?? '',
+  iosDownloadUrl: import.meta.env.SHOWER_IOS_DOWNLOAD_URL ?? '#ios',
+  androidDownloadUrl: import.meta.env.SHOWER_ANDROID_DOWNLOAD_URL ?? '#android',
 };
 
 // API 基础配置
