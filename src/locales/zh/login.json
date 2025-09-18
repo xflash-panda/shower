@@ -34,8 +34,7 @@
   },
   "download": "下载",
   "downloadSection": {
-    "title": "移动应用",
-    "subtitle": "下载我们的移动应用，获得最佳体验",
+    "title": "下载我们的移动应用，获得最佳体验",
     "ios": "App Store",
     "android": "Google Play",
     "iosSubtext": "下载于",

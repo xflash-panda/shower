@@ -493,10 +493,7 @@ const LoginPage = () => {
               {(PROJECT_CONFIG.iosDownloadUrl || PROJECT_CONFIG.androidDownloadUrl) && (
                 <div className="login-app-download-section mt-4">
                   <div className="login-app-download-header text-center mb-3">
-                    <h6 className="login-app-download-title mb-1">{t('downloadSection.title')}</h6>
-                    <p className="login-app-download-subtitle mb-0">
-                      {t('downloadSection.subtitle')}
-                    </p>
+                    <h6 className="login-app-download-title mb-0">{t('downloadSection.title')}</h6>
                   </div>
                   <div className="login-app-download-buttons">
                     {PROJECT_CONFIG.iosDownloadUrl && (
