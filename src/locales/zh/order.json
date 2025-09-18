@@ -109,7 +109,7 @@
     },
     "qrCode": {
       "title": "扫码支付",
-      "description": "请使用支付应用扫描下方二维码进行支付"
+      "description": "使用对应的支付应用扫描二维码完成支付"
     },
     "balancePayment": "余额折抵",
     "confirmBalancePayment": "确认余额支付",

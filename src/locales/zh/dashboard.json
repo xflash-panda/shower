@@ -66,7 +66,7 @@
     "scanQrCode": "扫描二维码",
     "qrCodeDesc": "快速导入配置",
     "qrCodeTitle": "订阅二维码",
-    "qrCodeDescription": "扫描此二维码将订阅配置导入到您的客户端"
+    "qrCodeDescription": "使用客户端应用扫描此二维码可快速导入订阅配置"
   },
   "nodes": {
     "title": "节点状态"

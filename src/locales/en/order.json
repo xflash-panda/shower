@@ -109,7 +109,7 @@
     },
     "qrCode": {
       "title": "Scan QR Code to Pay",
-      "description": "Please use your payment app to scan the QR code below"
+      "description": "Use the corresponding payment app to scan and complete payment"
     },
     "balancePayment": "Balance Payment",
     "confirmBalancePayment": "Confirm Balance Payment",

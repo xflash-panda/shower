@@ -66,7 +66,7 @@
     "scanQrCode": "Scan QR Code",
     "qrCodeDesc": "Quick import configuration",
     "qrCodeTitle": "Subscription QR Code",
-    "qrCodeDescription": "Scan this QR code to import the subscription configuration into your client"
+    "qrCodeDescription": "Use your client app to scan this QR code for quick subscription setup"
   },
   "nodes": {
     "title": "Node Status"

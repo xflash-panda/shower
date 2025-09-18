@@ -158,12 +158,26 @@ const QrCodeModal: React.FC<QrCodeModalProps> = ({
                 />
               </div>
 
-              {/* Description */}
+              {/* Description - positioned between QR code and download button */}
               {description && (
                 <div className="mg-t-15">
                   <p className="text-muted mg-b-0 lh-base f-s-13">{description}</p>
                 </div>
               )}
+
+              {/* Download Button */}
+              <div className="mg-t-15 text-center">
+                <Button
+                  color="primary"
+                  className="btn btn-sm"
+                  onClick={handleDownloadQrCode}
+                  disabled={!qrCodeDataUrl || isGenerating}
+                  title={t('qrCode.download')}
+                >
+                  <i className="ph-duotone ph-download-simple mg-e-5"></i>
+                  {t('qrCode.download')}
+                </Button>
+              </div>
             </div>
           ) : (
             <div className="d-flex flex-column align-items-center justify-content-center pa-40">
@@ -171,25 +185,6 @@ const QrCodeModal: React.FC<QrCodeModalProps> = ({
               <p className="text-muted mg-b-0">{t('qrCode.error.noUrlProvided')}</p>
             </div>
           )}
-        </div>
-
-        {/* Action Buttons */}
-        <div className="d-flex justify-content-end align-items-center gap-2">
-          <Button color="secondary" outline className="btn btn-sm" onClick={toggle}>
-            <i className="ph-duotone ph-x mg-e-5"></i>
-            {t('close')}
-          </Button>
-
-          <Button
-            color="primary"
-            className="btn btn-sm"
-            onClick={handleDownloadQrCode}
-            disabled={!qrCodeDataUrl || isGenerating}
-            title={t('qrCode.download')}
-          >
-            <i className="ph-duotone ph-download-simple mg-e-5"></i>
-            {t('qrCode.download')}
-          </Button>
         </div>
       </ModalBody>
     </Modal>
