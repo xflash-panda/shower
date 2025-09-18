@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Container, Row, Col, Card, CardHeader, CardBody, Button } from 'reactstrap';
@@ -52,12 +52,28 @@ const OrderDetail = () => {
     }
   }, [orderStatus, mutate]);
 
+  // 根据当前订阅的支付方式白名单过滤支付方式
+  const filteredPaymentMethods = React.useMemo(() => {
+    if (!paymentMethods) return [];
+
+    // 获取当前订阅的支付方式白名单
+    const paymentIds = order?.plan?.payment_ids;
+
+    // 如果订阅指定了支付方式白名单，则只显示指定的支付方式
+    if (paymentIds && paymentIds.length > 0) {
+      return paymentMethods.filter(method => paymentIds.includes(method.id));
+    }
+
+    // 如果没有指定白名单，则显示所有支付方式
+    return paymentMethods;
+  }, [paymentMethods, order?.plan?.payment_ids]);
+
   // 初始化支付方式选择 - 当订单和支付方式数据都加载完成后
   useEffect(() => {
-    if (order && paymentMethods && paymentMethods.length > 0 && !selectedPayment) {
+    if (order && filteredPaymentMethods && filteredPaymentMethods.length > 0 && !selectedPayment) {
       // 如果订单中已有选择的支付方式，使用该支付方式
       if (order.payment_id) {
-        const existingPayment = paymentMethods.find(p => p.id === order.payment_id);
+        const existingPayment = filteredPaymentMethods.find(p => p.id === order.payment_id);
         if (existingPayment) {
           setSelectedPayment(order.payment_id.toString());
           return;
@@ -65,12 +81,12 @@ const OrderDetail = () => {
       }
 
       // 否则选择第一个可用的支付方式作为默认选项
-      const firstPayment = paymentMethods[0];
+      const firstPayment = filteredPaymentMethods[0];
       if (firstPayment) {
         setSelectedPayment(firstPayment.id.toString());
       }
     }
-  }, [order, paymentMethods, selectedPayment]);
+  }, [order, filteredPaymentMethods, selectedPayment]);
 
   // 如果有错误，重定向到404页面
   if (isError) {
@@ -292,7 +308,7 @@ const OrderDetail = () => {
                     <CardBody className="px-4 pt-2 pb-4">
                       {isPaymentLoading ? (
                         <Loading text={t('common.loading')} variant="spinner" />
-                      ) : !paymentMethods || paymentMethods.length === 0 ? (
+                      ) : !filteredPaymentMethods || filteredPaymentMethods.length === 0 ? (
                         <EmptyState
                           title={t('common.noData')}
                           icon="iconoir-glass-empty"
@@ -300,7 +316,7 @@ const OrderDetail = () => {
                         />
                       ) : (
                         <PaymentMethods
-                          paymentMethods={paymentMethods}
+                          paymentMethods={filteredPaymentMethods}
                           selectedPayment={selectedPayment}
                           onPaymentSelect={(paymentId, paymentData) => {
                             if (paymentData) {
