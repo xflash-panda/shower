@@ -26,6 +26,7 @@ import { useCommonConfig } from '@/hooks/useGuest';
 import { getLogoPath } from '@/helpers/assets';
 import { useHashParams } from '@/hooks/useHashParams';
 import { useCheckLogin } from '@/hooks/useIdentity';
+import { PROJECT_CONFIG } from '@/config/project';
 
 interface FormData {
   email: string;
@@ -487,6 +488,40 @@ const LoginPage = () => {
                   )}
                 </form>
               </div>
+
+              {/* 应用下载区域 - 在登录框下方，但仍在背景范围内 */}
+              {(PROJECT_CONFIG.iosDownloadUrl || PROJECT_CONFIG.androidDownloadUrl) && (
+                <div className="login-app-download-section mt-4">
+                  <div className="login-app-download-buttons">
+                    {PROJECT_CONFIG.iosDownloadUrl && (
+                      <a
+                        href={PROJECT_CONFIG.iosDownloadUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="login-app-download-button"
+                      >
+                        <i className="fab fa-apple" />
+                        <div className="download-text">
+                          <div className="download-label">{t('download.downloadIOS')}</div>
+                        </div>
+                      </a>
+                    )}
+                    {PROJECT_CONFIG.androidDownloadUrl && (
+                      <a
+                        href={PROJECT_CONFIG.androidDownloadUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="login-app-download-button"
+                      >
+                        <i className="fab fa-android" />
+                        <div className="download-text">
+                          <div className="download-label">{t('download.downloadAndroid')}</div>
+                        </div>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           </Col>
         </Row>

@@ -109,4 +109,152 @@
   margin-bottom: 1rem;
 }
 
+// 登录页面应用下载按钮样式 - 与登录页面协调的白色卡片风格
+.login-app-download-section {
+  margin-top: 1.5rem;
+  padding: 0;
+}
+
+.login-app-download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+  padding: 16px 20px;
+  border-radius: var(--bs-border-radius);
+  transition: var(--app-transition);
+  margin: 0 4px;
+  min-width: 160px;
+  height: 64px;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+
+  // 基础白色卡片样式，与登录表单一致
+  background-color: rgba(var(--white), 1);
+  border: 1px solid rgba(var(--secondary), 0.2);
+  box-shadow: var(--box-shadow);
+  color: rgba(var(--dark), 0.8);
+
+  &:hover {
+    color: rgba(var(--primary), 0.9);
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(var(--primary), 0.15);
+    background-color: rgba(var(--primary), 0.02);
+    border-color: rgba(var(--primary), 0.25);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: var(--box-shadow);
+  }
+
+  i {
+    margin-right: 12px;
+    font-size: 24px;
+    flex-shrink: 0;
+    transition: var(--app-transition);
+  }
+
+  .download-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    line-height: 1.3;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .download-label {
+    font-size: 14px;
+    margin-bottom: 2px;
+    font-weight: 600;
+    color: rgba(var(--dark), 0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: var(--app-transition);
+  }
+
+  .download-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(var(--dark), 0.7);
+    transition: var(--app-transition);
+  }
+
+  &:hover {
+    .download-label,
+    .download-name {
+      color: rgba(var(--primary), 0.9);
+    }
+  }
+
+  // iOS应用样式 - 优雅的深色图标
+  &:has(.fa-apple) {
+    i {
+      color: rgba(var(--dark), 0.7);
+    }
+
+    &:hover i {
+      color: rgba(var(--dark), 0.9);
+    }
+  }
+
+  // Android应用样式 - 品牌绿色图标
+  &:has(.fa-android) {
+    i {
+      color: #4caf50;
+    }
+
+    &:hover i {
+      color: #388e3c;
+    }
+  }
+}
+
+.login-app-download-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.login-app-download-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: rgba(var(--dark), 0.7);
+  font-weight: 500;
+}
+
+// 响应式处理
+@media (max-width: 576px) {
+  .login-app-download-button {
+    min-width: 140px;
+    padding: 12px 16px;
+    height: 56px;
+    margin: 0 2px;
+
+    i {
+      font-size: 20px;
+      margin-right: 10px;
+    }
+
+    .download-label {
+      font-size: 12px;
+    }
+
+    .download-name {
+      font-size: 14px;
+    }
+  }
+
+  .login-app-download-buttons {
+    gap: 0.25rem;
+    justify-content: center;
+  }
+}
+
 // >>-- 50 Login css end --<<
