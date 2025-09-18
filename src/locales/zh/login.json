@@ -31,5 +31,9 @@
   },
   "toast": {
     "autoLoginSuccess": "自动登录成功"
+  },
+  "download": {
+    "downloadIOS": "iOS下载",
+    "downloadAndroid": "Android下载"
   }
 }

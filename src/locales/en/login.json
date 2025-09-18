@@ -31,5 +31,9 @@
   },
   "toast": {
     "autoLoginSuccess": "Auto login successful"
+  },
+  "download": {
+    "downloadIOS": "iOS Download",
+    "downloadAndroid": "Android Download"
   }
 }
