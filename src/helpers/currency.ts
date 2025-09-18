@@ -4,10 +4,10 @@ import { PROJECT_CONFIG } from '@/config/project';
  * 货币格式化器
  * 根据项目配置格式化货币显示
  */
-export const currencyFormatter = new Intl.NumberFormat(PROJECT_CONFIG.currency_locale, {
+export const currencyFormatter = new Intl.NumberFormat(PROJECT_CONFIG.currencyLocale, {
   style: 'currency',
-  currency: PROJECT_CONFIG.currency_unit,
-  maximumFractionDigits: Number(PROJECT_CONFIG.currency_max_digits),
+  currency: PROJECT_CONFIG.currencyUnit,
+  maximumFractionDigits: Number(PROJECT_CONFIG.currencyMaxDigits),
 });
 
 /**

@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
             <ul className="footer-text text-end">
               <li>
                 <p className="badge bg-gradient-primary text-white px-3 py-2 fw-bold">
-                  Copyright © {new Date().getFullYear()} {PROJECT_CONFIG.copyright_mark}
+                  Copyright © {new Date().getFullYear()} {PROJECT_CONFIG.copyrightMark}
                 </p>
               </li>
             </ul>

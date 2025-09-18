@@ -8,7 +8,7 @@ import { PROJECT_CONFIG } from '../config/project';
  */
 export const encryptText = (text: string): string => {
   try {
-    const encrypted = CryptoJS.AES.encrypt(text, PROJECT_CONFIG.crypto_secret_key).toString();
+    const encrypted = CryptoJS.AES.encrypt(text, PROJECT_CONFIG.cryptoSecretKey).toString();
     return encrypted;
   } catch (error) {
     console.error('encryptText error:', error);
@@ -23,7 +23,7 @@ export const encryptText = (text: string): string => {
  */
 export const decryptText = (encryptedText: string): string => {
   try {
-    const decrypted = CryptoJS.AES.decrypt(encryptedText, PROJECT_CONFIG.crypto_secret_key);
+    const decrypted = CryptoJS.AES.decrypt(encryptedText, PROJECT_CONFIG.cryptoSecretKey);
     const originalText = decrypted.toString(CryptoJS.enc.Utf8);
 
     if (!originalText) {
