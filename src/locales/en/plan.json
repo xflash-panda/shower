@@ -129,5 +129,9 @@
     "loading": "Loading...",
     "noData": "No data",
     "loadFailed": "Failed to load node data"
+  },
+  "error": {
+    "invalidSelection": "System error: Invalid plan selection",
+    "submissionFailed": "Order submission failed"
   }
 }

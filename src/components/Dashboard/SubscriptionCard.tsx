@@ -542,12 +542,15 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
             <div className="pa-15">
               {(() => {
                 // 计算可见按钮数量
+                // 续期/续费按钮, 非流量包状态下显示, 流量包状态下不显示
                 const hasRenewal =
                   currentSubscriptionStatus !== 'packageValid' &&
                   currentSubscriptionStatus !== 'packageExhausted';
+                // 购买流量按钮, 流量包状态下显示, 非流量包状态下不显示
                 const hasPurchase =
                   currentSubscriptionStatus === 'packageValid' ||
                   currentSubscriptionStatus === 'packageExhausted';
+                // 重置流量按钮, 流量耗尽且非流量包状态下显示, 流量包状态下不显示
                 const hasReset =
                   userSubscribeData.traffic.percentage >= 100 &&
                   currentSubscriptionStatus !== 'packageValid' &&
