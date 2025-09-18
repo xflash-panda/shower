@@ -440,6 +440,7 @@ declare namespace API_V1 {
 
     interface OrderCheckoutData {
       data: string | boolean;
+      type: number; // 0: 二维码支付, 1: 跳转第三方支付
     }
 
     type OrderCheckoutResult = OrderCheckoutData;

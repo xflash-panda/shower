@@ -107,6 +107,10 @@
     "info": {
       "redirecting": "Redirecting to payment platform..."
     },
+    "qrCode": {
+      "title": "Scan QR Code to Pay",
+      "description": "Please use your payment app to scan the QR code below"
+    },
     "balancePayment": "Balance Payment",
     "confirmBalancePayment": "Confirm Balance Payment",
     "confirmOrder": "Confirm Order"

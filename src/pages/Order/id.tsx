@@ -10,6 +10,7 @@ import SubscriptionInfo from '@components/Order/SubscriptionInfo';
 import PaymentMethods from '@components/Order/PaymentMethods';
 import PaymentInfo from '@components/Order/PaymentInfo';
 import PaymentCelebration from '@components/Order/PaymentCelebration';
+import QrCodeModal from '@components/Common/QrCodeModal';
 import toast from '@/helpers/toast';
 import Loading from '@components/Common/Loading';
 import EmptyState from '@components/Common/EmptyState';
@@ -24,6 +25,8 @@ const OrderDetail = () => {
   const [isUpdatingPayment, setIsUpdatingPayment] = useState(false);
   const [showCloseModal, setShowCloseModal] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
+  const [showQrModal, setShowQrModal] = useState(false);
+  const [qrCodeUrl, setQrCodeUrl] = useState('');
 
   // 用于跟踪是否已经初始化过支付方式
   const paymentInitializedRef = useRef(false);
@@ -136,12 +139,27 @@ const OrderDetail = () => {
       });
 
       if (response.data) {
-        const data = response.data;
+        const { data, type } = response;
 
-        if (typeof data === 'string') {
+        if (type === 0) {
+          // 二维码支付
+          if (typeof data === 'string') {
+            setQrCodeUrl(data);
+            setShowQrModal(true);
+            setIsProcessing(false);
+          } else {
+            toast.error(t('payment.error.responseFormat'));
+            setIsProcessing(false);
+          }
+        } else if (type === 1) {
           // 跳转到第三方支付平台
-          toast.info(t('payment.info.redirecting'));
-          window.location.href = data;
+          if (typeof data === 'string') {
+            toast.info(t('payment.info.redirecting'));
+            window.location.href = data;
+          } else {
+            toast.error(t('payment.error.responseFormat'));
+            setIsProcessing(false);
+          }
         } else if (data === true) {
           // 支付已完成
           await mutate();
@@ -168,6 +186,14 @@ const OrderDetail = () => {
   // 处理关闭订单的API调用
   const handleCloseOrder = async (params: { trade_no: string }): Promise<void> => {
     await orderCancel(params);
+  };
+
+  // 处理二维码模态框切换
+  const toggleQrModal = (): void => {
+    setShowQrModal(!showQrModal);
+    if (showQrModal) {
+      setQrCodeUrl('');
+    }
   };
 
   // 处理支付方式选择
@@ -209,11 +235,6 @@ const OrderDetail = () => {
   // 庆祝动画处理函数
   const handleCelebrationComplete = (): void => {
     setShowCelebration(false);
-  };
-
-  // 模拟支付成功（用于测试）
-  const handleSimulatePaymentSuccess = (): void => {
-    setShowCelebration(true);
   };
 
   return (
@@ -398,26 +419,15 @@ const OrderDetail = () => {
         orderTradeNo={order?.trade_no?.toString()}
       />
 
-      {/* 开发环境测试按钮 */}
-      {process.env.NODE_ENV === 'development' && (
-        <div
-          style={{
-            position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            zIndex: 1000,
-          }}
-        >
-          <Button
-            color="warning"
-            size="sm"
-            onClick={handleSimulatePaymentSuccess}
-            className="shadow"
-          >
-            {t('detail.testCelebration')}
-          </Button>
-        </div>
-      )}
+      {/* 二维码支付模态框 */}
+      <QrCodeModal
+        isOpen={showQrModal}
+        toggle={toggleQrModal}
+        url={qrCodeUrl}
+        title={t('payment.qrCode.title')}
+        description={t('payment.qrCode.description')}
+        size="md"
+      />
     </div>
   );
 };

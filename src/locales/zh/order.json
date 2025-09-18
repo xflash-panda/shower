@@ -107,6 +107,10 @@
     "info": {
       "redirecting": "正在跳转到支付平台..."
     },
+    "qrCode": {
+      "title": "扫码支付",
+      "description": "请使用支付应用扫描下方二维码进行支付"
+    },
     "balancePayment": "余额折抵",
     "confirmBalancePayment": "确认余额支付",
     "confirmOrder": "确认订单"
