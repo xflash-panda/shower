@@ -9,6 +9,8 @@ interface ImportMetaEnv {
   readonly SHOWER_TIMEZONE?: string;
   readonly SHOWER_COPYRIGHT_MARK?: string;
   readonly SHOWER_CRYPTO_SECRET_KEY?: string;
+  readonly SHOWER_IOS_DOWNLOAD_URL?: string;
+  readonly SHOWER_ANDROID_DOWNLOAD_URL?: string;
   readonly SHOWER_ASSET_PREFIX?: string;
 }
 
