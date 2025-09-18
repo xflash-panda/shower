@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Container, Row, Col, Card, CardHeader, CardBody, Button } from 'reactstrap';
@@ -24,6 +24,9 @@ const OrderDetail = () => {
   const [isUpdatingPayment, setIsUpdatingPayment] = useState(false);
   const [showCloseModal, setShowCloseModal] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
+
+  // 用于跟踪是否已经初始化过支付方式
+  const paymentInitializedRef = useRef(false);
 
   // 使用 useOrder hook 获取订单详情
   const { order, isLoading, isError, mutate } = useOrder(
@@ -70,12 +73,21 @@ const OrderDetail = () => {
 
   // 初始化支付方式选择 - 当订单和支付方式数据都加载完成后
   useEffect(() => {
-    if (order && filteredPaymentMethods && filteredPaymentMethods.length > 0 && !selectedPayment) {
+    if (
+      order &&
+      filteredPaymentMethods &&
+      filteredPaymentMethods.length > 0 &&
+      !paymentInitializedRef.current
+    ) {
       // 如果订单中已有选择的支付方式，使用该支付方式
-      if (order.payment_id) {
-        const existingPayment = filteredPaymentMethods.find(p => p.id === order.payment_id);
+      if (order.payment_id !== null && order.payment_id !== undefined) {
+        const existingPayment = filteredPaymentMethods.find(
+          p => Number(p.id) === Number(order.payment_id),
+        );
+
         if (existingPayment) {
-          setSelectedPayment(order.payment_id.toString());
+          setSelectedPayment(existingPayment.id.toString());
+          paymentInitializedRef.current = true;
           return;
         }
       }
@@ -84,9 +96,10 @@ const OrderDetail = () => {
       const firstPayment = filteredPaymentMethods[0];
       if (firstPayment) {
         setSelectedPayment(firstPayment.id.toString());
+        paymentInitializedRef.current = true;
       }
     }
-  }, [order, filteredPaymentMethods, selectedPayment]);
+  }, [order, filteredPaymentMethods]);
 
   // 如果有错误，重定向到404页面
   if (isError) {
