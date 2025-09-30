@@ -191,6 +191,10 @@
       "trafficUsageReminder": {
         "title": "Traffic Usage Reminder",
         "description": "Send email notifications when traffic usage reaches threshold"
+      },
+      "systemNotification": {
+        "title": "System Notification",
+        "description": "Receive important notifications about maintenance, updates, coupons, and more"
       }
     }
   },

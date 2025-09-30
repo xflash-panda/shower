@@ -191,6 +191,10 @@
       "trafficUsageReminder": {
         "title": "流量使用提醒",
         "description": "当流量使用达到阈值时发送邮件提醒通知"
+      },
+      "systemNotification": {
+        "title": "系统通知",
+        "description": "接收服务维护、功能更新、优惠券等重要通知"
       }
     }
   },
