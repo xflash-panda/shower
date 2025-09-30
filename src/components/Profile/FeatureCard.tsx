@@ -13,6 +13,7 @@ interface FeatureCardProps {
     auto_reset_traffic?: number;
     remind_expire?: number;
     remind_traffic?: number;
+    system_notification?: number;
   }) => Promise<void>;
 }
 
@@ -28,6 +29,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
     autoResetTraffic: false,
     emailSubscriptionReminder: false,
     trafficUsageReminder: false,
+    systemNotification: false,
   });
   // 处理自动续订设置变化
   const handleAutoRenewalChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -69,6 +71,8 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
           await onUpdateConfig({ remind_expire: checked ? 1 : 0 });
         } else if (id === 'trafficUsageReminder') {
           await onUpdateConfig({ remind_traffic: checked ? 1 : 0 });
+        } else if (id === 'systemNotification') {
+          await onUpdateConfig({ system_notification: checked ? 1 : 0 });
         }
       } catch (error) {
         console.error('Failed to update notification settings:', error);
@@ -213,6 +217,35 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
                           onChange={handleNotificationChange}
                         />
                         <label htmlFor="trafficUsageReminder"></label>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div className="share-menu-item mb-4">
+                    <span className="share-menu-img text-outline-success h-45 w-45 d-flex-center b-r-10">
+                      <i className="ph-bold ph-bell f-s-30"></i>
+                    </span>
+                    <div className="share-menu-content">
+                      <h6 className="mb-0">
+                        {t('features.notifications.systemNotification.title')}
+                      </h6>
+                      <p className="mb-0 text-muted">
+                        {t('features.notifications.systemNotification.description')}
+                      </p>
+                    </div>
+                    <div className="main-switch main-switch-color d-flex mt-1">
+                      <div className="switch-primary">
+                        <input
+                          type="checkbox"
+                          id="systemNotification"
+                          className="toggle"
+                          checked={userInfo?.system_notification === 1}
+                          disabled={isLoading || loadingStates.systemNotification}
+                          onChange={handleNotificationChange}
+                        />
+                        <label htmlFor="systemNotification"></label>
                       </div>
                     </div>
                   </div>

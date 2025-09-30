@@ -161,6 +161,7 @@ declare namespace API_V1 {
       auto_reset_traffic: number;
       remind_expire: number;
       remind_traffic: number;
+      system_notification: number;
       telegram_id: number;
       suspend_type: number;
       is_suspend: boolean;
@@ -532,6 +533,7 @@ declare namespace API_V1 {
     interface UpdateParams {
       remind_expire?: number;
       remind_traffic?: number;
+      system_notification?: number;
       auto_renewal?: number;
       auto_reset_traffic?: number;
     }
