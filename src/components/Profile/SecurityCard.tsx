@@ -19,6 +19,7 @@ import DeleteAccountConfirmModal from '@components/Profile/DeleteAccountConfirmM
 import { changePassword, resetSecurity, destroy } from '@/api/v1/user';
 import { useUserInfo } from '@/hooks/useUser';
 import { clearToken } from '@helpers/auth';
+import { getErrorMessage } from '@helpers/error';
 import toast from '@helpers/toast';
 
 interface PasswordVisibility {
@@ -105,8 +106,8 @@ const SecurityCard: React.FC = () => {
   const validatePasswordForm = (): boolean => {
     const errors: PasswordErrors = {};
 
-    // 验证当前密码
-    if (!passwordForm.currentPassword.trim()) {
+    // 验证当前密码（仅当用户已设置密码时）
+    if (hasPassword && !passwordForm.currentPassword.trim()) {
       errors.currentPassword = t('security.validation.currentPasswordRequired');
     }
 
@@ -115,7 +116,7 @@ const SecurityCard: React.FC = () => {
       errors.newPassword = t('security.validation.newPasswordRequired');
     } else if (passwordForm.newPassword.length < 8) {
       errors.newPassword = t('security.validation.passwordTooShort');
-    } else if (passwordForm.newPassword === passwordForm.currentPassword) {
+    } else if (hasPassword && passwordForm.newPassword === passwordForm.currentPassword) {
       errors.newPassword = t('security.validation.passwordsSame');
     }
 
@@ -143,7 +144,7 @@ const SecurityCard: React.FC = () => {
     try {
       // 调用更改密码 API
       await changePassword({
-        old_password: passwordForm.currentPassword,
+        old_password: hasPassword ? passwordForm.currentPassword : '',
         new_password: passwordForm.newPassword,
       });
 
@@ -156,9 +157,13 @@ const SecurityCard: React.FC = () => {
         confirmPassword: '',
       });
       setPasswordErrors({});
+
+      // 更新用户信息缓存，因为用户现在已经有密码了
+      await mutateUserInfo();
     } catch (error) {
       console.error('Failed to update password:', error);
-      toast.error(t('security.changePassword.error'));
+      const errorMessage = getErrorMessage(error, t('security.changePassword.error'));
+      toast.error(errorMessage);
     } finally {
       setIsSubmittingPassword(false);
     }
@@ -180,7 +185,8 @@ const SecurityCard: React.FC = () => {
       navigate('/login');
     } catch (error) {
       console.error('Failed to delete account:', error);
-      toast.error(t('security.deleteAccount.error'));
+      const errorMessage = getErrorMessage(error, t('security.deleteAccount.error'));
+      toast.error(errorMessage);
     } finally {
       setIsDeletingAccount(false);
     }
@@ -208,7 +214,8 @@ const SecurityCard: React.FC = () => {
       // 可以在这里处理返回的新订阅URL
     } catch (error) {
       console.error('Failed to reset subscription:', error);
-      toast.error(t('security.resetSubscription.error'));
+      const errorMessage = getErrorMessage(error, t('security.resetSubscription.error'));
+      toast.error(errorMessage);
     } finally {
       setIsResettingSubscription(false);
     }
@@ -235,6 +242,9 @@ const SecurityCard: React.FC = () => {
     setChangeEmailModal(false);
   };
 
+  // 计算用户是否已设置密码
+  const hasPassword = userInfo?.has_password ?? true;
+
   // 计算全局加载状态 - 用于禁用所有按钮
   const isGlobalLoading =
     isUserInfoLoading || isSubmittingPassword || isResettingSubscription || isDeletingAccount;
@@ -246,7 +256,7 @@ const SecurityCard: React.FC = () => {
         <CardBody className="text-center py-5">
           <div className="text-danger">
             <i className="ph-warning-circle me-2"></i>
-            Failed to load user information
+            {t('security.error.loadUserInfoFailed')}
           </div>
         </CardBody>
       </Card>
@@ -267,37 +277,39 @@ const SecurityCard: React.FC = () => {
             }}
           >
             <Row>
-              {/* Current Password */}
-              <Col sm="12">
-                <Label for="currentPassword" className="form-label">
-                  {t('security.labels.currentPassword')}
-                </Label>
-                <InputGroup className="mb-3">
-                  <InputGroupText>
-                    <i className="ph-bold ph-lock"></i>
-                  </InputGroupText>
-                  <Input
-                    type={passwordVisible.currentPassword ? 'text' : 'password'}
-                    id="currentPassword"
-                    className="form-control"
-                    placeholder={t('security.changePassword.currentPasswordPlaceholder')}
-                    value={passwordForm.currentPassword}
-                    onChange={e => handlePasswordInputChange('currentPassword', e.target.value)}
-                    invalid={!!passwordErrors.currentPassword}
-                  />
-                  <InputGroupText
-                    onClick={() => togglePasswordVisibility('currentPassword')}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <i
-                      className={`ph ${passwordVisible.currentPassword ? 'ph-eye' : 'ph-eye-slash'} ${passwordVisible.currentPassword ? 'text-primary' : ''}`}
-                    ></i>
-                  </InputGroupText>
-                </InputGroup>
-                {passwordErrors.currentPassword && (
-                  <div className="text-danger small mb-3">{passwordErrors.currentPassword}</div>
-                )}
-              </Col>
+              {/* Current Password - 仅当用户已设置密码时显示 */}
+              {hasPassword && (
+                <Col sm="12">
+                  <Label for="currentPassword" className="form-label">
+                    {t('security.labels.currentPassword')}
+                  </Label>
+                  <InputGroup className="mb-3">
+                    <InputGroupText>
+                      <i className="ph-bold ph-lock"></i>
+                    </InputGroupText>
+                    <Input
+                      type={passwordVisible.currentPassword ? 'text' : 'password'}
+                      id="currentPassword"
+                      className="form-control"
+                      placeholder={t('security.changePassword.currentPasswordPlaceholder')}
+                      value={passwordForm.currentPassword}
+                      onChange={e => handlePasswordInputChange('currentPassword', e.target.value)}
+                      invalid={!!passwordErrors.currentPassword}
+                    />
+                    <InputGroupText
+                      onClick={() => togglePasswordVisibility('currentPassword')}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <i
+                        className={`ph ${passwordVisible.currentPassword ? 'ph-eye' : 'ph-eye-slash'} ${passwordVisible.currentPassword ? 'text-primary' : ''}`}
+                      ></i>
+                    </InputGroupText>
+                  </InputGroup>
+                  {passwordErrors.currentPassword && (
+                    <div className="text-danger small mb-3">{passwordErrors.currentPassword}</div>
+                  )}
+                </Col>
+              )}
 
               {/* New Password */}
               <Col sm="12">

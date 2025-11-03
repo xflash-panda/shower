@@ -142,6 +142,9 @@
       },
       "success": "账号注销成功",
       "error": "账号注销失败"
+    },
+    "error": {
+      "loadUserInfoFailed": "用户信息加载失败"
     }
   },
   "connection": {

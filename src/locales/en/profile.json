@@ -142,6 +142,9 @@
       },
       "success": "Account deleted successfully",
       "error": "Account deletion failed"
+    },
+    "error": {
+      "loadUserInfoFailed": "Failed to load user information"
     }
   },
   "connection": {

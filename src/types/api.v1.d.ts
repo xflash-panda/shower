@@ -166,6 +166,7 @@ declare namespace API_V1 {
       suspend_type: number;
       is_suspend: boolean;
       recovery_at?: number;
+      has_password: boolean;
     }
 
     type InfoResult = BaseResponse<InfoItem>;
