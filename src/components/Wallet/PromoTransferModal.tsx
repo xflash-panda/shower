@@ -9,6 +9,7 @@ interface PromoTransferModalProps {
   promoBalance: number;
   onTransfer: (amount: number) => Promise<void>;
   isLoading?: boolean;
+  minBalanceRequired?: number;
 }
 
 const PromoTransferModal: React.FC<PromoTransferModalProps> = ({
@@ -17,10 +18,16 @@ const PromoTransferModal: React.FC<PromoTransferModalProps> = ({
   promoBalance,
   onTransfer,
   isLoading = false,
+  minBalanceRequired = 0,
 }) => {
   const { t } = useTranslation('wallet');
   const [amount, setAmount] = useState('');
   const [error, setError] = useState('');
+
+  // 检查余额是否满足最低要求（分单位）
+  const minBalanceRequiredInCents = minBalanceRequired * 100;
+  const isBalanceInsufficient =
+    minBalanceRequiredInCents > 0 && promoBalance < minBalanceRequiredInCents;
 
   // 表单验证函数
   const validateForm = (): boolean => {
@@ -136,65 +143,81 @@ const PromoTransferModal: React.FC<PromoTransferModalProps> = ({
         <span className="f-w-600">{t('promoTransferModal.title')}</span>
       </ModalHeader>
       <ModalBody>
-        <form className="app-form px-2 py-1">
-          <div className="mb-4 mb-3">
-            <Label htmlFor="currentBalance" className="form-label f-w-600">
-              {t('promoTransferModal.labels.currentBalance')}
-            </Label>
-            <Input
-              id="currentBalance"
-              value={formatCurrency(promoBalance)}
-              disabled
-              bsSize="lg"
-              className="form-control-lg shadow-sm rounded-3 form-control f-w-500"
-            />
+        {isBalanceInsufficient ? (
+          <div className="d-flex align-items-center pa-20">
+            <i className="ph-duotone ph-warning-circle text-danger me-2 fs-4"></i>
+            <div>
+              <h6 className="f-w-600 mb-1">
+                {t('promoTransferModal.validation.balanceInsufficient')}
+              </h6>
+              <small className="text-muted">
+                {t('promoTransferModal.validation.balanceInsufficientDesc', {
+                  minBalance: formatCurrency(minBalanceRequiredInCents),
+                })}
+              </small>
+            </div>
           </div>
-          <div className="mb-4 mb-3">
-            <Label htmlFor="promoAmount" className="form-label f-w-600">
-              {t('promoTransferModal.labels.transferAmount')}
-              <span className="text-danger ms-1">*</span>
-            </Label>
-            <Input
-              id="promoAmount"
-              type="text"
-              placeholder={t('promoTransferModal.placeholders.transferAmount', {
-                maxAmount: formatCurrency(promoBalance),
-              })}
-              value={amount}
-              onChange={e => {
-                const value = e.target.value;
+        ) : (
+          <form className="app-form px-2 py-1">
+            <div className="mb-4 mb-3">
+              <Label htmlFor="currentBalance" className="form-label f-w-600">
+                {t('promoTransferModal.labels.currentBalance')}
+              </Label>
+              <Input
+                id="currentBalance"
+                value={formatCurrency(promoBalance)}
+                disabled
+                bsSize="lg"
+                className="form-control-lg shadow-sm rounded-3 form-control f-w-500"
+              />
+            </div>
+            <div className="mb-4 mb-3">
+              <Label htmlFor="promoAmount" className="form-label f-w-600">
+                {t('promoTransferModal.labels.transferAmount')}
+                <span className="text-danger ms-1">*</span>
+              </Label>
+              <Input
+                id="promoAmount"
+                type="text"
+                placeholder={t('promoTransferModal.placeholders.transferAmount', {
+                  maxAmount: formatCurrency(promoBalance),
+                })}
+                value={amount}
+                onChange={e => {
+                  const value = e.target.value;
 
-                // 处理输入验证，允许输入但会显示错误提示
-                if (value === '') {
-                  setAmount('');
-                  validateField('');
-                  return;
-                }
+                  // 处理输入验证，允许输入但会显示错误提示
+                  if (value === '') {
+                    setAmount('');
+                    validateField('');
+                    return;
+                  }
 
-                // 更宽松的数字验证规则，允许输入但会显示错误提示
-                // 1. 不允许前导零（除了0.xx格式）
-                // 2. 只允许一个小数点
-                // 3. 允许任意位数的小数，但会在验证时提示错误
-                const validNumberPattern = /^(?:0|[1-9]\d*)(?:\.\d*)?$/;
+                  // 更宽松的数字验证规则，允许输入但会显示错误提示
+                  // 1. 不允许前导零（除了0.xx格式）
+                  // 2. 只允许一个小数点
+                  // 3. 允许任意位数的小数，但会在验证时提示错误
+                  const validNumberPattern = /^(?:0|[1-9]\d*)(?:\.\d*)?$/;
 
-                if (validNumberPattern.test(value)) {
-                  setAmount(value);
-                  validateField(value);
-                }
-              }}
-              invalid={!!error}
-              bsSize="lg"
-              className="form-control-lg shadow-sm rounded-3 form-control f-w-500"
-              disabled={isLoading}
-            />
-            {error && (
-              <div className="d-flex align-items-center mt-2">
-                <i className="ph-duotone ph-warning-circle text-danger me-2"></i>
-                <small className="text-danger fw-medium mb-0">{error}</small>
-              </div>
-            )}
-          </div>
-        </form>
+                  if (validNumberPattern.test(value)) {
+                    setAmount(value);
+                    validateField(value);
+                  }
+                }}
+                invalid={!!error}
+                bsSize="lg"
+                className="form-control-lg shadow-sm rounded-3 form-control f-w-500"
+                disabled={isLoading}
+              />
+              {error && (
+                <div className="d-flex align-items-center mt-2">
+                  <i className="ph-duotone ph-warning-circle text-danger me-2"></i>
+                  <small className="text-danger fw-medium mb-0">{error}</small>
+                </div>
+              )}
+            </div>
+          </form>
+        )}
       </ModalBody>
       <ModalFooter>
         <Button
@@ -212,7 +235,7 @@ const PromoTransferModal: React.FC<PromoTransferModalProps> = ({
             handleSubmit().catch(console.error);
           }}
           className="f-w-600"
-          disabled={isLoading || !isFormValid()}
+          disabled={isLoading || isBalanceInsufficient || !isFormValid()}
         >
           {isLoading
             ? t('promoTransferModal.buttons.transferring')

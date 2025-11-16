@@ -211,6 +211,7 @@ declare namespace API_V1 {
       withdraw_close: number;
       transfer_balance_close: number;
       transfer_commission_balance_close: number;
+      transfer_commission_balance_min_amount: number;
       min_recharge_amount: number;
       max_recharge_amount: number;
       commission_withdraw_limit: number;

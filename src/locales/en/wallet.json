@@ -105,7 +105,9 @@
       "amountRequired": "Transfer amount cannot be empty",
       "amountInvalid": "Amount can only have up to 2 decimal places",
       "amountValid": "Please enter a valid transfer amount",
-      "amountExceeded": "Transfer amount cannot exceed commission balance"
+      "amountExceeded": "Transfer amount cannot exceed commission balance",
+      "balanceInsufficient": "Insufficient balance for transfer",
+      "balanceInsufficientDesc": "Commission balance must be at least {{minBalance}} to perform transfer"
     },
     "buttons": {
       "cancel": "Cancel",

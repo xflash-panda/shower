@@ -101,7 +101,9 @@
       "amountRequired": "划转金额不能为空",
       "amountInvalid": "金额最多只能输入2位小数",
       "amountValid": "请输入有效的划转金额",
-      "amountExceeded": "划转金额不能超过推广佣金余额"
+      "amountExceeded": "划转金额不能超过推广佣金余额",
+      "balanceInsufficient": "余额不足，无法划转",
+      "balanceInsufficientDesc": "推广佣金余额需达到 {{minBalance}} 才能进行划转"
     },
     "buttons": {
       "cancel": "取消",

@@ -395,6 +395,9 @@ const WalletPage = () => {
           promoBalance={promoBalance}
           onTransfer={handlePromoTransfer}
           isLoading={loadingStates.promo}
+          minBalanceRequired={
+            profileConfig ? profileConfig.transfer_commission_balance_min_amount : 0
+          }
         />
 
         <RechargeModal
