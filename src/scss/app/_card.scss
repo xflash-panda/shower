@@ -226,11 +226,7 @@
 }
 
 @each $name, $color in $colors {
-  @include card_mixin(
-    '#{$name}',
-    map-get($colors, $name),
-    map-get($colors, '#{$name}-dark')
-  );
+  @include card_mixin('#{$name}', map-get($colors, $name), map-get($colors, '#{$name}-dark'));
 }
 
 body[class='ltr dark'] {

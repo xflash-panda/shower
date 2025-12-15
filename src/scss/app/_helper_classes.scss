@@ -33,11 +33,7 @@
 }
 
 @each $name, $color in $colors {
-  @include text_mixin(
-    '#{$name}',
-    map-get($colors, $name),
-    map-get($colors, '#{$name}-dark')
-  );
+  @include text_mixin('#{$name}', map-get($colors, $name), map-get($colors, '#{$name}-dark'));
 }
 
 // font weight

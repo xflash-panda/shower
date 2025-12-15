@@ -138,17 +138,12 @@
     margin-top: 10px;
     padding-top: 10px;
     border-bottom: 0;
-    border-top: var(--bs-nav-tabs-border-width) solid
-      var(--bs-nav-tabs-border-color);
+    border-top: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
   }
 }
 
 @each $name, $color in $colors {
-  @include tab_mixin(
-    '#{$name}',
-    map-get($colors, $name),
-    map-get($colors, '#{$name}-dark')
-  );
+  @include tab_mixin('#{$name}', map-get($colors, $name), map-get($colors, '#{$name}-dark'));
 }
 
 // >>-- 11 Tabs css end --<<

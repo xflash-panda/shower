@@ -287,11 +287,7 @@ $colors: (
 }
 
 @each $name, $color in $colors {
-  @include bg_mixin(
-    '#{$name}',
-    map-get($colors, $name),
-    map-get($colors, '#{$name}-dark')
-  );
+  @include bg_mixin('#{$name}', map-get($colors, $name), map-get($colors, '#{$name}-dark'));
 }
 
 // background color shade start
@@ -312,38 +308,10 @@ $units: 'px';
 
 @each $name, $color in $colors {
   @include border_1('.b-', 'border', $name, map-get($colors, $name), 20, 1);
-  @include border_1(
-    '.b-t-',
-    'border-top',
-    $name,
-    map-get($colors, $name),
-    20,
-    1
-  );
-  @include border_1(
-    '.b-b-',
-    'border-bottom',
-    $name,
-    map-get($colors, $name),
-    20,
-    1
-  );
-  @include border_1(
-    '.b-s-',
-    'border-left',
-    $name,
-    map-get($colors, $name),
-    20,
-    1
-  );
-  @include border_1(
-    '.b-e-',
-    'border-right',
-    $name,
-    map-get($colors, $name),
-    20,
-    1
-  );
+  @include border_1('.b-t-', 'border-top', $name, map-get($colors, $name), 20, 1);
+  @include border_1('.b-b-', 'border-bottom', $name, map-get($colors, $name), 20, 1);
+  @include border_1('.b-s-', 'border-left', $name, map-get($colors, $name), 20, 1);
+  @include border_1('.b-e-', 'border-right', $name, map-get($colors, $name), 20, 1);
 }
 
 // Border style css start
@@ -361,14 +329,7 @@ $units: 'px';
 }
 
 @each $name, $color in $colors {
-  @include border_style(
-    '.dashed-',
-    'border',
-    $name,
-    map-get($colors, $name),
-    20,
-    1
-  );
+  @include border_style('.dashed-', 'border', $name, map-get($colors, $name), 20, 1);
 }
 
 $units: 'px';
@@ -384,14 +345,7 @@ $units: 'px';
 }
 
 @each $name, $color in $colors {
-  @include border_style(
-    '.dotted-',
-    'border',
-    $name,
-    map-get($colors, $name),
-    20,
-    1
-  );
+  @include border_style('.dotted-', 'border', $name, map-get($colors, $name), 20, 1);
 }
 
 // opacity css starts
