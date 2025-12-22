@@ -100,6 +100,6 @@
     "vite-plugin-html-minifier": "^1.0.5",
     "vite-plugin-i18next-loader": "^3.1.2",
     "vite-plugin-strip-comments": "^0.0.6",
-    "webpack-bundle-analyzer": "^4.10.2"
+    "webpack-bundle-analyzer": "^5.1.0"
   }
 }
