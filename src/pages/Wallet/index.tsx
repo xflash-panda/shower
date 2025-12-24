@@ -301,7 +301,7 @@ const WalletPage = () => {
                 <h5 className="f-w-700 mb-3">{t('wallet:quickActions.title')}</h5>
                 <ListGroup flush>
                   {/* 余额充值 - 根据 recharge_close 配置控制显示 */}
-                  {profileConfig && profileConfig.recharge_close === 0 && (
+                  {profileConfig?.recharge_close === 0 && (
                     <ListGroupItem className="d-flex align-items-center justify-content-between py-3">
                       <div>
                         <i className="ti ti-wallet text-success me-2 fs-5"></i>
@@ -322,7 +322,7 @@ const WalletPage = () => {
                   )}
 
                   {/* 余额划转 - 根据 transfer_balance_close 配置控制显示 */}
-                  {profileConfig && profileConfig.transfer_balance_close === 0 && (
+                  {profileConfig?.transfer_balance_close === 0 && (
                     <ListGroupItem className="d-flex align-items-center justify-content-between py-3">
                       <div>
                         <i className="ti ti-send text-info me-2 fs-5"></i>
@@ -343,7 +343,7 @@ const WalletPage = () => {
                   )}
 
                   {/* 推广佣金划转 - 根据 transfer_commission_balance_close 配置控制显示 */}
-                  {profileConfig && profileConfig.transfer_commission_balance_close === 0 && (
+                  {profileConfig?.transfer_commission_balance_close === 0 && (
                     <ListGroupItem className="d-flex align-items-center justify-content-between py-3">
                       <div>
                         <i className="ti ti-arrows-exchange text-primary me-2 fs-5"></i>
@@ -364,7 +364,7 @@ const WalletPage = () => {
                   )}
 
                   {/* 推广佣金提现 - 根据 withdraw_close 配置控制显示 */}
-                  {profileConfig && profileConfig.withdraw_close === 0 && (
+                  {profileConfig?.withdraw_close === 0 && (
                     <ListGroupItem className="d-flex align-items-center justify-content-between py-3">
                       <div>
                         <i className="ti ti-cash text-dark me-2 fs-5"></i>

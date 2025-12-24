@@ -13,7 +13,9 @@
     "marked-terminal/ansi-regex": "6.1.0",
     "cli-table3/string-width/strip-ansi": "6.0.1",
     "@isaacs/cliui/wrap-ansi-cjs/string-width": "4.2.3",
-    "@isaacs/cliui/wrap-ansi-cjs/strip-ansi": "6.0.1"
+    "@isaacs/cliui/wrap-ansi-cjs/strip-ansi": "6.0.1",
+    "js-yaml": "^4.1.1",
+    "mdast-util-to-hast": "^13.2.1"
   },
   "scripts": {
     "preinstall": "npx only-allow yarn",
@@ -32,7 +34,7 @@
     "@react-jvectormap/world": "^1.1.2",
     "@react-oauth/google": "^0.12.2",
     "apexcharts": "^4.2.0",
-    "axios": "^1.11.0",
+    "axios": "^1.12.0",
     "bootstrap": "^5.3.3",
     "bytes-formatter": "^21.6.15",
     "copy-to-clipboard": "^3.3.3",
@@ -85,7 +87,7 @@
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
-    "glob": "^11.0.3",
+    "glob": "^11.1.0",
     "globals": "^15.11.0",
     "jiti": "^2.5.1",
     "only-allow": "^1.2.1",
@@ -96,7 +98,7 @@
     "terser": "^5.44.0",
     "tsx": "^4.19.2",
     "typescript": "^5.9.2",
-    "vite": "^5.4.0",
+    "vite": "^5.4.21",
     "vite-plugin-html-minifier": "^1.0.5",
     "vite-plugin-i18next-loader": "^3.1.2",
     "vite-plugin-strip-comments": "^0.0.6",
