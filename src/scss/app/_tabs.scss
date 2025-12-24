@@ -59,7 +59,7 @@
 }
 
 @mixin tab_mixin($name, $color, $light-color: null) {
-  $light-color: if($light-color == null, $color, $light-color);
+  $light-color: if($light-color, $light-color, $color);
 
   .nav-tabs {
     &.bg-#{$name} {

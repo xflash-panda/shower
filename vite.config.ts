@@ -71,11 +71,11 @@ export default defineConfig(({ mode }) => {
     preprocessorOptions: {
       scss: {
         silenceDeprecations: [
-          'mixed-decls',
           'color-functions',
           'global-builtin',
           'import',
           'legacy-js-api',
+          'if-function',
         ],
       },
     },

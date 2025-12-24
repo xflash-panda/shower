@@ -36,7 +36,7 @@ $colors: (
 );
 
 @mixin btn_mixin($name, $color, $light-color: null) {
-  $light-color: if($light-color == null, $color, $light-color);
+  $light-color: if($light-color, $light-color, $color);
 
   .btn-#{$name} {
     background-color: rgba(#{$color}, 1);

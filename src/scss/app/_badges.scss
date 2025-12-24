@@ -13,7 +13,7 @@
 }
 
 @mixin badge_mixin($name, $color, $light-color: null) {
-  $light-color: if($light-color == null, $color, $light-color);
+  $light-color: if($light-color, $light-color, $color);
 
   .text-bg-#{$name} {
     background-color: rgba(#{$color}, 1) !important;

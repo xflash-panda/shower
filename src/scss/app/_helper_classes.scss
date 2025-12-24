@@ -1,7 +1,7 @@
 // >>-- 44 Helper_classes css start --<<
 
 @mixin text_mixin($name, $color, $light-color: null) {
-  $light-color: if($light-color == null, $color, $light-color);
+  $light-color: if($light-color, $light-color, $color);
   .text-#{$name} {
     color: rgba(#{$color}, 1) !important;
 
