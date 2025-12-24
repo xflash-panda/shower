@@ -77,7 +77,7 @@ const OrderDetail = ({
         </div>
         <div className="d-flex justify-content-between mg-b-12">
           <span className="text-muted f-fw-500">{t('order.trafficQuota')}:</span>
-          <span className="text-primary f-fw-700">{selectedPlan.transfer_enable}GB</span>
+          <span className="text-primary f-fw-700">{selectedPlan.quota_gb}GB</span>
         </div>
         {selectedPrice.tip && (
           <div className="mg-t-16">

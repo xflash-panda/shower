@@ -247,7 +247,7 @@ declare namespace API_V1 {
       end_sec: number;
       u: number;
       d: number;
-      transfer_enable: number;
+      quota_bytes: number;
       email: string;
       plan?: PlanItem;
     }
@@ -311,8 +311,8 @@ declare namespace API_V1 {
 
     interface PlanItem {
       id: number;
-      transfer_enable: number;
-      transfer_enable_value: number;
+      quota_gb: number;
+      quota_bytes: number;
       name: string;
       show: number;
       prices: PlanPriceItem[] | null;

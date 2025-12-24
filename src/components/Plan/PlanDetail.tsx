@@ -29,7 +29,7 @@ const PlanOverview = ({ selectedPlan, showPlanDetails }: PlanOverviewProps) => {
           <div className="d-flex align-items-center gap-2 flex-wrap">
             <Badge color="success" className="fw-medium rounded-pill pa-6 pe-10 ps-10">
               <i className="ph-duotone ph-database me-1 f-s-12"></i>
-              {selectedPlan.transfer_enable}GB
+              {selectedPlan.quota_gb}GB
             </Badge>
             <Badge color="dark" className="fw-medium rounded-pill pa-6 pe-10 ps-10">
               <i className="ph-duotone ph-sparkle me-1 f-s-12"></i>

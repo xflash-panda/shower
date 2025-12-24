@@ -75,9 +75,7 @@ const SubscriptionInfo = ({ order }: SubscriptionInfoProps) => {
                 <h6 className="text-muted mb-0 fw-semibold">{t('subscription.dataQuota')}</h6>
               </div>
               <p className="fw-bold mb-0 text-dark h5">
-                {order.plan?.transfer_enable
-                  ? `${order.plan.transfer_enable}GB`
-                  : t('subscription.unlimited')}
+                {order.plan?.quota_gb ? `${order.plan.quota_gb}GB` : t('subscription.unlimited')}
               </p>
             </div>
           </Col>

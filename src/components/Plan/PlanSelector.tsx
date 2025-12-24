@@ -78,7 +78,7 @@ const PlanSelector = ({ plans, activeTab, onTabChange }: PlanSelectorProps) => {
                 <div className="plan-traffic-info mg-b-16">
                   <div className="traffic-amount">
                     <span className={`traffic-number ${plan.is_sold_out ? 'text-muted' : ''}`}>
-                      {plan.transfer_enable}
+                      {plan.quota_gb}
                     </span>
                     <span className={`traffic-unit ${plan.is_sold_out ? 'text-muted' : ''}`}>
                       GB

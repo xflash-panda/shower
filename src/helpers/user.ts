@@ -262,7 +262,7 @@ const createSubscriptionAnalysis = (
  * @returns 转换后的用户数据对象
  */
 const transformSubscribeData = (subscribeInfo: API_V1.User.SubscribeData): UserSubscribeData => {
-  const totalBytes = subscribeInfo.transfer_enable;
+  const totalBytes = subscribeInfo.quota_bytes;
   const usedBytes = subscribeInfo.u + subscribeInfo.d;
   const remainingBytes = Math.max(0, totalBytes - usedBytes);
 

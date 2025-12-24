@@ -61,9 +61,7 @@ const PlanBasicInfo: React.FC<PlanBasicInfoProps> = ({ plan, nodeOverviews }) =>
               {t('basicInfo.labels.trafficQuota')}：
             </span>
             <span className="text-dark small fw-bold">
-              <span className="text-primary">
-                {formatBytesToReadable(plan.transfer_enable_value)}
-              </span>
+              <span className="text-primary">{formatBytesToReadable(plan.quota_bytes)}</span>
             </span>
           </div>
         </Col>
