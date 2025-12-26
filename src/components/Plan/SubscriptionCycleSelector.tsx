@@ -18,9 +18,10 @@ const SubscriptionCycleSelector = ({
   // 过滤价格选项：只有当用户是周期性订阅且流量耗尽时，才显示重置流量包（假设 type 为 3）
   const filteredPrices = prices.filter(price => {
     // 如果是重置流量包（type === 3），只在特定条件下显示
-    if (price.type === 3) {
+    if (price.type === 3 || price.type === 4) {
       return userData?.analysis.checkShouldShowTrafficReset() ?? false;
     }
+
     // 其他类型的价格正常显示
     return true;
   });

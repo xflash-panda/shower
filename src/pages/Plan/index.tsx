@@ -60,6 +60,7 @@ const PlanPage = () => {
     plan: (API_V1.User.PlanItem & { features: string[] }) | null,
     isTrafficPurchase: boolean = false,
     isTrafficReset: boolean = false,
+    isTempTraffic: boolean = false,
   ) => {
     if (!plan) {
       setSelectedPlan(null);
@@ -78,6 +79,10 @@ const PlanPage = () => {
         // 重置流量场景：优先选择重置流量类型（type === 3），没有才选择第一个
         const trafficResetPrice = plan.prices.find(price => price.type === 3);
         defaultPrice = trafficResetPrice ?? plan.prices[0];
+      } else if (isTempTraffic) {
+        // 补充临时流量场景：优先选择临时流量类型（type === 4），没有才选择第一个
+        const tempTrafficPrice = plan.prices.find(price => price.type === 4);
+        defaultPrice = tempTrafficPrice ?? plan.prices[0];
       } else if (isTrafficPurchase) {
         // 购买流量场景：优先选择一次性类型（type === 2）
         const oneTimePrice = plan.prices.find(price => price.type === 2);
@@ -95,15 +100,17 @@ const PlanPage = () => {
 
   useEffect(() => {
     if (plans && plans.length > 0) {
-      // 检查是否有从state传入的defaultPlanId、isTrafficPurchase和isTrafficReset
+      // 检查是否有从state传入的defaultPlanId、isTrafficPurchase、isTrafficReset和isTempTraffic
       const state = location.state as {
         defaultPlanId?: number;
         isTrafficPurchase?: boolean;
         isTrafficReset?: boolean;
+        isTempTraffic?: boolean;
       } | null;
       const defaultPlanId = state?.defaultPlanId;
       const isTrafficPurchase = state?.isTrafficPurchase ?? false;
       const isTrafficReset = state?.isTrafficReset ?? false;
+      const isTempTraffic = state?.isTempTraffic ?? false;
 
       let targetPlan: (typeof plans)[0];
 
@@ -116,7 +123,7 @@ const PlanPage = () => {
         targetPlan = plans[0];
       }
 
-      selectPlanWithPrice(targetPlan, isTrafficPurchase, isTrafficReset);
+      selectPlanWithPrice(targetPlan, isTrafficPurchase, isTrafficReset, isTempTraffic);
     }
   }, [plans, location.state]);
 
@@ -126,11 +133,13 @@ const PlanPage = () => {
     const state = location.state as {
       isTrafficPurchase?: boolean;
       isTrafficReset?: boolean;
+      isTempTraffic?: boolean;
     } | null;
     const isTrafficPurchase = state?.isTrafficPurchase ?? false;
     const isTrafficReset = state?.isTrafficReset ?? false;
+    const isTempTraffic = state?.isTempTraffic ?? false;
 
-    selectPlanWithPrice(plan ?? null, isTrafficPurchase, isTrafficReset);
+    selectPlanWithPrice(plan ?? null, isTrafficPurchase, isTrafficReset, isTempTraffic);
   };
 
   // 处理价格选择

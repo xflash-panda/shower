@@ -47,10 +47,15 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
   // 是否显示购买流量按钮（流量包类型才显示）
   const shouldShowPurchaseButton = isPackageType;
 
-  // 是否显示重置流量按钮（周期性订阅且流量耗尽，且未过期，且当前套餐包含重置流量价格 type=4）
+  // 是否显示重置流量按钮（周期性订阅且流量耗尽，且未过期，且当前套餐包含重置流量价格 type=3）
   const hasResetTrafficPrice =
-    userSubscribeData.plan?.prices?.some(price => price.type === 4) ?? false;
+    userSubscribeData.plan?.prices?.some(price => price.type === 3) ?? false;
   const shouldShowResetButton = analysis.checkShouldShowTrafficReset() && hasResetTrafficPrice;
+
+  // 是否显示补充临时流量按钮（判断条件与重置按钮相同，但检查 type=4）
+  const hasTempTrafficPrice =
+    userSubscribeData.plan?.prices?.some(price => price.type === 4) ?? false;
+  const shouldShowTempTrafficButton = analysis.checkShouldShowTrafficReset() && hasTempTrafficPrice;
 
   const availableClients: Client[] = useMemo(() => {
     const platform = ClientDownloadData.platforms.find(p => p.id === currentPlatform);
@@ -106,6 +111,24 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
       navigate('/plan', {
         state: {
           isTrafficReset: true,
+        },
+      });
+    }
+  };
+
+  // 处理补充临时流量跳转到订阅页面，传入当前planId，标识为临时流量
+  const handleNavigateToTempTraffic = () => {
+    if (userSubscribeData.analysis?.currentPlanId) {
+      navigate('/plan', {
+        state: {
+          defaultPlanId: userSubscribeData.analysis.currentPlanId,
+          isTempTraffic: true,
+        },
+      });
+    } else {
+      navigate('/plan', {
+        state: {
+          isTempTraffic: true,
         },
       });
     }
@@ -412,6 +435,19 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
                       {t('subscription.actions.resetTraffic')}
                     </Button>
                   )}
+
+                  {/* 补充临时流量按钮 - 判断条件与重置按钮相同，但检查 type=3 */}
+                  {shouldShowTempTrafficButton && (
+                    <Button
+                      color="primary"
+                      outline
+                      className="btn btn-lg"
+                      onClick={handleNavigateToTempTraffic}
+                    >
+                      <i className="ph-duotone ph-plus-circle me-1"></i>
+                      {t('subscription.actions.tempTraffic')}
+                    </Button>
+                  )}
                 </>
               )}
 
@@ -479,12 +515,14 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
                 const hasRenewal = shouldShowRenewalButton;
                 const hasPurchase = shouldShowPurchaseButton;
                 const hasReset = shouldShowResetButton;
+                const hasTempTraffic = shouldShowTempTrafficButton;
                 const hasImport = true; // 快速导入始终显示
 
                 const buttonCount =
                   (hasRenewal ? 1 : 0) +
                   (hasPurchase ? 1 : 0) +
                   (hasReset ? 1 : 0) +
+                  (hasTempTraffic ? 1 : 0) +
                   (hasImport ? 1 : 0);
 
                 // 只有两个按钮时，并排显示
@@ -609,13 +647,26 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
                       {/* 重置流量按钮 */}
                       {hasReset && (
                         <Button
-                          color="danger"
+                          color="primary"
                           outline
                           className="flex-fill d-flex align-items-center justify-content-center pa-10 f-fw-500"
                           onClick={handleNavigateToTrafficReset}
                         >
                           <i className="ph-duotone ph-arrow-clockwise me-1"></i>
                           {t('subscription.actions.resetTraffic')}
+                        </Button>
+                      )}
+
+                      {/* 补充临时流量按钮 */}
+                      {hasTempTraffic && (
+                        <Button
+                          color="primary"
+                          outline
+                          className="flex-fill d-flex align-items-center justify-content-center pa-10 f-fw-500"
+                          onClick={handleNavigateToTempTraffic}
+                        >
+                          <i className="ph-duotone ph-plus-circle me-1"></i>
+                          {t('subscription.actions.tempTraffic')}
                         </Button>
                       )}
 

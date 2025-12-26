@@ -29,6 +29,7 @@
       "renew": "续期",
       "renewExpired": "续费",
       "resetTraffic": "重置流量",
+      "tempTraffic": "补充临时流量",
       "buyTraffic": "购买流量",
       "quickImport": "快速导入",
       "copySubscriptionLink": "复制通用订阅链接",

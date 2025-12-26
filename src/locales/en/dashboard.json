@@ -29,6 +29,7 @@
       "renew": "Renew",
       "renewExpired": "Resubscribe",
       "resetTraffic": "Reset Traffic",
+      "tempTraffic": "Add Temp Traffic",
       "buyTraffic": "Buy Traffic",
       "quickImport": "Quick Import",
       "copySubscriptionLink": "Copy Universal Subscription Link",
