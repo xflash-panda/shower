@@ -26,7 +26,8 @@ export function manifestPlugin(): Plugin {
 
         if (chunk.type === 'chunk' && fileName.endsWith('.chunk.min.js')) {
           // 提取原始名称（去掉 hash 和 chunk）
-          const originalName = fileName.replace(/-[a-zA-Z0-9_]+\.chunk\.min\.js$/, '.min.js');
+          // hash 格式是 8 个字符，可能包含 a-zA-Z0-9_-（base64url 编码）
+          const originalName = fileName.replace(/-[a-zA-Z0-9_-]{8}\.chunk\.min\.js$/, '.min.js');
 
           if (chunk.isEntry) {
             // 入口文件
@@ -75,7 +76,8 @@ export function manifestPlugin(): Plugin {
         // 分析所有实际文件，建立映射关系
         actualFiles.forEach(fileName => {
           // 提取原始名称（去掉 hash 和 chunk）
-          const originalName = fileName.replace(/-[a-zA-Z0-9_]+\.chunk\.min\.js$/, '.min.js');
+          // hash 格式是 8 个字符，可能包含 a-zA-Z0-9_-（base64url 编码）
+          const originalName = fileName.replace(/-[a-zA-Z0-9_-]{8}\.chunk\.min\.js$/, '.min.js');
           const fullPath = `assets/js/${fileName}`;
           // 正向映射：originalName -> hashedPath
           manifest[originalName] = fullPath;
