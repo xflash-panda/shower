@@ -18,7 +18,7 @@ import { copyText } from '@/helpers/clipboard';
 import { detectPlatform, type PlatformType } from '@/helpers/platform';
 import { ClientDownloadData } from '@/data/client';
 import type { Client } from '@/types/client';
-import { SubscriptionStatus, type UserSubscribeData } from '@/helpers/user';
+import type { UserSubscribeData } from '@/helpers/user';
 import { calculateRemainingTraffic, bytesToGB } from '@/helpers/bytes';
 
 interface SubscriptionCardProps {
@@ -39,7 +39,6 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
   const currentPlatform: PlatformType = useMemo(() => detectPlatform(), []);
 
   // 按钮显示逻辑 - 基于订阅状态的原子判断
-  const subscriptionStatus = analysis.status.subscriptionStatus;
   const isPackageType = analysis.checkIsPackageType();
 
   // 是否显示续期按钮（非流量包类型才显示）
@@ -51,11 +50,7 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
   // 是否显示重置流量按钮（周期性订阅且流量耗尽，且未过期，且当前套餐包含重置流量价格 type=4）
   const hasResetTrafficPrice =
     userSubscribeData.plan?.prices?.some(price => price.type === 4) ?? false;
-  const shouldShowResetButton =
-    analysis.trafficStatus.isPeriodicWithDepleted &&
-    subscriptionStatus !== SubscriptionStatus.SERVICE_EXPIRED &&
-    subscriptionStatus !== SubscriptionStatus.EXPIRED_EXHAUSTED &&
-    hasResetTrafficPrice;
+  const shouldShowResetButton = analysis.checkShouldShowTrafficReset() && hasResetTrafficPrice;
 
   const availableClients: Client[] = useMemo(() => {
     const platform = ClientDownloadData.platforms.find(p => p.id === currentPlatform);

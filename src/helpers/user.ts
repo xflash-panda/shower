@@ -312,9 +312,14 @@ const createSubscriptionAnalysis = (
       return isOneTime !== newIsOneTime;
     },
 
-    // 检查方法：是否应显示流量重置包（type === 3）
+    // 检查方法：是否应显示流量重置包（type === 4）
+    // 条件：周期性订阅且流量耗尽，且未过期
     checkShouldShowTrafficReset: () => {
-      return isPeriodicWithDepleted;
+      return (
+        isPeriodicWithDepleted &&
+        subscriptionStatus !== SubscriptionStatus.SERVICE_EXPIRED &&
+        subscriptionStatus !== SubscriptionStatus.EXPIRED_EXHAUSTED
+      );
     },
 
     // 检查方法：是否应显示流量耗尽确认
