@@ -18,7 +18,7 @@ import { copyText } from '@/helpers/clipboard';
 import { detectPlatform, type PlatformType } from '@/helpers/platform';
 import { ClientDownloadData } from '@/data/client';
 import type { Client } from '@/types/client';
-import type { UserSubscribeData } from '@/helpers/user';
+import { SubscriptionStatus, type UserSubscribeData } from '@/helpers/user';
 import { calculateRemainingTraffic, bytesToGB } from '@/helpers/bytes';
 
 interface SubscriptionCardProps {
@@ -37,6 +37,22 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
 
   // 检测当前平台并获取对应的客户端列表
   const currentPlatform: PlatformType = useMemo(() => detectPlatform(), []);
+
+  // 按钮显示逻辑 - 基于订阅状态的原子判断
+  const subscriptionStatus = analysis.status.subscriptionStatus;
+  const isPackageType = analysis.checkIsPackageType();
+
+  // 是否显示续期按钮（非流量包类型才显示）
+  const shouldShowRenewalButton = !isPackageType;
+
+  // 是否显示购买流量按钮（流量包类型才显示）
+  const shouldShowPurchaseButton = isPackageType;
+
+  // 是否显示重置流量按钮（周期性订阅且流量耗尽，且未过期）
+  const shouldShowResetButton =
+    analysis.trafficStatus.isPeriodicWithDepleted &&
+    subscriptionStatus !== SubscriptionStatus.SERVICE_EXPIRED &&
+    subscriptionStatus !== SubscriptionStatus.EXPIRED_EXHAUSTED;
 
   const availableClients: Client[] = useMemo(() => {
     const platform = ClientDownloadData.platforms.find(p => p.id === currentPlatform);
@@ -364,7 +380,7 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
             {/* 左侧：购买/续费相关按钮 */}
             <div className="d-flex align-items-center gap-1 flex-wrap">
               {/* 非一次性订阅（周期性订阅）- 显示续期和重置流量按钮 */}
-              {analysis.checkShouldShowRenewalButton() && (
+              {shouldShowRenewalButton && (
                 <>
                   {/* 续期/续费按钮 - 根据服务状态显示不同文字和图标 */}
                   <Button
@@ -387,7 +403,7 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
                   </Button>
 
                   {/* 重置流量按钮 - 只在流量耗尽且非过期状态下显示 */}
-                  {analysis.checkShouldShowResetButton() && (
+                  {shouldShowResetButton && (
                     <Button
                       color="primary"
                       outline
@@ -402,7 +418,7 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
               )}
 
               {/* 一次性订阅（流量包）- 只显示购买流量按钮 */}
-              {analysis.checkShouldShowPurchaseButton() && (
+              {shouldShowPurchaseButton && (
                 <Button
                   color="primary"
                   className="btn btn-lg"
@@ -462,9 +478,9 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
             <div className="pa-15">
               {(() => {
                 // 计算可见按钮数量
-                const hasRenewal = analysis.checkShouldShowRenewalButton();
-                const hasPurchase = analysis.checkShouldShowPurchaseButton();
-                const hasReset = analysis.checkShouldShowResetButton();
+                const hasRenewal = shouldShowRenewalButton;
+                const hasPurchase = shouldShowPurchaseButton;
+                const hasReset = shouldShowResetButton;
                 const hasImport = true; // 快速导入始终显示
 
                 const buttonCount =

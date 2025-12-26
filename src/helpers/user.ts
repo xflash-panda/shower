@@ -183,12 +183,6 @@ export interface SubscriptionAnalysis {
   checkIsPackageType: () => boolean;
   /** 检查方法：服务状态是否正常 */
   checkIsServiceNormal: () => boolean;
-  /** 检查方法：是否显示续期按钮 */
-  checkShouldShowRenewalButton: () => boolean;
-  /** 检查方法：是否显示购买流量按钮 */
-  checkShouldShowPurchaseButton: () => boolean;
-  /** 检查方法：是否显示重置流量按钮 */
-  checkShouldShowResetButton: () => boolean;
   /** 检查方法：是否无订阅 */
   checkHasNoSubscription: () => boolean;
   /** 检查方法：是否已过期 */
@@ -345,22 +339,6 @@ const createSubscriptionAnalysis = (
     checkIsServiceNormal: () =>
       subscriptionStatus === SubscriptionStatus.SERVICE_ACTIVE ||
       subscriptionStatus === SubscriptionStatus.PACKAGE_VALID,
-
-    // 检查方法：是否显示续期按钮（非流量包类型）
-    checkShouldShowRenewalButton: () =>
-      subscriptionStatus !== SubscriptionStatus.PACKAGE_VALID &&
-      subscriptionStatus !== SubscriptionStatus.PACKAGE_EXHAUSTED,
-
-    // 检查方法：是否显示购买流量按钮（流量包类型）
-    checkShouldShowPurchaseButton: () =>
-      subscriptionStatus === SubscriptionStatus.PACKAGE_VALID ||
-      subscriptionStatus === SubscriptionStatus.PACKAGE_EXHAUSTED,
-
-    // 检查方法：是否显示重置流量按钮
-    checkShouldShowResetButton: () =>
-      isPeriodicWithDepleted &&
-      subscriptionStatus !== SubscriptionStatus.SERVICE_EXPIRED &&
-      subscriptionStatus !== SubscriptionStatus.EXPIRED_EXHAUSTED,
 
     // 检查方法：是否无订阅
     checkHasNoSubscription: () => subscriptionStatus === SubscriptionStatus.NO_SUBSCRIPTION,
