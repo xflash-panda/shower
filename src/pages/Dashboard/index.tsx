@@ -79,9 +79,7 @@ const DashboardPage = () => {
         </Card>
 
         {/* 客户端模块 */}
-        {(subscribeLoading ||
-          userData === null ||
-          (userData && 'plan' in userData && subscribeData.plan !== '')) && (
+        {(subscribeLoading || userData === null || (userData && subscribeData.plan !== null)) && (
           <Card className="mg-b-30 b-r-15">
             <CardHeader className="pa-20 pa-b-15 border-0 flex-shrink-0">
               <h5 className="f-fw-600 mg-b-0 text-dark">
@@ -102,7 +100,7 @@ const DashboardPage = () => {
         )}
 
         {/* 节点状态列表 */}
-        {(subscribeLoading || userData === null || (userData && subscribeData.plan !== '')) && (
+        {(subscribeLoading || userData === null || (userData && subscribeData.plan !== null)) && (
           <Card className="mg-b-30 b-r-15">
             <CardHeader
               className="pa-25 cursor-pointer"
@@ -136,7 +134,7 @@ const DashboardPage = () => {
         )}
 
         {/* 服务器节点地图模块 - 只有在无订阅时才显示 */}
-        {userData && subscribeData.plan === '' && (
+        {userData && subscribeData.plan === null && (
           <Card className="mg-b-30 b-r-15">
             <CardHeader className="pb-0">
               <h5 className="f-fw-600 mg-b-5 text-dark">
