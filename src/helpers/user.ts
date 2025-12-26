@@ -118,6 +118,29 @@ const formatExpiredDate = (expiredTimestamp: number, locale: string = 'zh-CN'): 
 };
 
 /**
+ * 订阅状态常量
+ */
+export const SubscriptionStatus = {
+  /** 无订阅 */
+  NO_SUBSCRIPTION: 'noSubscription',
+  /** 服务正常 */
+  SERVICE_ACTIVE: 'serviceActive',
+  /** 服务已过期 */
+  SERVICE_EXPIRED: 'serviceExpired',
+  /** 流量包有效 */
+  PACKAGE_VALID: 'packageValid',
+  /** 流量包已耗尽 */
+  PACKAGE_EXHAUSTED: 'packageExhausted',
+  /** 已过期且流量耗尽 */
+  EXPIRED_EXHAUSTED: 'expiredExhausted',
+} as const;
+
+/**
+ * 订阅状态类型
+ */
+export type SubscriptionStatusType = (typeof SubscriptionStatus)[keyof typeof SubscriptionStatus];
+
+/**
  * 订阅状态和类型检查工具
  */
 export interface SubscriptionAnalysis {
@@ -141,6 +164,8 @@ export interface SubscriptionAnalysis {
     isExpired: boolean;
     /** 是否可用 */
     isAvailable: boolean;
+    /** 当前订阅状态类型 */
+    subscriptionStatus: SubscriptionStatusType;
   };
   /** 当前套餐ID */
   currentPlanId: number;
@@ -154,6 +179,20 @@ export interface SubscriptionAnalysis {
   checkShouldShowTrafficDepletedConfirm: (newPriceType?: number) => boolean;
   /** 检查方法：是否应显示订阅变更确认 */
   checkShouldShowSubscriptionChangeConfirm: (newPlanId: number, newPriceType?: number) => boolean;
+  /** 检查方法：是否为流量包类型 */
+  checkIsPackageType: () => boolean;
+  /** 检查方法：服务状态是否正常 */
+  checkIsServiceNormal: () => boolean;
+  /** 检查方法：是否显示续期按钮 */
+  checkShouldShowRenewalButton: () => boolean;
+  /** 检查方法：是否显示购买流量按钮 */
+  checkShouldShowPurchaseButton: () => boolean;
+  /** 检查方法：是否显示重置流量按钮 */
+  checkShouldShowResetButton: () => boolean;
+  /** 检查方法：是否无订阅 */
+  checkHasNoSubscription: () => boolean;
+  /** 检查方法：是否已过期 */
+  checkIsExpired: () => boolean;
 }
 
 /**
@@ -162,8 +201,8 @@ export interface SubscriptionAnalysis {
 export interface UserSubscribeData {
   /** 用户邮箱 */
   email: string;
-  /** 套餐名称 */
-  plan: string;
+  /** 套餐信息 */
+  plan: API_V1.User.PlanItem | null;
   /** 服务到期信息 */
   expiry: {
     /** 剩余天数，-1表示永不过期 */
@@ -195,6 +234,33 @@ export interface UserSubscribeData {
  * @param subscribeInfo - 订阅信息数据
  * @returns 订阅分析对象
  */
+/**
+ * 计算订阅状态类型
+ */
+const calculateSubscriptionStatus = (
+  planName: string,
+  isOneTime: boolean,
+  isExpired: boolean,
+  isDepleted: boolean,
+  remainingDays: number,
+): SubscriptionStatusType => {
+  if (planName === '') {
+    return SubscriptionStatus.NO_SUBSCRIPTION;
+  }
+
+  // 一次性流量包（无到期时间和重置周期）
+  if (isOneTime) {
+    return isDepleted ? SubscriptionStatus.PACKAGE_EXHAUSTED : SubscriptionStatus.PACKAGE_VALID;
+  }
+
+  // 周期性订阅（有到期时间）
+  if (isExpired || remainingDays <= 0) {
+    return isDepleted ? SubscriptionStatus.EXPIRED_EXHAUSTED : SubscriptionStatus.SERVICE_EXPIRED;
+  }
+
+  return SubscriptionStatus.SERVICE_ACTIVE;
+};
+
 const createSubscriptionAnalysis = (
   subscribeInfo: API_V1.User.SubscribeData,
 ): SubscriptionAnalysis => {
@@ -210,6 +276,21 @@ const createSubscriptionAnalysis = (
   const isExpired = subscribeInfo.is_expired;
   const isAvailable = subscribeInfo.is_available;
 
+  // 计算剩余天数
+  const remainingDays =
+    subscribeInfo.expired_at && subscribeInfo.expired_at > 0
+      ? calculateRemainingDays(subscribeInfo.expired_at)
+      : -1;
+
+  // 计算订阅状态类型
+  const subscriptionStatus = calculateSubscriptionStatus(
+    subscribeInfo.plan?.name ?? '',
+    isOneTime,
+    isExpired,
+    isDepleted,
+    remainingDays,
+  );
+
   return {
     type: {
       isOneTime,
@@ -222,6 +303,7 @@ const createSubscriptionAnalysis = (
     status: {
       isExpired,
       isAvailable,
+      subscriptionStatus,
     },
     currentPlanId: subscribeInfo.plan_id,
 
@@ -253,6 +335,38 @@ const createSubscriptionAnalysis = (
       const isSubscriptionTypeChange = isOneTime !== (newPriceType === 2);
       return isSubscriptionChange || isSubscriptionTypeChange;
     },
+
+    // 检查方法：是否为流量包类型
+    checkIsPackageType: () =>
+      subscriptionStatus === SubscriptionStatus.PACKAGE_VALID ||
+      subscriptionStatus === SubscriptionStatus.PACKAGE_EXHAUSTED,
+
+    // 检查方法：服务状态是否正常
+    checkIsServiceNormal: () =>
+      subscriptionStatus === SubscriptionStatus.SERVICE_ACTIVE ||
+      subscriptionStatus === SubscriptionStatus.PACKAGE_VALID,
+
+    // 检查方法：是否显示续期按钮（非流量包类型）
+    checkShouldShowRenewalButton: () =>
+      subscriptionStatus !== SubscriptionStatus.PACKAGE_VALID &&
+      subscriptionStatus !== SubscriptionStatus.PACKAGE_EXHAUSTED,
+
+    // 检查方法：是否显示购买流量按钮（流量包类型）
+    checkShouldShowPurchaseButton: () =>
+      subscriptionStatus === SubscriptionStatus.PACKAGE_VALID ||
+      subscriptionStatus === SubscriptionStatus.PACKAGE_EXHAUSTED,
+
+    // 检查方法：是否显示重置流量按钮
+    checkShouldShowResetButton: () =>
+      isPeriodicWithDepleted &&
+      subscriptionStatus !== SubscriptionStatus.SERVICE_EXPIRED &&
+      subscriptionStatus !== SubscriptionStatus.EXPIRED_EXHAUSTED,
+
+    // 检查方法：是否无订阅
+    checkHasNoSubscription: () => subscriptionStatus === SubscriptionStatus.NO_SUBSCRIPTION,
+
+    // 检查方法：是否已过期
+    checkIsExpired: () => isExpired,
   };
 };
 
@@ -320,7 +434,7 @@ const transformSubscribeData = (subscribeInfo: API_V1.User.SubscribeData): UserS
 
   return {
     email: subscribeInfo.email ?? '',
-    plan: subscribeInfo.plan?.name ?? '',
+    plan: subscribeInfo.plan ?? null,
     expiry,
     reset,
     subscribeUrl: subscribeInfo.subscribe_url,

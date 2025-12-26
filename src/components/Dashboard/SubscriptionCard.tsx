@@ -21,48 +21,6 @@ import type { Client } from '@/types/client';
 import type { UserSubscribeData } from '@/helpers/user';
 import { calculateRemainingTraffic, bytesToGB } from '@/helpers/bytes';
 
-type SubscriptionStatusType =
-  | 'noSubscription'
-  | 'serviceActive'
-  | 'serviceExpired'
-  | 'packageValid'
-  | 'packageExhausted'
-  | 'expiredExhausted';
-
-/**
- * 根据用户订阅数据计算当前订阅状态
- * @param userSubscribeData - 用户订阅数据
- * @returns 计算后的订阅状态
- */
-const calculateSubscriptionStatus = (
-  userSubscribeData: UserSubscribeData,
-): SubscriptionStatusType => {
-  const { expiry, traffic, reset } = userSubscribeData;
-  const isTrafficExhausted = traffic.percentage >= 100;
-
-  if (userSubscribeData.plan === '') {
-    return 'noSubscription';
-  }
-  // 一次性流量包（无到期时间和重置周期）
-  if (expiry?.isNeverExpires && !reset) {
-    return isTrafficExhausted ? 'packageExhausted' : 'packageValid';
-  }
-
-  // 周期性订阅（有到期时间）
-  if (expiry && !expiry.isNeverExpires) {
-    const isExpired = expiry.remainingDays <= 0;
-
-    if (isExpired) {
-      return isTrafficExhausted ? 'expiredExhausted' : 'serviceExpired';
-    } else {
-      return 'serviceActive';
-    }
-  }
-
-  // 默认返回服务正常状态
-  return 'serviceActive';
-};
-
 interface SubscriptionCardProps {
   userSubscribeData: UserSubscribeData;
 }
@@ -71,11 +29,8 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation('dashboard');
 
-  // 使用 useMemo 优化订阅状态计算
-  const currentSubscriptionStatus = useMemo(
-    () => calculateSubscriptionStatus(userSubscribeData),
-    [userSubscribeData],
-  );
+  // 从 analysis 中获取订阅分析工具
+  const { analysis } = userSubscribeData;
 
   // 优化：将3个订阅下拉状态合并为1个
   const [subscriptionDropdown, setSubscriptionDropdown] = useState(false);
@@ -177,7 +132,7 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
   return (
     <>
       {/* 核心数据卡片 */}
-      {currentSubscriptionStatus === 'noSubscription' ? (
+      {analysis.checkHasNoSubscription() ? (
         // 暂无订阅或暂无用户数据 - 显示购买订阅占位内容
         <Row>
           <Col xs={12}>
@@ -204,12 +159,7 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
           {/* 当前订阅计划 */}
           <Col
             md={6}
-            lg={
-              currentSubscriptionStatus === 'packageValid' ||
-              currentSubscriptionStatus === 'packageExhausted'
-                ? 4
-                : 3
-            }
+            lg={analysis.checkIsPackageType() ? 4 : 3}
             className="mg-b-15 mb-md-3 shadow-sm"
           >
             <Card className="h-150 b-r-15">
@@ -217,7 +167,7 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
                 <div className="d-flex align-items-center justify-content-between">
                   <div>
                     <h6 className="text-dark mg-b-5">{t('subscription.currentPlan')}</h6>
-                    <h4 className="f-fw-600 mg-b-0 text-primary">{userSubscribeData.plan}</h4>
+                    <h4 className="f-fw-600 mg-b-0 text-primary">{userSubscribeData.plan?.name}</h4>
                   </div>
                   <i className="ph-duotone ph-crown h1 text-warning"></i>
                 </div>
@@ -225,15 +175,9 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
                   <p className="small mg-b-0">
                     <span className="text-muted">{t('subscription.serviceStatus')}: </span>
                     <span
-                      className={`f-fw-700 ${
-                        currentSubscriptionStatus === 'serviceActive' ||
-                        currentSubscriptionStatus === 'packageValid'
-                          ? 'text-success'
-                          : 'text-danger'
-                      }`}
+                      className={`f-fw-700 ${analysis.checkIsServiceNormal() ? 'text-success' : 'text-danger'}`}
                     >
-                      {currentSubscriptionStatus === 'serviceActive' ||
-                      currentSubscriptionStatus === 'packageValid'
+                      {analysis.checkIsServiceNormal()
                         ? t('subscription.status.normal')
                         : t('subscription.status.abnormal')}
                     </span>
@@ -246,12 +190,7 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
           {/* 流量使用情况 */}
           <Col
             md={6}
-            lg={
-              currentSubscriptionStatus === 'packageValid' ||
-              currentSubscriptionStatus === 'packageExhausted'
-                ? 4
-                : 3
-            }
+            lg={analysis.checkIsPackageType() ? 4 : 3}
             className="mg-b-15 mb-md-3 shadow-sm"
           >
             <Card className="h-150 b-r-15">
@@ -330,12 +269,7 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
           {/* 剩余天数 */}
           <Col
             md={6}
-            lg={
-              currentSubscriptionStatus === 'packageValid' ||
-              currentSubscriptionStatus === 'packageExhausted'
-                ? 4
-                : 3
-            }
+            lg={analysis.checkIsPackageType() ? 4 : 3}
             className="mg-b-15 mb-md-3 shadow-sm"
           >
             <Card className="h-150 b-r-15">
@@ -344,11 +278,9 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
                   <div>
                     <h6 className="text-dark  mg-b-5">{t('subscription.expiryDate')}</h6>
                     <h4 className="f-fw-600 mg-b-0">
-                      {currentSubscriptionStatus === 'serviceExpired' ||
-                      currentSubscriptionStatus === 'expiredExhausted'
+                      {analysis.checkIsExpired()
                         ? t('subscription.status.expired')
-                        : currentSubscriptionStatus === 'packageValid' ||
-                            currentSubscriptionStatus === 'packageExhausted'
+                        : analysis.checkIsPackageType()
                           ? t('subscription.status.longTermValid')
                           : userSubscribeData.expiry?.isNeverExpires
                             ? t('subscription.status.neverExpires')
@@ -357,11 +289,9 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
                   </div>
                   <i
                     className={`ph-duotone ph-calendar h1 ${
-                      currentSubscriptionStatus === 'serviceExpired' ||
-                      currentSubscriptionStatus === 'expiredExhausted'
+                      analysis.checkIsExpired()
                         ? 'text-danger'
-                        : currentSubscriptionStatus === 'packageValid' ||
-                            currentSubscriptionStatus === 'packageExhausted'
+                        : analysis.checkIsPackageType()
                           ? 'text-info'
                           : 'text-success'
                     }`}
@@ -369,13 +299,11 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
                 </div>
                 <div className="mt-auto">
                   <small className="text-muted mg-b-0">
-                    {currentSubscriptionStatus === 'serviceExpired' ||
-                    currentSubscriptionStatus === 'expiredExhausted' ? (
+                    {analysis.checkIsExpired() ? (
                       <span className="text-danger f-fw-700">
                         {t('subscription.serviceExpired')}
                       </span>
-                    ) : currentSubscriptionStatus === 'packageValid' ||
-                      currentSubscriptionStatus === 'packageExhausted' ? (
+                    ) : analysis.checkIsPackageType() ? (
                       <span className="text-muted">{t('subscription.packageNoExpiry')}</span>
                     ) : (
                       <>
@@ -393,96 +321,88 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
           </Col>
 
           {/* 流量重置 - 只在有重置信息且非流量包状态下显示 */}
-          {userSubscribeData.reset &&
-            currentSubscriptionStatus !== 'packageValid' &&
-            currentSubscriptionStatus !== 'packageExhausted' && (
-              <Col md={6} lg={3} className="mg-b-15 mb-md-3 shadow-sm">
-                <Card className="h-150 b-r-15">
-                  <CardBody className="pa-20 d-flex flex-column justify-content-between">
-                    <div className="d-flex align-items-center justify-content-between">
-                      <div>
-                        <h6 className="text-dark mg-b-5">{t('subscription.trafficReset')}</h6>
-                        <h4 className="f-fw-600 mg-b-0">{userSubscribeData.reset?.date ?? '--'}</h4>
-                      </div>
-                      <i className="ph-duotone ph-arrow-clockwise h1 text-info"></i>
+          {userSubscribeData.reset && !analysis.checkIsPackageType() && (
+            <Col md={6} lg={3} className="mg-b-15 mb-md-3 shadow-sm">
+              <Card className="h-150 b-r-15">
+                <CardBody className="pa-20 d-flex flex-column justify-content-between">
+                  <div className="d-flex align-items-center justify-content-between">
+                    <div>
+                      <h6 className="text-dark mg-b-5">{t('subscription.trafficReset')}</h6>
+                      <h4 className="f-fw-600 mg-b-0">{userSubscribeData.reset?.date ?? '--'}</h4>
                     </div>
-                    <div className="mt-auto">
-                      <small className="text-muted mg-b-0">
-                        {currentSubscriptionStatus === 'serviceExpired' ||
-                        currentSubscriptionStatus === 'expiredExhausted' ? (
-                          <span className="text-danger f-fw-700">
-                            {t('subscription.expiredCannotReset')}
+                    <i className="ph-duotone ph-arrow-clockwise h1 text-info"></i>
+                  </div>
+                  <div className="mt-auto">
+                    <small className="text-muted mg-b-0">
+                      {analysis.checkIsExpired() ? (
+                        <span className="text-danger f-fw-700">
+                          {t('subscription.expiredCannotReset')}
+                        </span>
+                      ) : (
+                        <>
+                          {t('subscription.trafficRemaining')}
+                          <span className="f-fw-700 text-primary mg-s-3 mg-e-3">
+                            {userSubscribeData.reset?.remainingDays ?? 0}
                           </span>
-                        ) : (
-                          <>
-                            {t('subscription.trafficRemaining')}
-                            <span className="f-fw-700 text-primary mg-s-3 mg-e-3">
-                              {userSubscribeData.reset?.remainingDays ?? 0}
-                            </span>
-                            {t('subscription.daysToReset')}
-                          </>
-                        )}
-                      </small>
-                    </div>
-                  </CardBody>
-                </Card>
-              </Col>
-            )}
+                          {t('subscription.daysToReset')}
+                        </>
+                      )}
+                    </small>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          )}
         </Row>
       )}
 
       {/* 订阅操作按钮区域 - 只在有订阅时显示 */}
-      {currentSubscriptionStatus !== 'noSubscription' && (
+      {!analysis.checkHasNoSubscription() && (
         <div className="card-footer pa-8 pa-s-20 pa-e-20 border-0">
           {/* 桌面端布局 - 水平排列 */}
           <div className="d-none d-md-flex justify-content-between align-items-center gap-1 flex-wrap">
             {/* 左侧：购买/续费相关按钮 */}
             <div className="d-flex align-items-center gap-1 flex-wrap">
               {/* 非一次性订阅（周期性订阅）- 显示续期和重置流量按钮 */}
-              {currentSubscriptionStatus !== 'packageValid' &&
-                currentSubscriptionStatus !== 'packageExhausted' && (
-                  <>
-                    {/* 续期/续费按钮 - 根据服务状态显示不同文字和图标 */}
+              {analysis.checkShouldShowRenewalButton() && (
+                <>
+                  {/* 续期/续费按钮 - 根据服务状态显示不同文字和图标 */}
+                  <Button
+                    color="primary"
+                    className="btn btn-lg"
+                    outline
+                    onClick={handleNavigateToRenewal}
+                  >
+                    {analysis.checkIsExpired() ? (
+                      <>
+                        <i className="ph-duotone ph-credit-card me-1"></i>
+                        {t('subscription.actions.renewExpired')}
+                      </>
+                    ) : (
+                      <>
+                        <i className="ph-duotone ph-clock-clockwise me-1"></i>
+                        {t('subscription.actions.renew')}
+                      </>
+                    )}
+                  </Button>
+
+                  {/* 重置流量按钮 - 只在流量耗尽且非过期状态下显示 */}
+                  {analysis.checkShouldShowResetButton() && (
                     <Button
                       color="primary"
-                      className="btn btn-lg"
                       outline
-                      onClick={handleNavigateToRenewal}
+                      className="btn btn-lg"
+                      onClick={handleNavigateToTrafficReset}
                     >
-                      {currentSubscriptionStatus === 'serviceExpired' ||
-                      currentSubscriptionStatus === 'expiredExhausted' ? (
-                        <>
-                          <i className="ph-duotone ph-credit-card me-1"></i>
-                          {t('subscription.actions.renewExpired')}
-                        </>
-                      ) : (
-                        <>
-                          <i className="ph-duotone ph-clock-clockwise me-1"></i>
-                          {t('subscription.actions.renew')}
-                        </>
-                      )}
+                      <i className="ph-duotone ph-arrow-clockwise me-1"></i>
+                      {t('subscription.actions.resetTraffic')}
                     </Button>
-
-                    {/* 重置流量按钮 - 只在流量耗尽且非过期状态下显示 */}
-                    {userSubscribeData.analysis.trafficStatus.isPeriodicWithDepleted &&
-                      currentSubscriptionStatus !== 'serviceExpired' &&
-                      currentSubscriptionStatus !== 'expiredExhausted' && (
-                        <Button
-                          color="primary"
-                          outline
-                          className="btn btn-lg"
-                          onClick={handleNavigateToTrafficReset}
-                        >
-                          <i className="ph-duotone ph-arrow-clockwise me-1"></i>
-                          {t('subscription.actions.resetTraffic')}
-                        </Button>
-                      )}
-                  </>
-                )}
+                  )}
+                </>
+              )}
 
               {/* 一次性订阅（流量包）- 只显示购买流量按钮 */}
-              {(currentSubscriptionStatus === 'packageValid' ||
-                currentSubscriptionStatus === 'packageExhausted') && (
+              {analysis.checkShouldShowPurchaseButton() && (
                 <Button
                   color="primary"
                   className="btn btn-lg"
@@ -542,21 +462,9 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
             <div className="pa-15">
               {(() => {
                 // 计算可见按钮数量
-                // 续期/续费按钮, 非流量包状态下显示, 流量包状态下不显示
-                const hasRenewal =
-                  currentSubscriptionStatus !== 'packageValid' &&
-                  currentSubscriptionStatus !== 'packageExhausted';
-                // 购买流量按钮, 流量包状态下显示, 非流量包状态下不显示
-                const hasPurchase =
-                  currentSubscriptionStatus === 'packageValid' ||
-                  currentSubscriptionStatus === 'packageExhausted';
-                // 重置流量按钮, 流量耗尽且非流量包状态下显示, 流量包状态下不显示
-                const hasReset =
-                  userSubscribeData.traffic.percentage >= 100 &&
-                  currentSubscriptionStatus !== 'packageValid' &&
-                  currentSubscriptionStatus !== 'packageExhausted' &&
-                  currentSubscriptionStatus !== 'serviceExpired' &&
-                  currentSubscriptionStatus !== 'expiredExhausted';
+                const hasRenewal = analysis.checkShouldShowRenewalButton();
+                const hasPurchase = analysis.checkShouldShowPurchaseButton();
+                const hasReset = analysis.checkShouldShowResetButton();
                 const hasImport = true; // 快速导入始终显示
 
                 const buttonCount =
@@ -577,8 +485,7 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
                           className="flex-fill d-flex align-items-center justify-content-center pa-10 f-fw-500"
                           onClick={handleNavigateToRenewal}
                         >
-                          {currentSubscriptionStatus === 'serviceExpired' ||
-                          currentSubscriptionStatus === 'expiredExhausted' ? (
+                          {analysis.checkIsExpired() ? (
                             <>
                               <i className="ph-duotone ph-credit-card me-1"></i>
                               {t('subscription.actions.renewExpired')}
@@ -671,8 +578,7 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
                           className="flex-fill d-flex align-items-center justify-content-center pa-10 f-fw-500"
                           onClick={handleNavigateToRenewal}
                         >
-                          {currentSubscriptionStatus === 'serviceExpired' ||
-                          currentSubscriptionStatus === 'expiredExhausted' ? (
+                          {analysis.checkIsExpired() ? (
                             <>
                               <i className="ph-duotone ph-credit-card me-1"></i>
                               {t('subscription.actions.renewExpired')}

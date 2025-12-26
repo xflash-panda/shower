@@ -61,13 +61,6 @@ const DashboardPage = () => {
           })()
         ) : null}
 
-        {/* I18n 示例组件 */}
-        {/* <Row className="mg-b-30">
-          <Col xs={12} lg={6}>
-            <I18nExample />
-          </Col>
-        </Row> */}
-
         {/* 我的订阅模块 */}
         <Card className="mg-b-30 b-r-15">
           <CardHeader className="pa-20 pa-b-15 border-0 flex-shrink-0">
