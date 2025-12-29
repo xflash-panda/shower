@@ -98,7 +98,7 @@
     "terser": "^5.44.0",
     "tsx": "^4.19.2",
     "typescript": "^5.9.2",
-    "vite": "^5.4.21",
+    "vite": "^7.3.0",
     "vite-plugin-html-minifier": "^1.0.5",
     "vite-plugin-i18next-loader": "^3.1.2",
     "vite-plugin-strip-comments": "^0.0.6",
