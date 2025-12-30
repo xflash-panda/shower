@@ -445,6 +445,7 @@ const PlanPage = () => {
                       selectedPrice={selectedPrice}
                       onPriceSelect={handlePriceSelect}
                       userData={userData}
+                      planId={selectedPlan.id}
                     />
                   </CardBody>
                 </Card>

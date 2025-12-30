@@ -7,6 +7,7 @@ interface SubscriptionCycleSelectorProps {
   selectedPrice: API_V1.User.PlanPriceItem;
   onPriceSelect: (price: API_V1.User.PlanPriceItem) => void;
   userData?: UserSubscribeData | null;
+  planId: number;
 }
 
 const SubscriptionCycleSelector = ({
@@ -14,12 +15,15 @@ const SubscriptionCycleSelector = ({
   selectedPrice,
   onPriceSelect,
   userData,
+  planId,
 }: SubscriptionCycleSelectorProps) => {
-  // 过滤价格选项：只有当用户是周期性订阅且流量耗尽时，才显示重置流量包（假设 type 为 3）
+  // 过滤价格选项
   const filteredPrices = prices.filter(price => {
-    // 如果是重置流量包（type === 3），只在特定条件下显示
+    // 如果是重置流量包（type === 3 或 4），只在特定条件下显示
+    // 条件：用户当前订阅的套餐与当前套餐相同，且满足流量重置条件
     if (price.type === 3 || price.type === 4) {
-      return userData?.analysis.checkShouldShowTrafficReset() ?? false;
+      const isSamePlan = userData?.analysis.currentPlanId === planId;
+      return isSamePlan && (userData?.analysis.checkShouldShowTrafficReset() ?? false);
     }
 
     // 其他类型的价格正常显示

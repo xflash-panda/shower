@@ -265,6 +265,8 @@ const createSubscriptionAnalysis = (
   // 流量状态
   const isDepleted = subscribeInfo.is_traffic_depleted;
   const isPeriodicWithDepleted = isPeriodic && isDepleted;
+  const usedBytes = subscribeInfo.u + subscribeInfo.d;
+  const trafficUsagePercentage = calculateTrafficPercentage(usedBytes, subscribeInfo.quota_bytes);
 
   // 订阅状态
   const isExpired = subscribeInfo.is_expired;
@@ -313,12 +315,12 @@ const createSubscriptionAnalysis = (
     },
 
     // 检查方法：是否应显示流量重置包（type === 4）
-    // 条件：周期性订阅且流量耗尽，且未过期
+    // 条件：周期性订阅且流量已使用>=80%，且未过期
     checkShouldShowTrafficReset: () => {
       return (
-        isPeriodicWithDepleted &&
-        subscriptionStatus !== SubscriptionStatus.SERVICE_EXPIRED &&
-        subscriptionStatus !== SubscriptionStatus.EXPIRED_EXHAUSTED
+        isPeriodic &&
+        trafficUsagePercentage >= 80 &&
+        !isExpired
       );
     },
 
