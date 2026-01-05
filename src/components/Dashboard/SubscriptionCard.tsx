@@ -12,6 +12,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  UncontrolledTooltip,
 } from 'reactstrap';
 import toast from '@/helpers/toast';
 import { copyText } from '@/helpers/clipboard';
@@ -243,12 +244,22 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
                         <small className="text-primary mg-s-3 f-fw-500">GB</small>
                       </div>
                       <span className="text-muted h5 mg-s-8 mg-e-8 f-fw-300">/</span>
-                      <div className="d-flex align-items-baseline">
+                      <div id="traffic-total-tooltip" className="d-flex align-items-baseline">
                         <span className="text-dark h5 f-fw-500">
                           {userSubscribeData.traffic.gb.total.toFixed(2)}
                         </span>
                         <small className="text-dark mg-s-3 f-fw-500">GB</small>
+                        {userSubscribeData.traffic.bytes.temp > 0 && (
+                          <i className="ph-duotone ph-info text-muted mg-s-5"></i>
+                        )}
                       </div>
+                      {userSubscribeData.traffic.bytes.temp > 0 && (
+                        <UncontrolledTooltip target="traffic-total-tooltip" placement="top">
+                          {t('subscription.trafficTooltip.base')}: {bytesToGB(userSubscribeData.traffic.bytes.base).toFixed(2)} GB
+                          <br />
+                          {t('subscription.trafficTooltip.temp')}: {bytesToGB(userSubscribeData.traffic.bytes.temp).toFixed(2)} GB
+                        </UncontrolledTooltip>
+                      )}
                     </div>
                   </div>
                   <i className="ph-duotone ph-chart-bar h1 text-primary"></i>
@@ -270,7 +281,9 @@ const SubscriptionCard = ({ userSubscribeData }: SubscriptionCardProps) => {
                     striped
                     animated
                   >
-                    {userSubscribeData.traffic.percentage.toFixed(1)}%
+                    {userSubscribeData.traffic.percentage >= 15
+                      ? `${userSubscribeData.traffic.percentage.toFixed(1)}%`
+                      : ''}
                   </Progress>
                   <div className="d-flex justify-content-between align-items-center">
                     <small className="text-muted mg-b-0">

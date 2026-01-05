@@ -248,6 +248,7 @@ declare namespace API_V1 {
       u: number;
       d: number;
       quota_bytes: number;
+      temp_quota_bytes: number;
       email: string;
       plan?: PlanItem;
     }

@@ -13,6 +13,10 @@ export interface TrafficData {
   bytes: {
     /** 总流量（字节） */
     total: number;
+    /** 套餐流量（字节） */
+    base: number;
+    /** 临时流量（字节） */
+    temp: number;
     /** 已使用流量（字节） */
     used: number;
     /** 上传流量（字节） */
@@ -356,7 +360,10 @@ const createSubscriptionAnalysis = (
  * @returns 转换后的用户数据对象
  */
 const transformSubscribeData = (subscribeInfo: API_V1.User.SubscribeData): UserSubscribeData => {
-  const totalBytes = subscribeInfo.quota_bytes;
+  // 总流量 = 套餐流量 + 临时流量
+  const baseQuota = subscribeInfo.quota_bytes || 0;
+  const tempQuota = subscribeInfo.temp_quota_bytes || 0;
+  const totalBytes = baseQuota + tempQuota;
   const usedBytes = subscribeInfo.u + subscribeInfo.d;
   const remainingBytes = Math.max(0, totalBytes - usedBytes);
 
@@ -364,6 +371,8 @@ const transformSubscribeData = (subscribeInfo: API_V1.User.SubscribeData): UserS
   const traffic: TrafficData = {
     bytes: {
       total: totalBytes,
+      base: baseQuota,
+      temp: tempQuota,
       used: usedBytes,
       upload: subscribeInfo.u,
       download: subscribeInfo.d,

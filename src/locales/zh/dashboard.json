@@ -17,6 +17,10 @@
     "daysToExpiry": "天到期",
     "daysToReset": "天重置",
     "serviceStatus": "服务状态",
+    "trafficTooltip": {
+      "base": "套餐流量",
+      "temp": "临时流量"
+    },
     "serviceExpired": "服务已过期",
     "packageNoExpiry": "流量包无到期限制",
     "expiredCannotReset": "已过期无法重置",

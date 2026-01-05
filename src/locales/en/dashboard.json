@@ -17,6 +17,10 @@
     "daysToExpiry": "days to expire",
     "daysToReset": "days to reset",
     "serviceStatus": "Service Status",
+    "trafficTooltip": {
+      "base": "Plan Traffic",
+      "temp": "Temp Traffic"
+    },
     "serviceExpired": "Service expired",
     "packageNoExpiry": "Package has no expiry limit",
     "expiredCannotReset": "Expired, cannot reset",
