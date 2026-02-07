@@ -242,9 +242,6 @@ declare namespace API_V1 {
       plan_id: number;
       token: string;
       expired_at: number;
-      time_limit: boolean;
-      start_sec: number;
-      end_sec: number;
       u: number;
       d: number;
       quota_bytes: number;
